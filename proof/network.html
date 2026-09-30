@@ -3,81 +3,91 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ampersand · Swap network</title>
+<title>Ampersand · Network</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Instrument+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,700&family=Instrument+Sans:wght@400;700&display=swap">
 <link rel="stylesheet" href="assets/proof.css">
 </head>
 <body data-page="network">
 <div id="site-header"></div>
 
 <main>
-  <div class="phero"><div class="wrap grid">
-    <div>
-      <span class="chip y">Energy · Swap network</span>
-      <h1 style="margin-top:18px">Six minutes, then back to work.</h1>
-      <p class="lead muted">Riders do not wait for a charge. They arrive with an empty battery and leave with a full one, six minutes later on average. For a rider, not waiting means more income.</p>
-    </div>
-    <img src="../assets/img/station-battery-racks.jpg" alt="Charging racks full of batteries inside a swap station">
+  <section class="hero">
+    <div class="wrap"><div class="copy">
+      <div class="kicker">Energy · Swap network</div>
+      <h1 class="d">Six minutes, then <span class="hl">back to work.</span></h1>
+      <p class="lede">Riders do not wait for a charge. They arrive with an empty battery and leave with a full one, six minutes later on average. For a rider, not waiting means more income.</p>
+      <div class="btns"><a class="btn" href="#cabinets">The new cabinet</a><a class="btn w" href="#host">Host a station</a></div>
+    </div></div>
+    <div class="pblade" style="--bl:46%;--fp:35% 50%"><img src="../assets/img/station-battery-racks.jpg" alt="Charging racks full of batteries inside a swap station"></div>
+    <div class="hstat"><div class="d">2<span class="u"> min</span></div><div>to swap a battery</div></div>
+  </section>
+
+  <div class="band"><div class="wrap">
+    <div class="cell"><div class="n d">24,000</div><div class="k">battery swaps a day</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">70</div><div class="k">stations in Rwanda and Kenya</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">96%</div><div class="k">of batteries out fully charged</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">80%</div><div class="k">brand preference among riders</div></div>
   </div></div>
 
-  <div class="band">
-    <div class="wrap">
-      <div class="cell"><div class="num">24,000</div><div class="k">Battery swaps a day</div></div>
-      <div class="cell"><div class="num">2<small>min</small></div><div class="k">To swap a battery</div></div>
-      <div class="cell"><div class="num">96<small>%</small></div><div class="k">Batteries out fully charged</div></div>
-      <div class="cell"><div class="num">80<small>%</small></div><div class="k">Brand preference among riders</div></div>
-    </div>
-  </div>
-
-  <section>
-    <div class="wrap split center">
-      <img class="photo" src="../assets/img/station-swap.jpg" alt="Attendant hands a charged battery to a rider">
+  <section class="sec s-chalk" id="swap">
+    <div class="wrap six">
+      <div class="giant d" aria-hidden="true">6<span class="gu">min</span></div>
       <div class="stack">
-        <div class="label muted">How a swap works</div>
-        <h2>Three steps. No charging wait.</h2>
-        <ol style="margin:0;padding-left:22px;display:grid;gap:10px">
+        <div class="kicker">How a swap works</div>
+        <h2 class="d">Three steps. No charging wait.</h2>
+        <div>
+          <div class="visit" role="img" aria-label="A visit takes 6 minutes: 4 minutes to arrive, queue and hand over, then 2 minutes to swap">
+            <div class="q">Arrive, queue, hand over</div><div class="s">Swap · 2 min</div>
+          </div>
+          <div class="axis" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6 min</span></div>
+        </div>
+        <ol class="steps">
           <li>The rider arrives. The attendant scans the empty battery.</li>
           <li>The rider pays and takes a full battery.</li>
           <li>The empty battery goes on charge for the next rider.</li>
         </ol>
-        <p class="muted">70 stations in Rwanda and Kenya. High-power charging at every station keeps batteries ready at peak times.</p>
+        <p class="muted">High-power charging at every station keeps batteries ready at peak times.</p>
       </div>
     </div>
   </section>
 
-  <section class="bg-paper" id="cabinets">
+  <section class="sec s-ink prod" id="cabinets">
+    <div class="yblade" style="--bl:46%" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="lead-num">
-        <div>
-          <span class="chip y">New · Automated swap cabinet</span>
-          <div style="margin-top:20px">
-            <figure style="margin:0"><div class="model" id="m-cabinet" data-label="3D model of the Ampersand 12-slot automated swap cabinet"><img src="assets/renders/cabinet.jpg" alt="3D model of the Ampersand 12-slot automated swap cabinet"><span class="hint">Drag to rotate</span></div><figcaption class="src" style="margin-top:8px">3D model of the 12-slot cabinet.</figcaption></figure>
-          </div>
-        </div>
-        <div class="stack">
-          <div class="num big">12</div>
-          <h2>A station that fits on a pavement.</h2>
-          <p class="muted">Our self-service cabinet holds 12 charged MK2 packs. The rider pays in the app, a slot opens, and no attendant is needed. Designed in-house, rolling out in 2026.</p>
-          <div class="facts">
-            <div><div class="num">App</div><div class="k">Payment opens the slot</div></div>
-            <div><div class="num">&lt;3<small>s</small></div><div class="k">Fire suppression in each slot</div></div>
-            <div><div class="num">Remote</div><div class="k">Monitoring and updates from AmperOps</div></div>
-          </div>
+      <div class="copy stack">
+        <div class="flag">New · Automated swap cabinet</div>
+        <div class="d xl">12<span class="u hl"> slots</span></div>
+        <h2 class="d" style="font-size:clamp(40px,4.2vw,60px)">A station that fits on a pavement.</h2>
+        <p class="lede muted">Our self-service cabinet holds 12 charged MK2 packs. The rider pays in the app, a slot opens, and no attendant is needed. Designed in-house, rolling out in 2026.</p>
+        <div class="facts">
+          <div><div class="d">App</div><div>payment opens the slot</div></div>
+          <div><div class="d">&lt;3 s</div><div>fire suppression in each slot</div></div>
+          <div><div class="d">Remote</div><div>monitoring and updates from AmperOps</div></div>
+          <div><div class="d">In-house</div><div>designed by Ampersand</div></div>
         </div>
       </div>
+      <figure class="visual" style="margin:0">
+        <div class="model" id="m-cabinet" style="aspect-ratio:1159/1065" data-label="3D model of the Ampersand 12-slot automated swap cabinet"><img src="assets/renders/cabinet-t.png" alt="3D model of the Ampersand 12-slot automated swap cabinet"><span class="hint">Drag to rotate</span></div>
+      </figure>
     </div>
   </section>
 
-  <section id="host">
+  <section class="sec s-chalk" id="host">
     <div class="wrap">
-      <div class="sec-head"><div><div class="label muted">Grow the network with us</div><h2 style="margin-top:12px">Host a station or run a franchise.</h2></div><p class="muted">We grow with partners: site hosts, energy partners and station franchisees.</p></div>
-      <div class="cards">
-        <div class="card"><img src="../assets/img/station-kiosk.jpg" alt="Small yellow station kiosk"><h3>Small footprint</h3><p class="muted">For markets and side roads.</p></div>
-        <div class="card"><img src="../assets/img/station-nairobi.jpg" alt="Standard Ampersand station with signage"><h3>Standard station</h3><p class="muted">Staffed, on main moto-taxi routes.</p></div>
-        <div class="card"><img src="../assets/img/station-canopy.jpg" alt="Hero station with canopy"><h3>Hero station</h3><p class="muted">Our flagship format.</p></div>
-        <div class="card"><div class="num" style="font-size:72px">+1</div><h3>Your site</h3><p class="muted">Have a site on a busy route, or want to run a franchise? Tell us.</p><a class="btn btn-k" href="investors.html#request" style="justify-self:start">Contact us</a></div>
+      <div class="shead">
+        <div><div class="kicker">Grow the network with us</div><h2 class="d">Host a station or run a franchise.</h2></div>
+        <p class="muted">We grow with partners: site hosts, energy partners and station franchisees.</p>
+      </div>
+      <div class="ptiles">
+        <div class="ptile"><img src="../assets/img/station-kiosk.jpg" alt="Small yellow station kiosk"><h3>Small footprint</h3><p class="muted">For markets and side roads.</p></div>
+        <div class="ptile"><img src="../assets/img/station-nairobi.jpg" alt="Standard Ampersand station with signage"><h3>Standard station</h3><p class="muted">Staffed, on main moto-taxi routes.</p></div>
+        <div class="ptile"><img src="../assets/img/station-canopy.jpg" alt="Hero station with canopy"><h3>Hero station</h3><p class="muted">Our flagship format.</p></div>
+        <div class="ptile plus"><span class="d">+1</span><div class="stack tight"><h3>Your site</h3><p>Have a site on a busy route, or want to run a franchise? Tell us.</p><div><a class="btn sm" href="investors.html#request">Contact us</a></div></div></div>
       </div>
     </div>
   </section>

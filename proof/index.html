@@ -6,161 +6,141 @@
 <title>Ampersand · Proof</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Instrument+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,700&family=Instrument+Sans:wght@400;700&display=swap">
 <link rel="stylesheet" href="assets/proof.css">
-<style>
-.hero{position:relative;color:var(--paper);background:var(--ink)}
-.hero img{width:100%;height:clamp(440px,52vw,640px);object-fit:cover;opacity:.72}
-.hero .over{position:absolute;inset:auto 0 0 0;padding-block:clamp(28px,5vw,64px);background:linear-gradient(0deg,rgba(0,0,0,.85) 15%,rgba(0,0,0,0))}
-.hero p{font-size:clamp(18px,1.6vw,21px);margin-top:16px;color:#EDEDE6}
-.hero .btn{border-color:var(--paper);color:var(--paper)}
-.hero .btn-y{border-color:var(--surge);color:var(--ink)}
-@media (max-width:700px){.hero img{height:260px}.hero .over{position:relative;background:var(--ink)}}
-.income{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:2px solid var(--ink);max-width:560px}
-.income div{padding:18px 18px 18px 0;border-bottom:1px solid var(--rule)}
-.income div + div{padding-left:18px;border-left:1px solid var(--rule)}
-</style>
 </head>
 <body data-page="home">
 <div id="site-header"></div>
 
 <main>
-  <div class="hero">
-    <img src="../assets/img/riders-kigali-hills.jpg" alt="Two Ampersand riders above the hills of Kigali">
-    <div class="over"><div class="wrap">
-      <div class="label" style="color:var(--surge)">East Africa's battery swap network</div>
-      <h1 style="margin-top:12px;max-width:16ch">Powering the movement of people and cities.</h1>
-      <p>We build the batteries, the swap network and the software behind more than 10,000 electric motorcycles in Rwanda and Kenya.</p>
-      <div class="btn-row" style="margin-top:24px"><a class="btn btn-y" href="investors.html">See the numbers</a><a class="btn" href="network.html">Explore the network</a></div>
+  <section class="hero">
+    <div class="wrap"><div class="copy">
+      <div class="kicker">East Africa's battery swap network</div>
+      <h1 class="d">Powering the <span class="hl">movement</span> of people and cities.</h1>
+      <p class="lede">We build the batteries, the swap network and the software behind more than 10,000 electric motorcycles in Rwanda and Kenya.</p>
+      <div class="btns"><a class="btn" href="investors.html">See the numbers</a><a class="btn w" href="network.html">Explore the network</a></div>
     </div></div>
-  </div>
-
-  <div class="band five" style="margin-top:0">
-    <div class="wrap">
-      <div class="cell"><div class="num">10,000+</div><div class="k">Bikes on the road</div></div>
-      <div class="cell"><div class="num">24,000</div><div class="k">Battery swaps a day</div></div>
-      <div class="cell"><div class="num">6<small>min</small></div><div class="k">Arrival to departure</div></div>
-      <div class="cell"><div class="num">96<small>%</small></div><div class="k">Batteries out fully charged</div></div>
-      <div class="cell"><div class="num">+40<small>%</small></div><div class="k">Rider take-home pay</div></div>
-    </div>
-  </div>
-
-  <section class="bg-paper">
-    <div class="wrap">
-      <div class="sec-head"><div><div class="label muted">The system</div><h2 style="margin-top:12px">Four numbers explain the system.</h2></div><p class="muted">Energy flows in this order: stored, swapped, monitored, used.</p></div>
-      <div class="parts">
-        <div class="part">
-          <div><div class="num">5<small>years</small></div><div class="src" style="margin-top:8px">First life of our battery. The industry norm is 1–2 years.</div></div>
-          <div class="txt"><div class="label">1 · Store</div><h3>A battery designed for this job.</h3><p class="muted">Our own cell selection, pack design and BMS give full control of charge speed and battery health.</p><a class="more" href="batteries.html">Batteries →</a></div>
-          <img src="../assets/img/assembly.jpg" alt="Technicians assemble e-motos and batteries in Kigali">
-        </div>
-        <div class="part">
-          <div><div class="num">2<small>min</small></div><div class="src" style="margin-top:8px">To swap a battery</div></div>
-          <div class="txt"><div class="label">2 · Swap</div><h3>No charging wait.</h3><p class="muted">Riders are back on the road six minutes after they arrive. For a rider, time not waiting is income.</p><a class="more" href="network.html">Network →</a></div>
-          <img src="../assets/img/station-swap.jpg" alt="A station attendant hands over a charged battery">
-        </div>
-        <div class="part">
-          <div><div class="num">7<small>years</small></div><div class="src" style="margin-top:8px">Of telemetry from every bike, battery and station</div></div>
-          <div class="txt"><div class="label">3 · Monitor</div><h3>Data runs the network.</h3><p class="muted">We use it to place stations, tune charging for each battery and keep packs healthy.</p><a class="more" href="technology.html">Technology →</a></div>
-          <img src="../assets/img/ops-centre.jpg" alt="The Ampersand operations centre">
-        </div>
-        <div class="part">
-          <div><div class="num">230<small>kg</small></div><div class="src" style="margin-top:8px">Payload of the Alpha e-moto</div></div>
-          <div class="txt"><div class="label">4 · Ride</div><h3>Premium bikes, open network.</h3><p class="muted">Our Alpha is the best-selling e-motorcycle in its markets. Other makers' bikes now run on our network too.</p><a class="more" href="vehicles.html">Vehicles →</a></div>
-          <img src="../assets/img/rider-motion.jpg" alt="Rider and passenger on an Alpha e-moto">
-        </div>
-      </div>
-    </div>
+    <div class="pblade" style="--bl:44%;--fp:40% 50%"><img src="../assets/img/riders-kigali-hills.jpg" alt="Two Ampersand riders above the hills of Kigali"></div>
+    <div class="hstat"><div class="d">24,000</div><div>battery swaps, every day</div></div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="sec-head"><div><div class="label muted">Products</div><h2 style="margin-top:12px">The catalogue.</h2></div><p class="muted">Energy first. Every vehicle runs on the same batteries and stations.</p></div>
-      <div class="cards six">
-        <a class="card" href="network.html"><img src="../assets/img/station-battery-racks.jpg" alt="Charging racks in a station"><div class="num">70</div><h3>Swap network</h3><p class="muted">Stations in Rwanda and Kenya.</p></a>
-        <a class="card" href="network.html#cabinets"><img src="assets/renders/cabinet.jpg" alt="3D model of the 12-slot automated swap cabinet"><div class="num">12</div><h3>Automated cabinets</h3><p class="muted">Self-service slots. Rolling out in 2026.</p></a>
-        <a class="card" href="batteries.html"><img src="assets/renders/mk2.jpg" alt="3D model of two MK2 battery packs"><div class="num">15.5<small>kg</small></div><h3>HM1 and MK2 batteries</h3><p class="muted">MK2 pack, 65% lighter than HM1.</p></a>
-        <a class="card" href="technology.html"><img src="../assets/img/engineering-lab.jpg" alt="Ampersand electronics lab"><div class="num">In-house</div><h3>BMS and VCTU</h3><p class="muted">Our own electronics in every pack.</p></a>
-        <a class="card" href="technology.html#amperops"><img src="../assets/img/amperops-dashboard.jpg" alt="AmperOps dashboard"><div class="num">1</div><h3>AmperOps</h3><p class="muted">Platform for every battery, station and bike.</p></a>
-        <a class="card" href="vehicles.html"><img class="contain" src="../assets/img/alpha-cutout.webp" alt="Red Alpha e-moto"><div class="num">Open</div><h3>E-motos</h3><p class="muted">Alpha, and partner bikes on our network.</p></a>
-      </div>
-    </div>
-  </section>
+  <div class="band"><div class="wrap">
+    <div class="cell"><div class="n d">10,000+</div><div class="k">bikes on the road</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">6<span class="u"> min</span></div><div class="k">arrival to departure</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">96%</div><div class="k">of batteries out fully charged</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">+40%</div><div class="k">rider take-home pay</div></div>
+  </div></div>
 
-  <section class="bg-paper" id="weight">
-    <div class="wrap">
-      <div class="lead-num">
-        <div>
-          <div class="label muted">MK2 weight reduction</div>
-          <div class="num big" style="margin-top:10px">−65<small>%</small></div>
-          <p class="cap">weight per pack. An HM1 pack weighs 44 kg. An MK2 pack weighs 15.5 kg and is a one-handed lift.</p>
-        </div>
-        <div class="stack">
-          <div class="chart" id="w-pack"><div class="chart-head"><h3>Weight of one pack, kg</h3><div class="legend"><span><i style="background:#9E9E9E"></i>HM1</span><span><i style="background:#000"></i>MK2</span></div></div></div>
-          <div class="facts">
-            <div><div class="num">IP67</div><div class="k">MK2 pack</div></div>
-            <div><div class="num">Humidity</div><div class="k">Sensing inside the pack</div></div>
-            <div><div class="num">In-house</div><div class="k">BMS and VCTU</div></div>
-          </div>
-          <a class="more" href="technology.html" style="font-weight:700">See the technology →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-ink">
-    <div class="wrap split center">
-      <div>
-        <img src="../assets/brand/powered-by-white.svg" alt="Powered by Ampersand" style="width:300px">
-        <div class="num" style="font-size:clamp(64px,8vw,120px);color:var(--surge);margin-top:28px">24,000</div>
-        <p class="muted">swaps a day that a partner's bike can join from day one.</p>
-      </div>
+  <section class="sec s-chalk">
+    <div class="wrap six">
+      <div class="giant d" aria-hidden="true">6<span class="gu">min</span></div>
       <div class="stack">
-        <h2>Premium bikes, open network.</h2>
-        <p class="muted">Vehicle makers build on the MK2 battery and sell to riders who already swap with us. Bike volume grows through partner capital. The energy runs on Ampersand.</p>
-        <div class="btn-row"><a class="btn btn-y" href="vehicles.html#oem">Powered by Ampersand</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="work" class="bg-paper">
-    <div class="wrap">
-      <div class="label muted">Work with us</div>
-      <h2 style="margin-top:12px;margin-bottom:36px">Choose your path.</h2>
-      <div class="paths">
-        <a href="investors.html"><span class="label muted">Investors</span><h3>Invest in the network</h3><p class="muted">Request the investor pack.</p></a>
-        <a href="vehicles.html#fleets"><span class="label muted">Fleets</span><h3>Electrify a fleet</h3><p class="muted">Vehicles, energy and AmperOps in one contract.</p></a>
-        <a href="vehicles.html#oem"><span class="label muted">OEMs</span><h3>Power your vehicle</h3><p class="muted">Build on the MK2 battery and our network.</p></a>
-        <a href="network.html#host"><span class="label muted">Sites and franchises</span><h3>Host or run a station</h3><p class="muted">Partner with us on a site or a franchise.</p></a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <div class="lead-num" style="margin-bottom:40px">
-        <div><div class="label muted">Riders</div><div class="num big" style="margin-top:10px">+40<small>%</small></div><p class="cap">take-home pay for an Ampersand rider, compared with petrol.</p></div>
-        <div class="stack">
-          <h2>Riders refuse to go back to petrol.</h2>
-          <div class="income">
-            <div><div class="label muted">Petrol rider</div><div class="num" style="font-size:52px;margin-top:6px">$103</div><p class="muted">Take-home pay per month</p></div>
-            <div><div class="label muted">Ampersand rider</div><div class="num" style="font-size:52px;margin-top:6px">$173</div><p class="muted">Take-home pay per month</p></div>
+        <div class="kicker">The swap network</div>
+        <h2 class="d">Six minutes, then back to work.</h2>
+        <p class="lede muted">Riders do not wait for a charge. They swap an empty battery for a full one and leave six minutes after they arrive. For a rider, time not waiting is income.</p>
+        <div>
+          <div class="visit" role="img" aria-label="A visit takes 6 minutes: 4 minutes to arrive, queue and hand over, then 2 minutes to swap">
+            <div class="q">Arrive, queue, hand over</div><div class="s">Swap · 2 min</div>
           </div>
-          <p class="muted">The biggest saving is energy, then maintenance, then less time lost waiting for repairs.</p>
+          <div class="axis" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6 min</span></div>
         </div>
-      </div>
-      <div class="voices">
-        <div class="voice"><img src="../assets/img/rider-alpha.jpg" alt="Rider on an Alpha e-moto"><blockquote>“Maintenance costs are lower as we don’t need chain and oil which cost a lot. Now I benefit more from my income and I am able to start saving.”</blockquote><div class="src">Gitwaza, rider</div></div>
-        <div class="voice"><img src="../assets/img/rider-community.jpg" alt="Rider greeting people in a neighbourhood"><blockquote>“Apart from their innovation they care about our personal life. They helped us during the lock-down and are flexible in terms of contracts.”</blockquote><div class="src">Rukundo, rider</div></div>
-        <div class="voice"><img src="../assets/img/rider-thumbs-up.jpg" alt="Rider giving a thumbs up at a station"><blockquote>“I can save extra money I would have used on fuel. I don’t waste time at the garage anymore.”</blockquote><div class="src">Etienne, rider</div></div>
+        <div class="stats">
+          <div><div class="d">70</div><div>stations in Rwanda and Kenya</div></div>
+          <div><div class="d">96%</div><div>of batteries leave fully charged</div></div>
+          <div><div class="d">80%</div><div>brand preference among riders</div></div>
+        </div>
+        <div><a class="btn k" href="network.html">The network</a></div>
       </div>
     </div>
+  </section>
+
+  <section class="sec s-ink prod">
+    <div class="yblade" style="--bl:42%" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="copy stack">
+        <div class="flag">MK2 battery</div>
+        <div class="d xl">15.5<span class="u hl">kg</span></div>
+        <h2 class="d" style="font-size:clamp(40px,4.2vw,60px)">Two packs per bike. One hand to swap.</h2>
+        <p class="lede muted">An HM1 pack weighs 44 kg. The MK2 pack weighs 15.5 kg, and either pack swaps alone. Our BMS and telematics are built in.</p>
+        <div class="facts">
+          <div><div class="d">5 years</div><div>first life · industry norm 1–2 years</div></div>
+          <div><div class="d">2,500</div><div>cycles, first life</div></div>
+          <div><div class="d">IP67</div><div>sealed pack</div></div>
+          <div><div class="d">1 m</div><div>drop test passed</div></div>
+        </div>
+        <div><a class="btn" href="batteries.html">HM1 and MK2</a></div>
+      </div>
+      <div class="visual">
+        <img src="assets/renders/mk2-t.png" alt="3D model of two MK2 battery packs" width="1067" height="809">
+        <div class="tags"><span class="tag">BMS in-house</span><span class="tag">VCTU in-house</span><span class="tag">Humidity sensing</span><span class="tag">4G · GPS</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec s-chalk" id="weight">
+    <div class="wrap weight">
+      <div class="stack tight">
+        <div class="kicker">Weight per pack</div>
+        <div class="d xl">−65%</div>
+        <p class="lede muted">The heaviest thing a swap attendant lifts went from 44 kg to 15.5 kg.</p>
+      </div>
+      <div class="wbars" role="img" aria-label="Weight of one pack: HM1 44 kg, MK2 15.5 kg">
+        <div class="wbar hm1"><div class="lbl"><span>HM1 pack</span><span class="d">44 kg</span></div><div class="b"></div></div>
+        <div class="wbar mk2"><div class="lbl"><span>MK2 pack</span><span class="d">15.5 kg</span></div><div class="b"></div></div>
+        <div class="src">Bars drawn to scale.</div>
+      </div>
+      <img src="assets/renders/compare-t.png" alt="3D model of one HM1 pack beside two MK2 packs, to scale" style="width:100%;max-width:420px;justify-self:center">
+    </div>
+  </section>
+
+  <section class="sec s-ink" id="products">
+    <div class="wrap">
+      <div class="shead">
+        <div><div class="kicker">Products</div><h2 class="d">One battery standard. Six ways in.</h2></div>
+        <p class="muted" style="color:var(--on-ink-2)">Energy first. Every vehicle runs on the same batteries and the same stations.</p>
+      </div>
+      <div class="tiles">
+        <a class="tile" href="network.html"><img class="cover" src="../assets/img/station-battery-racks.jpg" alt=""><span class="bar"><span class="d">70</span><b>Swap network</b></span></a>
+        <a class="tile y" href="network.html#cabinets"><img class="art" src="assets/renders/cabinet-t.png" alt=""><span class="txt top"><span class="d">12</span><b>Automated cabinet slots</b><span class="note">Rolling out in 2026</span></span></a>
+        <a class="tile c" href="batteries.html"><span class="txt"><span class="d">5 yrs</span><span style="display:grid;gap:6px"><b>HM1 and MK2 batteries</b><span class="note">Battery first life. Industry norm: 1–2 years.</span></span></span></a>
+        <a class="tile" href="technology.html"><img class="cover" src="../assets/img/engineering-lab.jpg" alt=""><span class="bar"><span class="d sm">In-house</span><b>BMS and VCTU</b></span></a>
+        <a class="tile o" href="technology.html#amperops"><span class="txt"><span class="d">7 yrs</span><span style="display:grid;gap:6px"><b>AmperOps</b><span class="note">Of telemetry from every bike, battery and station.</span></span></span></a>
+        <a class="tile w" href="vehicles.html"><img class="art bike" src="../assets/img/alpha-cutout.webp" alt=""><span class="txt top"><span class="d">Open</span><b>E-motos</b><span class="note">Alpha and partner bikes on one network</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec s-yellow">
+    <div class="wrap"><div class="copy-l stack tight">
+      <div class="kicker">Riders</div>
+      <div class="d xl" style="font-size:clamp(120px,18vw,260px)">+40%</div>
+      <div style="font-size:22px;font-weight:700">more take-home pay than on petrol</div>
+      <div class="pay" style="margin-top:14px">
+        <div><span class="d old">$103</span><span>a month on petrol</span></div>
+        <div class="arrow" aria-hidden="true"></div>
+        <div><span class="d">$173</span><span>a month with Ampersand</span></div>
+      </div>
+      <blockquote class="q" style="margin-top:22px">“I can save extra money I would have used on fuel. I don’t waste time at the garage anymore.”<cite>Etienne, rider</cite></blockquote>
+    </div></div>
+    <div class="pblade" style="--bl:49%;--fp:35% 40%"><img src="../assets/img/rider-thumbs-up.jpg" alt="Smiling Ampersand rider giving a thumbs up at a station"></div>
+  </section>
+
+  <section class="sec s-chalk">
+    <div class="wrap"><div class="copy-l narrow stack">
+      <img src="../assets/brand/powered-by-black.svg" alt="Powered by Ampersand" style="width:300px">
+      <h2 class="d">Premium bikes, open network.</h2>
+      <p class="lede muted">Our Alpha is the best-selling e-motorcycle in its markets. Now other makers' bikes run on our batteries and stations too. Their riders join 24,000 swaps a day from day one.</p>
+      <div><a class="btn k" href="vehicles.html#oem">Build on our network</a></div>
+    </div></div>
+    <div class="pblade" style="--bl:54%;--fp:30% 50%"><img src="../assets/img/wylex-station.jpg" alt="Rider on a Wylex e-moto at an Ampersand station"></div>
   </section>
 </main>
 
 <div id="site-footer"></div>
 <script src="assets/data.js"></script>
 <script src="assets/proof.js"></script>
-<script>ampBars(document.getElementById('w-pack'), [{label:'HM1 pack',value:44,group:'old'},{label:'MK2 pack',value:15.5,group:'one'}], {unit:'kg', aria:'Weight of one pack'});</script>
 </body>
 </html>

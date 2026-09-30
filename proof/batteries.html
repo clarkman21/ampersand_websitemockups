@@ -6,89 +6,96 @@
 <title>Ampersand · Batteries</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Instrument+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,700&family=Instrument+Sans:wght@400;700&display=swap">
 <link rel="stylesheet" href="assets/proof.css">
 </head>
 <body data-page="batteries">
 <div id="site-header"></div>
 
 <main>
-  <div class="phero"><div class="wrap grid">
-    <div>
-      <span class="chip y">Energy · HM1 and MK2 batteries</span>
-      <h1 style="margin-top:18px">A battery built to last five years.</h1>
-      <p class="lead muted">Most swap batteries last one to two years. Ours are designed for a five-year first life. Our own cell selection, pack design and BMS give us full control of charge speed and health, so each pack keeps earning for longer.</p>
-    </div>
-    <img src="../assets/img/battery-insert.jpg" alt="A rider slides a charged battery into an Alpha e-moto">
+  <section class="hero">
+    <div class="wrap"><div class="copy">
+      <div class="kicker">Energy · HM1 and MK2 batteries</div>
+      <h1 class="d">A battery built to last <span class="hl">five years.</span></h1>
+      <p class="lede">Most swap batteries last one to two years. Ours are designed for a five-year first life. Our own cell selection, pack design and BMS give us full control of charge speed and health, so each pack keeps earning for longer.</p>
+      <div class="btns"><a class="btn" href="#mk2">Meet the MK2</a><a class="btn w" href="#spec">Spec sheet</a></div>
+    </div></div>
+    <div class="pblade" style="--bl:48%;--fp:40% 50%"><img src="../assets/img/battery-insert.jpg" alt="A rider slides a charged battery into an Alpha e-moto"></div>
+    <div class="hstat"><div class="d">−65%</div><div>pack weight, MK2 against HM1</div></div>
+  </section>
+
+  <div class="band"><div class="wrap">
+    <div class="cell"><div class="n d">5<span class="u"> yrs</span></div><div class="k">designed first life · norm 1–2 years</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">2,500</div><div class="k">cycles, first life</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">IP67</div><div class="k">MK2 pack</div></div>
+    <div class="slash" aria-hidden="true"></div>
+    <div class="cell"><div class="n d">1<span class="u"> m</span></div><div class="k">MK2 drop test passed</div></div>
   </div></div>
 
-  <div class="band">
-    <div class="wrap">
-      <div class="cell"><div class="num">5<small>years</small></div><div class="k">Designed first life. Industry norm: 1–2 years</div></div>
-      <div class="cell"><div class="num">2,500</div><div class="k">Cycles, first life</div></div>
-      <div class="cell"><div class="num">−65<small>%</small></div><div class="k">Pack weight, MK2 vs HM1</div></div>
-      <div class="cell"><div class="num">IP67</div><div class="k">MK2 pack</div></div>
-    </div>
-  </div>
-
-  <section>
-    <div class="wrap">
-      <article class="split center">
-        <div class="stack">
-          <span class="chip">HM1</span>
-          <div class="num" style="font-size:clamp(72px,9vw,132px)">44<small>kg</small></div>
-          <h2>HM1: the pack that built the network.</h2>
-          <p class="muted">One pack per bike. A 24-cell LFP module built in-house in Kigali, now running on the Ampersand BMS.</p>
-          <div class="facts">
-            <div><div class="num">~3.0<small>kWh</small></div><div class="k">Usable energy</div></div>
-            <div><div class="num">LFP</div><div class="k">Cell chemistry</div></div>
-            <div><div class="num">IP66</div><div class="k">Enclosure, IP67 internals</div></div>
-          </div>
+  <section class="sec s-chalk" id="hm1">
+    <div class="wrap split">
+      <div class="stack">
+        <div class="flag k">HM1</div>
+        <div class="d xl">44<span class="u"> kg</span></div>
+        <h2 class="d" style="font-size:clamp(40px,4.2vw,60px)">The pack that built the network.</h2>
+        <p class="lede muted">One pack per bike. A 24-cell LFP module built in-house in Kigali, now running on the Ampersand BMS.</p>
+        <div class="stats">
+          <div><div class="d">~3.0<span class="u"> kWh</span></div><div>usable energy</div></div>
+          <div><div class="d">LFP</div><div>cell chemistry</div></div>
+          <div><div class="d">IP66</div><div>enclosure, IP67 internals</div></div>
         </div>
-        <img class="photo" src="../assets/img/battery-amp.jpg" alt="Yellow HM1 battery pack" style="object-fit:contain;background:var(--paper);padding:24px;aspect-ratio:4/5">
-      </article>
+      </div>
+      <img src="../assets/img/battery-hm1-crop.jpg" alt="Yellow HM1 battery pack" style="width:100%;max-width:560px;justify-self:center;aspect-ratio:1/1;object-fit:cover;background:var(--white)">
     </div>
   </section>
 
-  <section class="bg-paper">
+  <section class="sec s-ink prod" id="mk2">
+    <div class="yblade" style="--bl:42%" aria-hidden="true"></div>
     <div class="wrap">
-      <article class="split center">
-        <figure style="margin:0"><div class="model" id="m-mk2" data-label="3D model of two MK2 battery packs"><img src="assets/renders/mk2.jpg" alt="3D model of two MK2 battery packs"><span class="hint">Drag to rotate</span></div><figcaption class="src" style="margin-top:8px">3D model of the MK2 pack, 292 × 322 × 129 mm.</figcaption></figure>
-        <div class="stack">
-          <span class="chip y">MK2 · new generation</span>
-          <div class="num" style="font-size:clamp(72px,9vw,132px)">15.5<small>kg</small></div>
-          <h2>MK2: two light packs, one-handed swaps.</h2>
-          <p class="muted">Two packs per bike, connected in parallel. Either pack can be swapped alone. The Ampersand BMS and the VCTU are built in.</p>
-          <div class="facts">
-            <div><div class="num">3.67<small>kWh</small></div><div class="k">Per bike, 2 packs</div></div>
-            <div><div class="num">IP67</div><div class="k">Sealed pack</div></div>
-            <div><div class="num">1<small>m</small></div><div class="k">Drop test passed</div></div>
-          </div>
-          <a class="more" href="technology.html#weight" style="font-weight:700">Weight comparison →</a>
+      <div class="copy stack">
+        <div class="flag">MK2 · new generation</div>
+        <div class="d xl">15.5<span class="u hl">kg</span></div>
+        <h2 class="d" style="font-size:clamp(40px,4.2vw,60px)">Two light packs. One-handed swaps.</h2>
+        <p class="lede muted">Two packs per bike, connected in parallel. Either pack can be swapped alone. The Ampersand BMS and the VCTU are built in.</p>
+        <div class="facts">
+          <div><div class="d">3.67 kWh</div><div>per bike, 2 packs</div></div>
+          <div><div class="d">IP67</div><div>sealed pack</div></div>
+          <div><div class="d">1 m</div><div>drop test passed</div></div>
+          <div><div class="d">Humidity</div><div>sensing inside the pack</div></div>
         </div>
-      </article>
+        <div><a class="btn" href="technology.html#weight">Weight comparison</a></div>
+      </div>
+      <figure class="visual" style="margin:0">
+        <div class="model" id="m-mk2" style="aspect-ratio:1067/809" data-label="3D model of two MK2 battery packs"><img src="assets/renders/mk2-t.png" alt="3D model of two MK2 battery packs"><span class="hint">Drag to rotate</span></div>
+        <figcaption class="src" style="margin-top:10px;color:var(--ink)">MK2 pack, 292 × 322 × 129 mm.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section>
+  <section class="sec s-chalk" id="spec">
     <div class="wrap">
-      <div class="sec-head"><div><div class="label muted">Spec sheet</div><h2 style="margin-top:12px">HM1 and MK2 at a glance.</h2></div><p class="muted">Every generation works with the stations already on the network. A larger pack, AMP XL, is in development.</p></div>
-      <div class="tbl-wrap">
+      <div class="shead">
+        <div><div class="kicker">Spec sheet</div><h2 class="d">HM1 and MK2 at a glance.</h2></div>
+        <p class="muted">Every generation works with the stations already on the network. A larger pack, AMP XL, is in development.</p>
+      </div>
+      <div class="spec-wrap">
         <table class="spec">
-          <thead><tr><th></th><th>HM1</th><th>MK2</th></tr></thead>
+          <thead><tr><th scope="col"><span class="sr">Item</span></th><th scope="col">HM1</th><th scope="col">MK2</th></tr></thead>
           <tbody>
-            <tr><th>Packs per bike</th><td>1</td><td>2, in parallel</td></tr>
-            <tr><th>Weight per pack</th><td>44 kg</td><td class="hl">15.5 kg</td></tr>
-            <tr><th>Energy</th><td>~3.0 kWh</td><td>3.67 kWh per bike</td></tr>
-            <tr><th>Chemistry</th><td>LFP</td><td>LFP</td></tr>
-            <tr><th>Designed first life</th><td colspan="2">5 years · 2,500 cycles</td></tr>
-            <tr><th>Protection</th><td>IP66 enclosure, IP67 internals</td><td class="hl">IP67 · 1 m drop tested</td></tr>
-            <tr><th>BMS and telematics</th><td colspan="2">Ampersand BMS and VCTU, designed in-house</td></tr>
-            <tr><th>Certification</th><td colspan="2">UN38.3</td></tr>
+            <tr><th scope="row">Packs per bike</th><td>1</td><td>2, in parallel</td></tr>
+            <tr><th scope="row">Weight per pack</th><td>44 kg</td><td class="mark">15.5 kg</td></tr>
+            <tr><th scope="row">Energy</th><td>~3.0 kWh</td><td>3.67 kWh per bike</td></tr>
+            <tr><th scope="row">Chemistry</th><td>LFP</td><td>LFP</td></tr>
+            <tr><th scope="row">Designed first life</th><td colspan="2">5 years · 2,500 cycles</td></tr>
+            <tr><th scope="row">Protection</th><td>IP66 enclosure, IP67 internals</td><td class="mark">IP67 · 1 m drop tested</td></tr>
+            <tr><th scope="row">BMS and telematics</th><td colspan="2">Ampersand BMS and VCTU, designed in-house</td></tr>
+            <tr><th scope="row">Certification</th><td colspan="2">UN38.3</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="btn-row" style="margin-top:28px"><a class="btn btn-k" href="technology.html">See the technology</a></div>
+      <div class="btns" style="margin-top:32px"><a class="btn k" href="technology.html">See the technology</a></div>
     </div>
   </section>
 </main>
