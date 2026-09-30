@@ -107,7 +107,7 @@ footer{margin-top:40px;font-size:14px;color:var(--muted)}
           <h3>Proof</h3>
           <p>A light editorial design, like an annual report. It uses large field photography, a four-step system story and spec tables that compare the products.</p>
           <p><b>Best for:</b> credibility with investors, OEMs and the media.</p>
-          <p><b>Selected.</b> Developed into a seven-page site where every page opens with its numbers.</p>
+          <p><b>Selected.</b> Developed into a six-page site. Every page opens with its key numbers, aligned with the 25 Sep 2026 company introduction.</p>
           <a class="btn" href="proof/index.html">Open the Proof site</a>
           <a href="direction-b.html" style="font-size:14px">First version of B</a>
         </div>
@@ -123,7 +123,7 @@ footer{margin-top:40px;font-size:14px;color:var(--muted)}
         </div>
       </article>
     </div>
-    <p class="note" style="margin-top:18px"><b>Proof site pages:</b> <a href="proof/index.html">Home</a> · <a href="proof/network.html">Network</a> · <a href="proof/batteries.html">Batteries</a> · <a href="proof/technology.html">Technology</a> · <a href="proof/amperops.html">AmperOps</a> · <a href="proof/vehicles.html">Vehicles</a> · <a href="proof/investors.html">Investors</a>. The "Network now" numbers on these pages are simulated from the 7-day average.</p>
+    <p class="note" style="margin-top:18px"><b>Proof site pages:</b> <a href="proof/index.html">Home</a> · <a href="proof/network.html">Network</a> · <a href="proof/batteries.html">Batteries</a> · <a href="proof/technology.html">Technology</a> · <a href="proof/vehicles.html">Vehicles</a> · <a href="proof/investors.html">Investors</a>. The "Network now" numbers on these pages are simulated from the 7-day average.</p>
     <p class="note" style="margin-top:8px">Dashed underlines in the mockups mark data that you must confirm before launch. The list of these items is at the end of this page.</p>
   </section>
 
@@ -203,28 +203,17 @@ footer{margin-top:40px;font-size:14px;color:var(--muted)}
       <h2>Items to confirm before launch</h2>
     </div>
     <ul class="checks">
-      <li><span class="chip warn">Confirm</span><div><b>AMP naming.</b> The brand book names the batteries AMP_01, AMP_02 and AMP_XL. I assumed that AMP 01 is HM1.9 and AMP 02 is MK2. This is a guess.</div></li>
-      <li><span class="chip warn">Confirm</span><div><b>Alpha MK2 specs.</b> I did not find public specs. The mockups show "TBC". Add the specs from the MK2 release document.</div></li>
-      <li><span class="chip warn">Decide</span><div><b>AMP XL disclosure.</b> The AMP XL memo says R&D only, with no launch in 2026. The mockups show "In development" and no range or cost figures.</div></li>
-      <li><span class="chip warn">Confirm</span><div><b>Energy pricing.</b> "Pay for the charge you use" comes from an internal note that charging is prorated by state of charge. Confirm the public pricing model.</div></li>
-      <li><span class="chip warn">Sign-off</span><div><b>Network numbers.</b> Finance and comms must approve the swap, station and vehicle numbers. Decide if the live numbers come from a cached public feed.</div></li>
-      <li><span class="chip warn">Fix</span><div><b>Current site error.</b> Correct "400,000+ battery swaps per week" on the Who We Are page.</div></li>
-      <li><span class="chip info">Update</span><div><b>Older claims.</b> "950k km per day", "14k t CO₂e avoided" and "45% income increase" come from the current site. Update them with new data.</div></li>
-      <li><span class="chip info">Permission</span><div><b>Backers.</b> The mockups show backer names as text. Confirm the list and get permission to use logos.</div></li>
-      <li><span class="chip info">Photos</span><div><b>Rider quotes.</b> The quotes by Gitwaza, Rukundo and Etienne are from the current Impact page. The photos next to them show other riders. Match each photo to the correct name.</div></li>
-      <li><span class="chip info">Brand</span><div><b>Logo size on phones.</b> The brand book sets a minimum digital size of 250 px. On phone screens the header logo is 190 px. Confirm if this is acceptable.</div></li>
-      <li><span class="chip warn">Confirm</span><div><b>Proof site data.</b> Most performance numbers come from read-only Metabase queries (swaps_v2, cycles_v2) for 22–28 Sep 2026, because AmperOps timed out. The data team must check the definitions: 98.5% is the average charge at hand-over; the full-charge rate is 88.7% for all packs and 98.9% for AMP 02, but MK2 records only one of its two packs; queue times exist for only 58% (Rwanda) and 34% (Kenya) of swaps; the busiest hour assumes UTC timestamps.</div></li>
-      <li><span class="chip warn">Decide</span><div><b>Battery online rate.</b> Not shown. The newest snapshot is from 16 Aug 2026, it counts retired packs, and the MK2 figure (about 60%) may be a telemetry fault.</div></li>
-      <li><span class="chip info">Check</span><div><b>AmperOps connector.</b> The detailed AmperOps reports (queue times, charge quality, online rate) timed out during this work. Ask the team that runs the AmperOps server to check it.</div></li>
-      <li><span class="chip info">Build</span><div><b>Live feed.</b> The "Network now" bar is a simulation from the 7-day average. The real site needs a cached public feed from AmperOps with the same four numbers.</div></li>
-      <li><span class="chip warn">Sign-off</span><div><b>Water and drop claims.</b> The site now claims IP67 for MK2, IP66 enclosure and IP67 internals for HM1, and passed water-immersion and 1 m drop tests for the latest MK2 update. Attach the latest test reports before launch, because the April–July 2026 records in Drive and Notion still show the earlier failures and a water-ingress recall. No patents exist, so the site does not mention patents.</div></li>
-      <li><span class="chip ok">Done</span><div><b>Pack weights.</b> HM1 pack 44 kg, MK2 pack 15.5 kg, as you confirmed.</div></li>
-      <li><span class="chip info">Test mode</span><div><b>Bankability figures.</b> 98.9% of 17,851 packs in service, 3,443 cycles to 80% health, the 7-year pack warranty and the MK2 fleet totals are shown, as you decided, while the site is in test mode. Approve them before the site goes live.</div></li>
-      <li><span class="chip info">Decided</span><div><b>Automated cabinet.</b> Shown as in-house, as you decided. It is at sample and pilot stage. Sources conflict on 9 or 12 slots and on IP54 or IP64; the site shows 12 slots and no IP rating for the cabinet.</div></li>
-      <li><span class="chip info">Conflicts</span><div><b>Spec conflicts.</b> HM1 voltage 76 V or 75 V; HM1 rated cycles 3,500 or 3,000; MK2 energy 3.67 or 3.84 kWh per bike. The site shows the first value with a dashed underline.</div></li>
-      <li><span class="chip info">Models</span><div><b>3D product models.</b> The MK2 pack, the HM1 pack and the 12-slot cabinet are 3D models built to scale from the specification dimensions. The Drive photos and renders could not be viewed in this session, so shapes and details are approximate. Replace them with CAD renders or photos before launch.</div></li>
-      <li><span class="chip info">Names</span><div><b>Battery names on the Proof site.</b> The Proof site now uses HM1 and MK2, as the team does. The AMP 01 / AMP 02 names in Directions A and C are from the brand book and are not confirmed.</div></li>
-      <li><span class="chip ok">Done</span><div><b>Brand system.</b> The mockups use Instrument Sans and Barlow Condensed, two weights, sentence case, the primary palette and the approved logo files.</div></li>
+      <li><span class="chip ok">Done</span><div><b>Final editorial pass.</b> Each page now leads with a few public numbers from the company introduction (25 Sep 2026): 10,000+ bikes, 24,000 swaps a day, 2-minute swap, 6 minutes arrival to departure, 96% of batteries out fully charged, 5-year battery first life (2,500 cycles), +40% rider take-home pay, $25B fuel-spend market. The site has six pages; AmperOps is now part of Technology.</div></li>
+      <li><span class="chip ok">Removed</span><div><b>Too much detail.</b> Station-by-station swap counts, the monthly swap chart, the country table, km per cycle, telemetry rates, BMS limits, generations, supplier names, cabinet power specs, MK2 fleet totals and most spec rows. <code>data.js</code> now holds only public figures.</div></li>
+      <li><span class="chip warn">Keep private</span><div><b>Investor pack only.</b> Revenue ($11.2M in 2025, $18.3M forecast), group EBITDA, gross swap margin, battery IRR and payback, capex per 1,000 riders, the battery-to-bike ratio, expansion markets and dates, and partner names from the deck. The site sends investors to the pack request form.</div></li>
+      <li><span class="chip warn">Sign-off</span><div><b>Water and drop claims.</b> IP67 for MK2, IP66 enclosure and IP67 internals for HM1, and passed water-immersion and 1 m drop tests. Attach the latest test reports before launch; the April–July 2026 records in Drive and Notion show earlier failures and a recall.</div></li>
+      <li><span class="chip warn">Confirm</span><div><b>Numbers not in the deck.</b> 70 stations (AmperOps), 80% brand preference and HM1 / MK2 pack specs (portfolio and specification). Old website claims (400M km, 14k t CO₂e) are no longer used.</div></li>
+      <li><span class="chip info">Update</span><div><b>Leadership.</b> The live website lists Josh Whale as CEO. The deck lists Michael Barton as CEO and Josh Whale as Founder and Chief Customer Officer. Update the company page on the new site.</div></li>
+      <li><span class="chip info">Fix</span><div><b>Live site error.</b> Correct "400,000+ battery swaps per week" on the current Who We Are page.</div></li>
+      <li><span class="chip info">Models</span><div><b>3D models.</b> The MK2, HM1 and cabinet models are built to scale from the specifications, but the details are approximate. Replace them with CAD renders or photos.</div></li>
+      <li><span class="chip info">Photos</span><div><b>Rider quotes.</b> The photos next to the three quotes show other riders. Match each photo to the correct name.</div></li>
+      <li><span class="chip info">Build</span><div><b>Live feed.</b> The "Network now" bar is simulated from 24,000 swaps a day. The real site needs a cached public feed from AmperOps. AmperOps reports timed out during this work; ask the team to check the server.</div></li>
+      <li><span class="chip info">Brand</span><div><b>Logo size on phones.</b> The header logo is 190 px on phones; the brand book minimum is 250 px. Directions A and C still use the unconfirmed AMP 01 / AMP 02 names.</div></li>
     </ul>
   </section>
 

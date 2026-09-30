@@ -8,6 +8,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Instrument+Sans:wght@400;700&display=swap">
 <link rel="stylesheet" href="assets/proof.css">
+<style>
+.pillars4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
+.pillars4 div{padding:22px 20px 26px 0;border-right:1px solid var(--rule);display:grid;gap:10px;align-content:start;min-width:0}
+.pillars4 div + div{padding-left:20px}
+.pillars4 div:last-child{border-right:0}
+.pillars4 .num{font-size:52px;white-space:nowrap}
+@media (max-width:900px){.pillars4{grid-template-columns:repeat(2,minmax(0,1fr))}.pillars4 div{border-right:0;border-bottom:1px solid var(--rule);padding-left:0!important}}
+@media (max-width:480px){.pillars4{grid-template-columns:minmax(0,1fr)}}
+</style>
 </head>
 <body data-page="investors">
 <div id="site-header"></div>
@@ -16,93 +25,68 @@
   <div class="phero"><div class="wrap grid">
     <div>
       <span class="chip">Investors</span>
-      <h1 style="margin-top:18px">22 million motorcycles to electrify.</h1>
-      <p class="lead muted">Commercial motorcycles carry 100 million people in East Africa every day. Ampersand replaces their petrol with a recurring energy service, and each new station and vehicle makes the network denser.</p>
+      <h1 style="margin-top:18px">Ready for scale.</h1>
+      <p class="lead muted">Africa's commercial motorcycles burn $25 billion of fuel a year, and electric bikes are taking over. We run the swap network that riders already trust, with the most capital-efficient batteries in the industry.</p>
     </div>
     <img src="../assets/img/rider-crowd.jpg" alt="Hundreds of Ampersand riders gathered on their e-motos">
   </div></div>
 
   <div class="band">
     <div class="wrap">
-      <div class="cell"><div class="num">22M</div><div class="k">Commercial motorcycles in Africa</div><div class="s">ampersand.energy</div></div>
-      <div class="cell"><div class="num">170,606</div><div class="k">Swaps in 7 days</div><div class="s">AmperOps · 22–28 Sep 2026</div></div>
-      <div class="cell"><div class="num">10,233</div><div class="k">Vehicles on the network</div><div class="s">AmperOps fleet records</div></div>
-      <div class="cell"><div class="num">500+</div><div class="k">Employees in 2 markets</div><div class="s">ampersand.energy</div></div>
+      <div class="cell"><div class="num">$25B</div><div class="k">Commercial 2W fuel spend in Africa</div></div>
+      <div class="cell"><div class="num">49<small>%</small></div><div class="k">Electric 2W/3W growth a year, 2024–2030</div></div>
+      <div class="cell"><div class="num">10,000+</div><div class="k">Ampersand bikes on the road</div></div>
+      <div class="cell"><div class="num">24,000</div><div class="k">Battery swaps a day</div></div>
     </div>
   </div>
 
   <section>
     <div class="wrap">
-      <div class="lead-num">
-        <div>
-          <div class="label muted">Growth</div>
-          <div class="num big" style="margin-top:10px">9×</div>
-          <p class="cap">more swaps per month in August 2026 than in January 2023: 774,874 against 83,645.</p>
-        </div>
-        <div class="chart" id="trend">
-          <div class="chart-head"><h3>Swaps per month, Rwanda and Kenya</h3><span class="src">Metabase · Jan 2023 – Aug 2026</span></div>
-        </div>
+      <div class="sec-head"><div><div class="label muted">Why Ampersand</div><h2 style="margin-top:12px">Four reasons we win.</h2></div></div>
+      <div class="pillars4">
+        <div><div class="num">6<small>min</small></div><h3>The best swap network in Africa</h3><p class="muted">Six minutes from arrival to departure, and 96% of batteries leave fully charged.</p></div>
+        <div><div class="num">5<small>years</small></div><h3>The most capital-efficient batteries</h3><p class="muted">A five-year first life, against an industry norm of one to two years.</p></div>
+        <div><div class="num">Open</div><h3>A bike-agnostic network</h3><p class="muted">Partner bikes join our network. Battery revenue stays with Ampersand.</p></div>
+        <div><div class="num">Light</div><h3>Capital-light growth</h3><p class="muted">Partners sell and service bikes. Franchisees run stations. We build the energy network.</p></div>
       </div>
+      <p class="src" style="margin-top:14px">Market figures: Ampersand analysis of McKinsey &amp; Co., UN Environment Programme, Shell Foundation and industry research.</p>
     </div>
   </section>
 
   <section class="bg-paper">
-    <div class="wrap split">
-      <div class="stack">
-        <div class="label muted">Two markets</div>
-        <h2>One operating model.</h2>
-        <p class="muted">We run the same system in both markets. Rwanda proves the density model. Kenya proves that it travels.</p>
-      </div>
-      <div class="stack">
-        <table class="data">
-          <thead><tr><th>22–28 Sep 2026</th><th>Stations</th><th>Vehicles</th><th>Swaps</th><th>Swaps per station</th></tr></thead>
-          <tbody>
-            <tr><td>Rwanda</td><td>41</td><td>7,462</td><td>139,808</td><td>3,410</td></tr>
-            <tr><td>Kenya</td><td>29</td><td>2,771</td><td>30,798</td><td>1,062</td></tr>
-          </tbody>
-          <tfoot><tr><td>Total</td><td>70</td><td>10,233</td><td>170,606</td><td>2,437</td></tr></tfoot>
-        </table>
-        <p class="src">Source: AmperOps. Swaps per station is total swaps divided by public stations. Finance and comms must approve before publication.</p>
+    <div class="wrap">
+      <div class="lead-num">
+        <div>
+          <div class="label muted">Impact</div>
+          <div class="num big" style="margin-top:10px">+40<small>%</small></div>
+          <p class="cap">take-home pay for an Ampersand rider: $173 a month, against $103 on petrol.</p>
+        </div>
+        <div class="stack">
+          <div class="label muted">Track record</div>
+          <div class="years" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+            <div><div class="num">2019</div><p>Commercial launch in Kigali</p></div>
+            <div><div class="num">2022</div><p>Series production and Kenya launch</p></div>
+            <div><div class="num">2025</div><p>MK2 platform, 65% lighter packs</p></div>
+            <div><div class="num">2026</div><p>10,000+ bikes, cabinets rolling out</p></div>
+          </div>
+          <p class="src">Backed by Acumen, British International Investment, DFC, Shell Foundation, TotalEnergies, UK aid, USAID, Rwanda Green Fund and others.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="wrap">
-      <div class="sec-head"><div><div class="label muted">Track record</div><h2 style="margin-top:12px">Ten years of compounding.</h2></div></div>
-      <div class="years">
-        <div><div class="num">2016</div><p>First prototype tested in Kigali</p></div>
-        <div><div class="num">2019</div><p>Commercial launch: 3 stations, 20 e-motos</p></div>
-        <div><div class="num">2022</div><p>Series production, 30 vehicles a week. Kenya launch</p></div>
-        <div><div class="num">2023</div><p>1,000 e-motos, 115,000 swaps a month</p></div>
-        <div><div class="num">2024</div><p>100 million km. Fleet reaches 5,000</p></div>
-        <div><div class="num">2025</div><p>MK2 twin-pack platform, 65% lighter packs</p></div>
-        <div><div class="num">2026</div><p>10,233 vehicles, 70 stations</p></div>
-      </div>
-      <div class="facts" style="margin-top:48px">
-        <div><div class="num">98.9<small>%</small></div><div class="k">Of 17,851 packs still in service after up to 42 months</div></div>
-        <div><div class="num">3,443</div><div class="k">Cycles to 80% health, measured on HM1</div></div>
-        <div><div class="num">7<small>years</small></div><div class="k">Pack warranty to asset buyers</div></div>
-        <div><div class="num">75<small>%</small></div><div class="k">Lower lifecycle emissions than petrol, on grid power</div></div>
-        <div><div class="num">97<small>%</small></div><div class="k">Lower lifecycle emissions, on renewable power</div></div>
-        <div><div class="num">14k<small>t</small></div><div class="k">CO₂e avoided to date <span class="tbc" title="Update with current figure">*</span></div></div>
-      </div>
-      <p class="src" style="margin-top:14px">Emissions figures from ampersand.energy. Backed by Acumen, British International Investment, DFC, Shell Foundation, TotalEnergies, UK aid, USAID, Rwanda Green Fund and others.</p>
-    </div>
-  </section>
-
-  <section class="bg-paper">
     <div class="wrap split">
       <div class="stack">
         <div class="label muted">Investor pack</div>
-        <h2>Request the data room.</h2>
-        <p class="muted">The pack has the unit economics, the impact report and the growth plan. The same form takes fleet, OEM and site requests.</p>
+        <h2>Request the investor pack.</h2>
+        <p class="muted">The pack has our financial results, unit economics and growth plan. The same form takes fleet, OEM, site and franchise requests.</p>
       </div>
       <form class="req" id="request">
         <label for="r-name">Name<input id="r-name" name="name" type="text" autocomplete="name" required></label>
         <label for="r-org">Organisation<input id="r-org" name="org" type="text" autocomplete="organization" required></label>
         <label for="r-mail">Work email<input id="r-mail" name="email" type="email" autocomplete="email" required></label>
-        <label for="r-type">I am<select id="r-type" name="type"><option>An investor</option><option>A fleet operator</option><option>A vehicle maker (OEM)</option><option>A site or energy partner</option><option>Media</option></select></label>
+        <label for="r-type">I am<select id="r-type" name="type"><option>An investor</option><option>A fleet operator</option><option>A vehicle maker (OEM)</option><option>A site host or franchisee</option><option>Media</option></select></label>
         <button class="btn btn-k" type="submit">Send request</button>
         <div class="ok-msg" id="request-ok" hidden>Request received. This is a mockup: the form does not send data.</div>
       </form>
@@ -113,6 +97,5 @@
 <div id="site-footer"></div>
 <script src="assets/data.js"></script>
 <script src="assets/proof.js"></script>
-<script>ampLine(document.getElementById('trend'), AMP_DATA.trend, {unit: AMP_DATA.trendUnit, aria: 'Swap volume over time'});</script>
 </body>
 </html>

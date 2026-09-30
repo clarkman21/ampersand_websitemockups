@@ -5,8 +5,7 @@
   // ---- Data used on every page. Source: AmperOps unless noted. Update before launch. ----
   var D = window.AMP_DATA = window.AMP_DATA || {};
   D.asOf = D.asOf || '22–28 Sep 2026';
-  D.dailySwaps = D.dailySwaps || 24372;          // 170,606 swaps / 7 days
-  D.kmPerSwap = D.kmPerSwap || 47.5;             // inferred: 950k km/day ÷ 20k swaps/day (ampersand.energy)
+  D.dailySwaps = D.dailySwaps || 24000;
   D.stations = D.stations || 70;
   // Share of daily swaps in each hour, Kigali time (UTC+2). Assumed curve with morning and evening peaks.
   D.hourly = D.hourly || [0.4,0.2,0.2,0.3,0.8,2.4,5.0,6.6,6.4,5.8,5.4,5.3,5.6,5.5,5.4,5.5,6.0,6.8,7.0,5.9,4.3,3.0,1.8,0.8];
@@ -19,7 +18,6 @@
     ['network', 'network.html', 'Network'],
     ['batteries', 'batteries.html', 'Batteries'],
     ['technology', 'technology.html', 'Technology'],
-    ['amperops', 'amperops.html', 'AmperOps'],
     ['vehicles', 'vehicles.html', 'Vehicles'],
     ['investors', 'investors.html', 'Investors'],
     ['home', 'index.html#work', 'Work with us']
@@ -33,7 +31,7 @@
   var head = document.getElementById('site-header');
   if (head) {
     head.innerHTML =
-      '<div class="mock-bar"><span>Mockup · Direction B · Proof. The live numbers are simulated. Dashed underlines mark data to confirm.</span><a href="../index.html">Back to overview</a></div>' +
+      '<div class="mock-bar"><span>Mockup · Direction B · Proof. The "Network now" numbers are simulated.</span><a href="../index.html">Back to overview</a></div>' +
       '<header class="site"><div class="wrap nav"><a class="logo" href="index.html" aria-label="Ampersand home"><img src="../assets/brand/logo-horizontal-black.svg" alt="Ampersand"></a>' +
       '<ul>' + navItems() + '</ul><a class="btn btn-k" href="investors.html#request">Investor pack</a></div>' +
       '<nav class="subnav" aria-label="Sections"><ul>' + '<li><a href="index.html"' + (here === 'home' ? ' aria-current="page"' : '') + '>Home</a></li>' + navItems() + '</ul></nav></header>' +
@@ -41,7 +39,7 @@
       '<div class="tag"><b><span class="dot" aria-hidden="true"></span>Network now</b><span>Simulated feed · based on ' + D.asOf + '</span></div>' +
       '<div class="cell"><div class="num tick" data-live="swapsToday">0</div><div class="k">Swaps today</div></div>' +
       '<div class="cell"><div class="num tick" data-live="swapsHour">0</div><div class="k">Swaps this hour</div></div>' +
-      '<div class="cell"><div class="num tick" data-live="kmToday">0</div><div class="k">km powered today</div></div>' +
+      '<div class="cell"><div class="num">96%</div><div class="k">Batteries out fully charged</div></div>' +
       '<div class="cell"><div class="num" data-live="stations">' + D.stations + '</div><div class="k">Stations in service</div></div>' +
       '</div></div>';
   }
@@ -54,7 +52,7 @@
       '<div><div class="label">Kenya</div><ul><li>Old Mombasa Road, Gate 2, Warehouse 11 &amp; 12, Nairobi</li></ul></div>' +
       '<div><div class="label">Contact</div><ul><li>info@ampersand.solar</li><li>media@ampersand.solar</li><li>OEM@ampersand.solar</li><li><a href="https://ampersand-energy.breezy.hr/">Careers</a></li></ul></div>' +
       '</div><div class="big-tag">Keep on Moving.</div>' +
-      '<p style="margin-top:20px;font-size:14px">© 2026 Ampersand. Mockup for internal review. Network data: AmperOps, ' + D.asOf + '.</p></div></footer>';
+      '<p style="margin-top:20px;font-size:14px">© 2026 Ampersand. Mockup for internal review.</p></div></footer>';
   }
 
   // ---- Simulated live feed ----
@@ -77,7 +75,6 @@
   function paint(bump) {
     if (live.swapsToday) live.swapsToday.textContent = fmt.format(Math.round(state.today));
     if (live.swapsHour) live.swapsHour.textContent = fmt.format(Math.round(state.hour));
-    if (live.kmToday) live.kmToday.textContent = fmt.format(Math.round(state.today * D.kmPerSwap / 100) * 100);
     if (bump) Object.keys(live).forEach(function (k) {
       if (k === 'stations') return;
       live[k].classList.add('bump');

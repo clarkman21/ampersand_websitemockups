@@ -16,56 +16,20 @@
   <div class="phero"><div class="wrap grid">
     <div>
       <span class="chip y">Energy · Swap network</span>
-      <h1 style="margin-top:18px">24,372 swaps a day.</h1>
-      <p class="lead muted">Riders do not wait for a charge. They swap an empty battery for a full one at 70 stations in Rwanda and Kenya, and keep working.</p>
+      <h1 style="margin-top:18px">Six minutes, then back to work.</h1>
+      <p class="lead muted">Riders do not wait for a charge. They arrive with an empty battery and leave with a full one, six minutes later on average. For a rider, not waiting means more income.</p>
     </div>
     <img src="../assets/img/station-battery-racks.jpg" alt="Charging racks full of batteries inside a swap station">
   </div></div>
 
   <div class="band">
     <div class="wrap">
-      <div class="cell"><div class="num">70</div><div class="k">Stations in service</div><div class="s">41 Rwanda · 29 Kenya</div></div>
-      <div class="cell"><div class="num">170,606</div><div class="k">Swaps in 7 days</div><div class="s">139,808 Rwanda · 30,798 Kenya</div></div>
-      <div class="cell"><div class="num">98.5<small>%</small></div><div class="k">Average charge at hand-over</div><div class="s">Metabase · 22–28 Sep 2026</div></div>
-      <div class="cell"><div class="num">77<small>s</small></div><div class="k">Average time for one swap</div><div class="s">Metabase · 22–28 Sep 2026</div></div>
+      <div class="cell"><div class="num">24,000</div><div class="k">Battery swaps a day</div></div>
+      <div class="cell"><div class="num">2<small>min</small></div><div class="k">To swap a battery</div></div>
+      <div class="cell"><div class="num">96<small>%</small></div><div class="k">Batteries out fully charged</div></div>
+      <div class="cell"><div class="num">80<small>%</small></div><div class="k">Brand preference among riders</div></div>
     </div>
   </div>
-
-  <section>
-    <div class="wrap">
-      <div class="lead-num">
-        <div>
-          <div class="label muted">Busiest station</div>
-          <div class="num big" style="margin-top:10px">7,510</div>
-          <p class="cap">Swaps at Mundi station, Rwanda, in one week. That is more than 1,000 swaps each day at one site.</p>
-        </div>
-        <div class="stack">
-          <div class="chart" id="rw">
-            <div class="chart-head"><h3>Rwanda, top 10 stations</h3><div class="legend"><span><i style="background:var(--rw)"></i>Swaps, 22–28 Sep 2026</span></div></div>
-          </div>
-          <div class="chart" id="ke">
-            <div class="chart-head"><h3>Kenya, top 10 stations</h3><div class="legend"><span><i style="background:var(--ke)"></i>Swaps, 22–28 Sep 2026</span></div></div>
-          </div>
-          <p class="src">Source: AmperOps station statistics. Rescue zones, workshops and HQ pools are not included.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-paper">
-    <div class="wrap">
-      <div class="sec-head"><div><div class="label muted">Service levels</div><h2 style="margin-top:12px">What a rider gets at every station.</h2></div></div>
-      <div class="facts">
-        <div><div class="num">70–110<small>km</small></div><div class="k">Range per swap, by load and terrain</div></div>
-        <div><div class="num">4.8<small>min</small></div><div class="k">Median queue wait in Rwanda. Kenya: 2.6 min</div></div>
-        <div><div class="num">18:00</div><div class="k">Busiest hour of the day</div></div>
-        <div><div class="num">2.6</div><div class="k">Swaps per active vehicle per day</div></div>
-        <div><div class="num">1011</div><div class="k">Rider hotline in Rwanda</div></div>
-        <div><div class="num">24/7<span class="tbc" title="Confirm station opening hours">*</span></div><div class="k">Rescue swaps for stranded riders</div></div>
-      </div>
-      <p class="src" style="margin-top:14px">Source: Metabase (swaps_v2), non-rescue swaps, 22–28 Sep 2026. Queue times exist for 58% of swaps in Rwanda and 34% in Kenya. The busiest hour assumes that timestamps are in UTC.</p>
-    </div>
-  </section>
 
   <section>
     <div class="wrap split center">
@@ -74,66 +38,46 @@
         <div class="label muted">How a swap works</div>
         <h2>Three steps. No charging wait.</h2>
         <ol style="margin:0;padding-left:22px;display:grid;gap:10px">
-          <li>The rider arrives. The attendant scans the empty battery in the swap app.</li>
-          <li>The swap app records the charge that is left. The rider pays for the energy used <span class="tbc" title="Pricing model to confirm">(to confirm)</span>.</li>
-          <li>The rider takes a full battery and leaves. The empty battery goes on charge.</li>
+          <li>The rider arrives. The attendant scans the empty battery.</li>
+          <li>The rider pays and takes a full battery.</li>
+          <li>The empty battery goes on charge for the next rider.</li>
         </ol>
-        <p class="muted">The swap app also works offline, so a weak mobile signal does not stop a station.</p>
+        <p class="muted">70 stations in Rwanda and Kenya. High-power charging at every station keeps batteries ready at peak times.</p>
       </div>
     </div>
   </section>
 
-  <section id="cabinets">
+  <section class="bg-paper" id="cabinets">
     <div class="wrap">
       <div class="lead-num">
         <div>
-          <span class="chip y">Product · Automated swap cabinet</span>
-          <div style="margin-top:20px"><figure style="margin:0"><div class="model" id="m-cabinet" data-label="3D model of the Ampersand 12-slot automated swap cabinet"><img src="assets/renders/cabinet.jpg" alt="3D model of the Ampersand 12-slot automated swap cabinet"><span class="hint">Drag to rotate</span></div><figcaption class="src" style="margin-top:8px">3D model built from the cabinet specification: 1,500 × 600 × 1,825 mm, 12 slots in 3 rows of 4, 10.1″ screen.</figcaption></figure></div>
-          <div class="num big" style="margin-top:16px">12</div>
-          <p class="cap">charged MK2 packs in one self-service cabinet. The rider pays in the app, the cabinet opens a slot, and no attendant is needed.</p>
+          <span class="chip y">New · Automated swap cabinet</span>
+          <div style="margin-top:20px">
+            <figure style="margin:0"><div class="model" id="m-cabinet" data-label="3D model of the Ampersand 12-slot automated swap cabinet"><img src="assets/renders/cabinet.jpg" alt="3D model of the Ampersand 12-slot automated swap cabinet"><span class="hint">Drag to rotate</span></div><figcaption class="src" style="margin-top:8px">3D model of the 12-slot cabinet.</figcaption></figure>
+          </div>
         </div>
         <div class="stack">
+          <div class="num big">12</div>
           <h2>A station that fits on a pavement.</h2>
-          <p class="muted">We designed the cabinet in-house for MK2 packs. It speaks our MK2 CAN protocol, runs our swap and payment flows, and reports to AmperOps. A 9-slot pilot cabinet is going to Kenya.</p>
+          <p class="muted">Our self-service cabinet holds 12 charged MK2 packs. The rider pays in the app, a slot opens, and no attendant is needed. Designed in-house, rolling out in 2026.</p>
           <div class="facts">
-            <div><div class="num">1.3<small>kW</small></div><div class="k">Charging power per slot, 20 A</div></div>
-            <div><div class="num">15.6<small>kW</small></div><div class="k">Total cabinet power</div></div>
-            <div><div class="num">1.5–2<small>h</small></div><div class="k">To charge a full cabinet</div></div>
+            <div><div class="num">App</div><div class="k">Payment opens the slot</div></div>
             <div><div class="num">&lt;3<small>s</small></div><div class="k">Fire suppression in each slot</div></div>
-            <div><div class="num">50k+</div><div class="k">Swap records stored offline</div></div>
-            <div><div class="num">10.1″</div><div class="k">Touch screen with in-app payment</div></div>
+            <div><div class="num">Remote</div><div class="k">Monitoring and updates from AmperOps</div></div>
           </div>
-          <ul class="ticks">
-            <li>Water-immersion detection</li>
-            <li>Remote fault location and OTA updates</li>
-            <li>Swap blocked if no empty slot</li>
-            <li>Payment unlocks the slot</li>
-          </ul>
-          <p class="src">Source: swap station specification and hardware portfolio (Aug 2026). Status: sample and pilot.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-paper">
+  <section id="host">
     <div class="wrap">
-      <div class="sec-head"><div><div class="label muted">Attended stations today</div><h2 style="margin-top:12px">Built for volume.</h2></div></div>
-      <div class="facts">
-        <div><div class="num">25</div><div class="k">Charger modules per station</div></div>
-        <div><div class="num">3.3<small>kW</small></div><div class="k">Per charger module</div></div>
-        <div><div class="num">12</div><div class="k">Stations with in-house SCTU energy metering</div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-paper" id="host">
-    <div class="wrap">
-      <div class="sec-head"><div><div class="label muted">Station formats</div><h2 style="margin-top:12px">One network, three formats.</h2></div><p class="muted">Station design follows the Ampersand brand book.</p></div>
+      <div class="sec-head"><div><div class="label muted">Grow the network with us</div><h2 style="margin-top:12px">Host a station or run a franchise.</h2></div><p class="muted">We grow with partners: site hosts, energy partners and station franchisees.</p></div>
       <div class="cards">
-        <div class="card"><img src="../assets/img/station-kiosk.jpg" alt="Small yellow station kiosk"><h3>Small footprint</h3><p class="muted">Yellow facade and black painted wordmark. For markets and side roads.</p></div>
-        <div class="card"><img src="../assets/img/station-nairobi.jpg" alt="Standard Ampersand station with signage"><h3>Standard</h3><p class="muted">Black logo on yellow metal signage, visible from the street.</p></div>
-        <div class="card"><img src="../assets/img/station-canopy.jpg" alt="Hero station with canopy"><h3>Hero</h3><p class="muted">Yellow, black and white, with the stacked logo on the entrance.</p></div>
-        <div class="card"><div class="num" style="font-size:72px">+1</div><h3>Your site</h3><p class="muted">Do you have a site on a busy moto-taxi route? Tell us where it is.</p><a class="btn btn-k" href="investors.html#request" style="justify-self:start">Propose a site</a></div>
+        <div class="card"><img src="../assets/img/station-kiosk.jpg" alt="Small yellow station kiosk"><h3>Small footprint</h3><p class="muted">For markets and side roads.</p></div>
+        <div class="card"><img src="../assets/img/station-nairobi.jpg" alt="Standard Ampersand station with signage"><h3>Standard station</h3><p class="muted">Staffed, on main moto-taxi routes.</p></div>
+        <div class="card"><img src="../assets/img/station-canopy.jpg" alt="Hero station with canopy"><h3>Hero station</h3><p class="muted">Our flagship format.</p></div>
+        <div class="card"><div class="num" style="font-size:72px">+1</div><h3>Your site</h3><p class="muted">Have a site on a busy route, or want to run a franchise? Tell us.</p><a class="btn btn-k" href="investors.html#request" style="justify-self:start">Contact us</a></div>
       </div>
     </div>
   </section>
@@ -145,17 +89,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="assets/models3d.js"></script>
 <script>ampModel(document.getElementById('m-cabinet'),'cabinet');</script>
-<script>
-ampBars(document.getElementById('rw'), [
-  {label:'Mundi',value:7510,group:'rw',city:'Rwanda'},{label:'Kagugu',value:7462,group:'rw',city:'Rwanda'},{label:'Amahoro',value:7037,group:'rw',city:'Rwanda'},
-  {label:'Kicukiro',value:5594,group:'rw',city:'Rwanda'},{label:'Gikondo',value:5399,group:'rw',city:'Rwanda'},{label:'Nyamirambo II',value:5142,group:'rw',city:'Rwanda'},
-  {label:'Mulindi',value:4924,group:'rw',city:'Rwanda'},{label:'Kimisagara',value:4881,group:'rw',city:'Rwanda'},{label:'Kinamba III',value:4581,group:'rw',city:'Rwanda'},
-  {label:'Kinamba I',value:4576,group:'rw',city:'Rwanda'}], {unit:'swaps', max:7510, aria:'Top 10 Rwanda stations by weekly swaps'});
-ampBars(document.getElementById('ke'), [
-  {label:'Thika Rd Mega',value:3206,group:'ke',city:'Nairobi'},{label:'Ngong Road',value:3134,group:'ke',city:'Nairobi'},{label:'Rainbow',value:2188,group:'ke',city:'Nairobi'},
-  {label:'Kayole 2',value:1865,group:'ke',city:'Nairobi'},{label:'Madaraka',value:1425,group:'ke',city:'Nairobi'},{label:'Dagoretti',value:1420,group:'ke',city:'Nairobi'},
-  {label:'Kayole',value:1228,group:'ke',city:'Nairobi'},{label:'Kangundo Road',value:1210,group:'ke',city:'Nairobi'},{label:'Pangani',value:1192,group:'ke',city:'Nairobi'},
-  {label:'Mombasa Road',value:1153,group:'ke',city:'Nairobi'}], {unit:'swaps', max:7510, aria:'Top 10 Kenya stations by weekly swaps'});
-</script>
 </body>
 </html>
