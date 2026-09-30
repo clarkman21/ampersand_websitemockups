@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ampersand · AMP batteries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Instrument+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/proof.css">
+</head>
+<body data-page="batteries">
+<div id="site-header"></div>
+
+<main>
+  <div class="phero"><div class="wrap grid">
+    <div>
+      <span class="chip y">Energy · AMP batteries</span>
+      <h1 style="margin-top:18px">350,000 km in one battery.</h1>
+      <p class="lead muted">The AMP battery is the core of the Ampersand system. We design it, assemble it in Kigali and monitor it for its full life.</p>
+    </div>
+    <img src="../assets/img/battery-insert.jpg" alt="A rider slides a charged AMP battery into an Alpha e-moto">
+  </div></div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="cell"><div class="num">350k<small>km</small></div><div class="k">Lifetime range per battery</div><div class="s">ampersand.energy</div></div>
+      <div class="cell"><div class="num">70–110<small>km</small></div><div class="k">Range per swap</div><div class="s">By load, terrain and riding</div></div>
+      <div class="cell"><div class="num">{{POOL}}</div><div class="k">Batteries in the pool</div><div class="s">{{POOL_SRC}}</div></div>
+      <div class="cell"><div class="num">{{ONLINE}}<small>%</small></div><div class="k">Online and reporting now</div><div class="s">{{ONLINE_SRC}}</div></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="lead-num">
+        <div>
+          <div class="label muted">Range per swap, measured</div>
+          <div class="num big" style="margin-top:10px">{{KM_BEST}}<small>km</small></div>
+          <p class="cap">{{KM_CAP}}</p>
+        </div>
+        <div class="stack">
+          <div class="chart" id="km">
+            <div class="chart-head"><h3>Average distance per swap, by battery</h3><div class="legend"><span><i style="background:#000"></i>km per swap</span></div></div>
+          </div>
+          <p class="src">{{KM_SRC}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="label muted">The AMP family</div><h2 style="margin-top:12px">Three packs, one standard.</h2></div><p class="muted">Every generation works with the stations that are already on the network.</p></div>
+      <div class="tbl-wrap">
+        <table class="spec">
+          <thead><tr><th></th><th>AMP 01</th><th>AMP 02</th><th>AMP XL</th></tr></thead>
+          <tbody>
+            <tr><th>Status</th><td>In service</td><td class="hl">In service since Oct 2025</td><td>In development</td></tr>
+            <tr><th>Platform</th><td>HM1.9 <span class="tbc" title="Naming map to confirm">*</span></td><td>MK2 <span class="tbc" title="Naming map to confirm">*</span></td><td>Next generation</td></tr>
+            <tr><th>Chemistry</th><td>LFP</td><td>LFP</td><td>LFP</td></tr>
+            <tr><th>Capacity</th><td><span class="tbc" title="Add from the HM1 platform spec">TBC</span></td><td>48 Ah</td><td>More than AMP 02</td></tr>
+            <tr><th>Range per swap</th><td>{{KM_HM1}}</td><td>{{KM_MK2}}</td><td><span class="tbc" title="Target range is not public">TBC</span></td></tr>
+            <tr><th>In the pool</th><td>{{POOL_HM1}}</td><td>{{POOL_MK2}}</td><td>—</td></tr>
+            <tr><th>Connectivity</th><td>BLE, GSM, GPS</td><td>BLE, GSM, GPS <span class="tbc" title="Confirm">*</span></td><td>—</td></tr>
+            <tr><th>Certification</th><td>UN38.3</td><td><span class="tbc" title="Confirm">UN38.3</span></td><td>—</td></tr>
+            <tr><th>Assembled in</th><td>Kigali, Rwanda</td><td>Kigali, Rwanda</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="src" style="margin-top:12px">* AMP names follow the brand book (AMP_01, AMP_02, AMP_XL). The link to HM1.9 and MK2 is an assumption for review.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div><div class="label muted">Inside the pack</div><h2 style="margin-top:12px">Built for heat, hills and heavy loads.</h2></div></div>
+      <div class="facts">
+        <div><div class="num">50</div><div class="k">Data points sent by each pack</div></div>
+        <div><div class="num">5<small>s</small></div><div class="k">Between two reports</div></div>
+        <div><div class="num">3</div><div class="k">Radios: BLE, GSM and GPS</div></div>
+        <div><div class="num">0</div><div class="k">Fans or pumps: passive cooling</div></div>
+        <div><div class="num">OTA</div><div class="k">Firmware updates over the air</div></div>
+        <div><div class="num">UN38.3</div><div class="k">Transport safety certification</div></div>
+      </div>
+      <div class="split" style="margin-top:48px">
+        <img class="photo" src="../assets/img/assembly.jpg" alt="Assembly line in the Kigali factory">
+        <div class="stack">
+          <h3>Designed for the field</h3>
+          <ul class="ticks">
+            <li>LFP cells for long cycle life and thermal safety</li>
+            <li>Anti-theft and anti-tamper design</li>
+            <li>Field-maintainable: modules can be replaced</li>
+            <li>Geofenced alarms in AmperOps</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/proof.js"></script>
+<script>if (AMP_DATA.kmByModel) ampBars(document.getElementById('km'), AMP_DATA.kmByModel, {unit:'km per swap', aria:'Average km per swap by battery model'});</script>
+</body>
+</html>

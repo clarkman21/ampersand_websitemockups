@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ampersand · AmperOps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Instrument+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/proof.css">
+</head>
+<body data-page="amperops">
+<div id="site-header"></div>
+
+<main>
+  <div class="phero"><div class="wrap grid">
+    <div>
+      <span class="chip g">Software · AmperOps</span>
+      <h1 style="margin-top:18px">50 data points every 5 seconds.</h1>
+      <p class="lead muted">AmperOps is the software that runs the Ampersand network. It watches every battery, every station and every vehicle, and it predicts faults before they stop a rider.</p>
+    </div>
+    <img src="../assets/img/ops-centre.jpg" alt="An operator at the Ampersand network operations centre">
+  </div></div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="cell"><div class="num">864k</div><div class="k">Data points per battery per day</div><div class="s">50 points × 17,280 reports</div></div>
+      <div class="cell"><div class="num">{{POOL}}</div><div class="k">Batteries monitored</div><div class="s">{{POOL_SRC}}</div></div>
+      <div class="cell"><div class="num">{{ONLINE}}<small>%</small></div><div class="k">Online and reporting now</div><div class="s">{{ONLINE_SRC}}</div></div>
+      <div class="cell"><div class="num">24,372</div><div class="k">Swaps processed per day</div><div class="s">AmperOps · 22–28 Sep 2026</div></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap split center">
+      <div class="stack">
+        <div class="label muted">For operators</div>
+        <div class="num" style="font-size:clamp(64px,8vw,120px)">3</div>
+        <p class="cap" style="font-size:20px;max-width:30ch">views of return on investment: by station, by rider and by battery.</p>
+        <ul class="ticks">
+          <li>Battery health and remaining life</li>
+          <li>Predictive maintenance alerts</li>
+          <li>Geofenced alarms for theft and misuse</li>
+          <li>Station stock and stock-out risk</li>
+          <li>Queue times and swap quality</li>
+          <li>Fleet and partner reports</li>
+        </ul>
+      </div>
+      <img src="../assets/img/amperops-dashboard.jpg" alt="AmperOps dashboard with swaps, distance and CO2 figures" style="border:1px solid var(--rule)">
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="label muted">Swap quality</div><h2 style="margin-top:12px">Every swap is checked.</h2></div><p class="muted">AmperOps records the charge of each battery that leaves a station, and flags swaps that do not meet the standard.</p></div>
+      <div class="facts">
+        <div><div class="num">{{FULLCHARGE}}<small>%</small></div><div class="k">Batteries handed out at full charge</div></div>
+        <div><div class="num">{{WAIT_AVG}}<small>min</small></div><div class="k">Average wait from queue to swap</div></div>
+        <div><div class="num">{{WAIT_P95}}<small>min</small></div><div class="k">95th percentile wait</div></div>
+      </div>
+      <p class="src" style="margin-top:14px">{{SERVICE_SRC}}</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div><div class="label muted">Apps</div><h2 style="margin-top:12px">Three apps on one data platform.</h2></div></div>
+      <div class="split">
+        <div class="phones">
+          <img src="../assets/img/app-onboarding.jpg" alt="Rider app welcome screen">
+          <img src="../assets/img/app-battery.jpg" alt="Rider app battery level screen">
+          <img src="../assets/img/app-swap.png" alt="Swap app screen">
+        </div>
+        <div class="tbl-wrap">
+          <table class="spec" style="min-width:420px">
+            <thead><tr><th>App</th><th>User</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><b>AmperOps</b></td><td>Operators, fleets</td><td>Fleet and battery management, predictive AI, ROI views</td></tr>
+              <tr><td><b>Rider app</b></td><td>Riders</td><td>Battery level, nearest station, transaction history</td></tr>
+              <tr><td><b>Swap app</b></td><td>Station teams</td><td>Real-time swaps, works offline, automatic payments</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-ink">
+    <div class="wrap split center">
+      <div><div class="num" style="font-size:clamp(64px,8vw,120px);color:var(--surge)">1</div><p class="muted">contract for vehicles, energy and AmperOps access.</p></div>
+      <div class="stack"><h2>Run your fleet on AmperOps.</h2><p class="muted">Fleet customers see their own vehicles, batteries and riders in AmperOps, with reports by partner.</p><div class="btn-row"><a class="btn btn-y" href="vehicles.html#fleets">Fleet offer</a></div></div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/proof.js"></script>
+</body>
+</html>

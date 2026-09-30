@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ampersand · Investors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Instrument+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/proof.css">
+</head>
+<body data-page="investors">
+<div id="site-header"></div>
+
+<main>
+  <div class="phero"><div class="wrap grid">
+    <div>
+      <span class="chip">Investors</span>
+      <h1 style="margin-top:18px">22 million motorcycles to electrify.</h1>
+      <p class="lead muted">Commercial motorcycles carry 100 million people in East Africa every day. Ampersand replaces their petrol with a recurring energy service, and each new station and vehicle makes the network denser.</p>
+    </div>
+    <img src="../assets/img/rider-crowd.jpg" alt="Hundreds of Ampersand riders gathered on their e-motos">
+  </div></div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="cell"><div class="num">22M</div><div class="k">Commercial motorcycles in Africa</div><div class="s">ampersand.energy</div></div>
+      <div class="cell"><div class="num">170,606</div><div class="k">Swaps in 7 days</div><div class="s">AmperOps · 22–28 Sep 2026</div></div>
+      <div class="cell"><div class="num">10,233</div><div class="k">Vehicles on the network</div><div class="s">AmperOps fleet records</div></div>
+      <div class="cell"><div class="num">500+</div><div class="k">Employees in 2 markets</div><div class="s">ampersand.energy</div></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="lead-num">
+        <div>
+          <div class="label muted">Growth</div>
+          <div class="num big" style="margin-top:10px">{{GROWTH_MULT}}×</div>
+          <p class="cap">{{GROWTH_CAP}}</p>
+        </div>
+        <div class="chart" id="trend">
+          <div class="chart-head"><h3>{{TREND_TITLE}}</h3><span class="src">{{TREND_SRC}}</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap split">
+      <div class="stack">
+        <div class="label muted">Two markets</div>
+        <h2>One operating model.</h2>
+        <p class="muted">We run the same system in both markets. Rwanda proves the density model. Kenya proves that it travels.</p>
+      </div>
+      <div class="stack">
+        <table class="data">
+          <thead><tr><th>22–28 Sep 2026</th><th>Stations</th><th>Vehicles</th><th>Swaps</th><th>Swaps per station</th></tr></thead>
+          <tbody>
+            <tr><td>Rwanda</td><td>41</td><td>7,462</td><td>139,808</td><td>3,410</td></tr>
+            <tr><td>Kenya</td><td>29</td><td>2,771</td><td>30,798</td><td>1,062</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total</td><td>70</td><td>10,233</td><td>170,606</td><td>2,437</td></tr></tfoot>
+        </table>
+        <p class="src">Source: AmperOps. Swaps per station is total swaps divided by public stations. Finance and comms must approve before publication.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div><div class="label muted">Track record</div><h2 style="margin-top:12px">Ten years of compounding.</h2></div></div>
+      <div class="years">
+        <div><div class="num">2016</div><p>First prototype tested in Kigali</p></div>
+        <div><div class="num">2019</div><p>Commercial launch: 3 stations, 20 e-motos</p></div>
+        <div><div class="num">2022</div><p>Series production, 30 vehicles a week. Kenya launch</p></div>
+        <div><div class="num">2023</div><p>1,000 e-motos, 115,000 swaps a month</p></div>
+        <div><div class="num">2024</div><p>100 million km. Fleet reaches 5,000</p></div>
+        <div><div class="num">2025</div><p>MK2 platform and AMP 02 battery</p></div>
+        <div><div class="num">2026</div><p>10,233 vehicles, 70 stations</p></div>
+      </div>
+      <div class="facts" style="margin-top:48px">
+        <div><div class="num">75<small>%</small></div><div class="k">Lower lifecycle emissions than petrol, on grid power</div></div>
+        <div><div class="num">97<small>%</small></div><div class="k">Lower lifecycle emissions, on renewable power</div></div>
+        <div><div class="num">14k<small>t</small></div><div class="k">CO₂e avoided to date <span class="tbc" title="Update with current figure">*</span></div></div>
+      </div>
+      <p class="src" style="margin-top:14px">Emissions figures from ampersand.energy. Backed by Acumen, British International Investment, DFC, Shell Foundation, TotalEnergies, UK aid, USAID, Rwanda Green Fund and others.</p>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap split">
+      <div class="stack">
+        <div class="label muted">Investor pack</div>
+        <h2>Request the data room.</h2>
+        <p class="muted">The pack has the unit economics, the impact report and the growth plan. The same form takes fleet, OEM and site requests.</p>
+      </div>
+      <form class="req" id="request">
+        <label for="r-name">Name<input id="r-name" name="name" type="text" autocomplete="name" required></label>
+        <label for="r-org">Organisation<input id="r-org" name="org" type="text" autocomplete="organization" required></label>
+        <label for="r-mail">Work email<input id="r-mail" name="email" type="email" autocomplete="email" required></label>
+        <label for="r-type">I am<select id="r-type" name="type"><option>An investor</option><option>A fleet operator</option><option>A vehicle maker (OEM)</option><option>A site or energy partner</option><option>Media</option></select></label>
+        <button class="btn btn-k" type="submit">Send request</button>
+        <div class="ok-msg" id="request-ok" hidden>Request received. This is a mockup: the form does not send data.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/proof.js"></script>
+<script>ampLine(document.getElementById('trend'), AMP_DATA.trend, {unit: AMP_DATA.trendUnit, aria: 'Swap volume over time'});</script>
+</body>
+</html>
