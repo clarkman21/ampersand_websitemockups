@@ -26,8 +26,8 @@
     <div class="wrap">
       <div class="cell"><div class="num">350k<small>km</small></div><div class="k">Lifetime range per battery</div><div class="s">ampersand.energy</div></div>
       <div class="cell"><div class="num">70–110<small>km</small></div><div class="k">Range per swap</div><div class="s">By load, terrain and riding</div></div>
-      <div class="cell"><div class="num">{{POOL}}</div><div class="k">Batteries in the pool</div><div class="s">{{POOL_SRC}}</div></div>
-      <div class="cell"><div class="num">{{ONLINE}}<small>%</small></div><div class="k">Online and reporting now</div><div class="s">{{ONLINE_SRC}}</div></div>
+      <div class="cell"><div class="num">16,438</div><div class="k">Batteries in use this week</div><div class="s">Packs with a discharge cycle, 22–28 Sep 2026</div></div>
+      <div class="cell"><div class="num">98.5<small>%</small></div><div class="k">Average charge at hand-over</div><div class="s">Metabase · 22–28 Sep 2026</div></div>
     </div>
   </div>
 
@@ -36,14 +36,14 @@
       <div class="lead-num">
         <div>
           <div class="label muted">Range per swap, measured</div>
-          <div class="num big" style="margin-top:10px">{{KM_BEST}}<small>km</small></div>
-          <p class="cap">{{KM_CAP}}</p>
+          <div class="num big" style="margin-top:10px">58<small>km</small></div>
+          <p class="cap">average distance per discharge cycle of AMP 02 packs in Rwanda. Riders swap with about a quarter of the charge still left.</p>
         </div>
         <div class="stack">
           <div class="chart" id="km">
-            <div class="chart-head"><h3>Average distance per swap, by battery</h3><div class="legend"><span><i style="background:#000"></i>km per swap</span></div></div>
+            <div class="chart-head"><h3>Average km per discharge cycle</h3><div class="legend"><span><i style="background:var(--rw)"></i>Rwanda</span><span><i style="background:var(--ke)"></i>Kenya</span></div></div>
           </div>
-          <p class="src">{{KM_SRC}}</p>
+          <p class="src">Source: Metabase (cycles_v2), discharge cycles started 22–28 Sep 2026. AMP 02 bikes carry two packs; the distance is the bike distance for each pack (to confirm).</p>
         </div>
       </div>
     </div>
@@ -60,8 +60,8 @@
             <tr><th>Platform</th><td>HM1.9 <span class="tbc" title="Naming map to confirm">*</span></td><td>MK2 <span class="tbc" title="Naming map to confirm">*</span></td><td>Next generation</td></tr>
             <tr><th>Chemistry</th><td>LFP</td><td>LFP</td><td>LFP</td></tr>
             <tr><th>Capacity</th><td><span class="tbc" title="Add from the HM1 platform spec">TBC</span></td><td>48 Ah</td><td>More than AMP 02</td></tr>
-            <tr><th>Range per swap</th><td>{{KM_HM1}}</td><td>{{KM_MK2}}</td><td><span class="tbc" title="Target range is not public">TBC</span></td></tr>
-            <tr><th>In the pool</th><td>{{POOL_HM1}}</td><td>{{POOL_MK2}}</td><td>—</td></tr>
+            <tr><th>Range per swap</th><td>52–55 km measured · 70–110 km rated</td><td>52–58 km measured</td><td><span class="tbc" title="Target range is not public">TBC</span></td></tr>
+            <tr><th>Active packs</th><td>9,658 active</td><td>6,780 active</td><td>—</td></tr>
             <tr><th>Connectivity</th><td>BLE, GSM, GPS</td><td>BLE, GSM, GPS <span class="tbc" title="Confirm">*</span></td><td>—</td></tr>
             <tr><th>Certification</th><td>UN38.3</td><td><span class="tbc" title="Confirm">UN38.3</span></td><td>—</td></tr>
             <tr><th>Assembled in</th><td>Kigali, Rwanda</td><td>Kigali, Rwanda</td><td>—</td></tr>

@@ -89,7 +89,7 @@ header.site{background:var(--chalk);border-bottom:1px solid var(--rule);position
 .band .cell{padding:28px 20px 28px 0;border-right:1px solid var(--rule);min-width:0}
 .band .cell + .cell{padding-left:20px}
 .band .cell:last-child{border-right:0}
-.band .num{font-size:clamp(44px,5vw,72px)}
+.band .num{font-size:clamp(40px,4.6vw,66px);white-space:nowrap}
 .band .k{font-size:15px;margin-top:10px}
 .band .s{font-size:12px;color:var(--ebony);margin-top:6px}
 .band.five .wrap{grid-template-columns:repeat(5,1fr)}

@@ -17,6 +17,7 @@
 .hero p{font-size:clamp(18px,1.6vw,21px);margin-top:14px;color:#EDEDE6}
 .hero .btn{border-color:var(--paper);color:var(--paper)}
 .hero .btn-y{border-color:var(--surge);color:var(--ink)}
+@media (max-width:700px){.hero img{height:260px}.hero .over{position:relative;background:var(--ink)}}
 </style>
 </head>
 <body data-page="home">
@@ -39,7 +40,7 @@
       <div class="cell"><div class="num">170,606</div><div class="k">Swaps in 7 days</div><div class="s">AmperOps · 22–28 Sep 2026</div></div>
       <div class="cell"><div class="num">70</div><div class="k">Swap stations</div><div class="s">41 Rwanda · 29 Kenya</div></div>
       <div class="cell"><div class="num">10,233</div><div class="k">Vehicles on the network</div><div class="s">7,462 Rwanda · 2,771 Kenya</div></div>
-      <div class="cell"><div class="num">{{FULLCHARGE}}<small>%</small></div><div class="k">Batteries handed out full</div><div class="s">{{FULLCHARGE_SRC}}</div></div>
+      <div class="cell"><div class="num">98.5<small>%</small></div><div class="k">Average charge at hand-over</div><div class="s">Metabase · 22–28 Sep 2026</div></div>
       <div class="cell"><div class="num">45<small>%</small></div><div class="k">More daily income for riders</div><div class="s">ampersand.energy</div></div>
     </div>
   </div>
@@ -49,11 +50,11 @@
       <div class="lead-num">
         <div>
           <div class="label muted">Growth</div>
-          <div class="num big" style="margin-top:10px">{{GROWTH_MULT}}×</div>
-          <p class="cap">{{GROWTH_CAP}}</p>
+          <div class="num big" style="margin-top:10px">9×</div>
+          <p class="cap">more swaps per month in August 2026 than in January 2023: 774,874 against 83,645.</p>
         </div>
         <div class="chart" id="trend">
-          <div class="chart-head"><h3>{{TREND_TITLE}}</h3><span class="src">{{TREND_SRC}}</span></div>
+          <div class="chart-head"><h3>Swaps per month, Rwanda and Kenya</h3><span class="src">Metabase · Jan 2023 – Aug 2026</span></div>
         </div>
       </div>
     </div>
@@ -93,7 +94,7 @@
       <div class="cards">
         <a class="card" href="network.html"><img src="../assets/img/station-battery-racks.jpg" alt="Charging racks in a station"><div class="num">70</div><h3>Swap network</h3><p class="muted">Stations in Rwanda and Kenya.</p></a>
         <a class="card" href="batteries.html"><img class="contain" src="../assets/img/battery-amp.jpg" alt="Yellow AMP battery"><div class="num">70–110<small>km</small></div><h3>AMP batteries</h3><p class="muted">Range per swap, by load and terrain.</p></a>
-        <a class="card" href="amperops.html"><img src="../assets/img/amperops-dashboard.jpg" alt="AmperOps dashboard"><div class="num">{{ONLINE}}<small>%</small></div><h3>AmperOps</h3><p class="muted">Of batteries online and reporting.</p></a>
+        <a class="card" href="amperops.html"><img src="../assets/img/amperops-dashboard.jpg" alt="AmperOps dashboard"><div class="num">864k</div><h3>AmperOps</h3><p class="muted">Data points from each battery, every day.</p></a>
         <a class="card" href="vehicles.html"><img class="contain" src="../assets/img/alpha-cutout.webp" alt="Red Alpha e-moto"><div class="num">95<small>%</small></div><h3>E-motos</h3><p class="muted">Of riders prefer Ampersand to petrol.</p></a>
       </div>
     </div>

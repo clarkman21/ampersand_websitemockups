@@ -25,8 +25,8 @@
   <div class="band">
     <div class="wrap">
       <div class="cell"><div class="num">864k</div><div class="k">Data points per battery per day</div><div class="s">50 points × 17,280 reports</div></div>
-      <div class="cell"><div class="num">{{POOL}}</div><div class="k">Batteries monitored</div><div class="s">{{POOL_SRC}}</div></div>
-      <div class="cell"><div class="num">{{ONLINE}}<small>%</small></div><div class="k">Online and reporting now</div><div class="s">{{ONLINE_SRC}}</div></div>
+      <div class="cell"><div class="num">16,438</div><div class="k">Batteries active this week</div><div class="s">Packs with a discharge cycle, 22–28 Sep 2026</div></div>
+      <div class="cell"><div class="num">77<small>s</small></div><div class="k">Average time for one swap</div><div class="s">Metabase · 22–28 Sep 2026</div></div>
       <div class="cell"><div class="num">24,372</div><div class="k">Swaps processed per day</div><div class="s">AmperOps · 22–28 Sep 2026</div></div>
     </div>
   </div>
@@ -54,11 +54,11 @@
     <div class="wrap">
       <div class="sec-head"><div><div class="label muted">Swap quality</div><h2 style="margin-top:12px">Every swap is checked.</h2></div><p class="muted">AmperOps records the charge of each battery that leaves a station, and flags swaps that do not meet the standard.</p></div>
       <div class="facts">
-        <div><div class="num">{{FULLCHARGE}}<small>%</small></div><div class="k">Batteries handed out at full charge</div></div>
-        <div><div class="num">{{WAIT_AVG}}<small>min</small></div><div class="k">Average wait from queue to swap</div></div>
-        <div><div class="num">{{WAIT_P95}}<small>min</small></div><div class="k">95th percentile wait</div></div>
+        <div><div class="num">98.9<small>%</small></div><div class="k">AMP 02 packs handed out at full charge. All packs: 88.7%</div></div>
+        <div><div class="num">98.5<small>%</small></div><div class="k">Average charge at hand-over</div></div>
+        <div><div class="num">4.8<small>min</small></div><div class="k">Median queue wait in Rwanda. Kenya: 2.6 min</div></div>
       </div>
-      <p class="src" style="margin-top:14px">{{SERVICE_SRC}}</p>
+      <p class="src" style="margin-top:14px">Source: Metabase (swaps_v2), non-rescue swaps, 22–28 Sep 2026. Queue times exist for 58% of swaps in Rwanda and 34% in Kenya. The busiest hour assumes that timestamps are in UTC.</p>
     </div>
   </section>
 
