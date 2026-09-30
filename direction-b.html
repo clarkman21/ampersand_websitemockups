@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ampersand · Proof</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Instrument+Sans:wght@400;700&display=swap">
+<style>
+/* Direction B · "Proof". Layout: editorial report on Chalk White. Full-bleed field photography, spec sheets and tables that read like an annual report. Yellow marks what matters. */
+:root{
+  --chalk:#F6F5EC; --paper:#FFFFFF; --ink:#000000; --ebony:#5C5C5E; --alloy:#9E9E9E; --rule:#DAD8CB;
+  --surge:#FCDC04; --teal:#146653; --green:#44BC9D;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gutter:clamp(16px,4vw,64px); --max:1240px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--chalk);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.mock-bar{background:var(--ink);color:var(--paper);font-size:13px;padding:8px var(--gutter);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.mock-bar a{color:var(--surge);font-weight:700}
+h1,h2,h3{font-weight:700;text-wrap:balance;margin:0;letter-spacing:-.015em}
+h1{font-size:clamp(44px,6.4vw,92px);line-height:1}
+h2{font-size:clamp(34px,4.2vw,58px);line-height:1.05}
+h3{font-size:clamp(22px,2vw,28px);line-height:1.15}
+p{margin:0;max-width:64ch}
+.label{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:.08em;text-transform:uppercase}
+.mark{background:linear-gradient(transparent 58%,var(--surge) 58%)}
+.muted{color:var(--ebony)}
+.src{font-size:14px;color:var(--ebony)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;font-weight:700;text-decoration:none;border:2px solid var(--ink);font-size:16px;background:transparent}
+.btn-k{background:var(--ink);color:var(--paper)}
+.btn-y{background:var(--surge);border-color:var(--surge);color:var(--ink)}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.num{font-family:var(--display);font-weight:700;font-variant-numeric:tabular-nums;line-height:.9;letter-spacing:0}
+.tbc{border-bottom:1px dashed var(--ebony);cursor:help}
+
+header.site{background:var(--chalk);border-bottom:1px solid var(--rule);position:sticky;top:env(safe-area-inset-top,0px);z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:18px}
+.nav .logo img{width:250px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px;font-size:15px}
+.nav ul a{text-decoration:none}
+.nav ul a:hover{text-decoration:underline;text-decoration-color:var(--surge);text-decoration-thickness:3px;text-underline-offset:6px}
+@media (max-width:1060px){.nav ul{display:none}}
+@media (max-width:560px){.nav .logo img{width:190px}.nav .btn{display:none}}
+
+.hero{position:relative;color:var(--paper);background:var(--ink)}
+.hero img{width:100%;height:clamp(460px,64vw,760px);object-fit:cover;opacity:.78}
+.hero .over{position:absolute;inset:auto 0 0 0;padding-block:clamp(28px,5vw,64px);background:linear-gradient(0deg,rgba(0,0,0,.82) 10%,rgba(0,0,0,0))}
+.hero .over p{font-size:clamp(18px,1.6vw,21px);margin-block:18px 28px;color:#EDEDE6}
+.hero .btn{border-color:var(--paper);color:var(--paper)}
+.hero .btn-y{border-color:var(--surge);color:var(--ink)}
+
+.ledger{background:var(--paper);border-bottom:1px solid var(--rule)}
+.ledger .wrap{display:grid;grid-template-columns:repeat(5,1fr)}
+.ledger .cell{padding:28px 20px 28px 0;border-right:1px solid var(--rule);min-width:0}
+.ledger .cell + .cell{padding-left:20px}
+.ledger .cell:last-child{border-right:0}
+.ledger .num{font-size:clamp(40px,4.4vw,60px)}
+.ledger .k{font-size:15px;margin-top:8px}
+@media (max-width:900px){.ledger .wrap{grid-template-columns:1fr 1fr}.ledger .cell{border-right:0;border-bottom:1px solid var(--rule);padding-left:0!important}}
+
+section{padding-block:clamp(56px,8vw,120px)}
+.intro{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.intro > *{min-width:0}
+.intro .body{display:grid;gap:20px;font-size:19px}
+@media (max-width:860px){.intro{grid-template-columns:1fr}}
+
+.parts{display:grid;gap:0;margin-top:56px;border-top:2px solid var(--ink)}
+.part{display:grid;grid-template-columns:80px 1fr 1.1fr;gap:clamp(20px,3vw,48px);padding-block:40px;border-bottom:1px solid var(--rule);align-items:start}
+.part > *{min-width:0}
+.part .idx{font-family:var(--display);font-size:56px;line-height:1}
+.part img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.part .txt{display:grid;gap:14px}
+@media (max-width:860px){.part{grid-template-columns:1fr}.part .idx{font-size:40px}}
+
+.catalog{background:var(--paper)}
+.cat-head{display:flex;justify-content:space-between;gap:24px;align-items:end;flex-wrap:wrap;margin-bottom:40px}
+.product{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);padding-block:48px;border-top:2px solid var(--ink);align-items:center}
+.product > *{min-width:0}
+.product .shot{background:var(--chalk);display:flex;align-items:center;justify-content:center;aspect-ratio:5/4;overflow:hidden}
+.product .shot img{width:100%;height:100%;object-fit:cover}
+.product .shot img.contain{object-fit:contain;padding:28px}
+.product .info{display:grid;gap:18px}
+.product.flip .shot{order:2}
+@media (max-width:860px){.product{grid-template-columns:1fr}.product.flip .shot{order:0}}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule)}
+.kv div{padding:14px 12px 14px 0;border-bottom:1px solid var(--rule)}
+.kv .num{font-size:36px}
+.kv .num small{font-size:20px;color:var(--ebony);margin-left:2px}
+.kv .k{font-size:14px;color:var(--ebony);margin-top:4px}
+@media (max-width:520px){.kv{grid-template-columns:1fr 1fr}}
+.chip{display:inline-block;font-family:var(--display);font-size:15px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--paper)}
+.chip.y{background:var(--surge);color:var(--ink)}
+.chip.g{background:var(--teal);color:var(--paper)}
+
+.tbl-wrap{overflow-x:auto;border-top:2px solid var(--ink);margin-top:24px}
+table.spec{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;min-width:500px}
+table.spec th,table.spec td{text-align:left;padding:12px 12px 12px 0;border-bottom:1px solid var(--rule);font-size:14px;vertical-align:top}
+table.spec thead th{font-family:var(--display);font-size:20px;letter-spacing:.02em}
+table.spec tbody th{font-weight:400;color:var(--ebony);width:22%}
+table.spec td.hl{background:rgba(252,220,4,.22)}
+
+.software{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,64px);align-items:center}
+.software > *{min-width:0}
+.phones{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.phones img{border:8px solid var(--ink);border-radius:22px;background:var(--ink)}
+@media (max-width:860px){.software{grid-template-columns:1fr}}
+
+.oem{background:var(--ink);color:var(--paper)}
+.oem .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.oem .grid > *{min-width:0}
+.oem .muted{color:#C9C9C2}
+.oem ol{margin:0;padding-left:22px;display:grid;gap:10px}
+.oem .btn{border-color:var(--surge)}
+@media (max-width:860px){.oem .grid{grid-template-columns:1fr}}
+
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px)}
+.inv-grid > *{min-width:0}
+table.country{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+table.country th,table.country td{text-align:right;padding:14px 0 14px 12px;border-bottom:1px solid var(--rule)}
+table.country th:first-child,table.country td:first-child{text-align:left;padding-left:0}
+table.country thead th{font-family:var(--display);font-size:17px;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid var(--ink)}
+table.country tfoot td{font-weight:700;border-bottom:0}
+.years{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink);margin-top:40px}
+.years div{padding:18px 16px 18px 0;border-right:1px solid var(--rule);min-width:0}
+.years div + div{padding-left:16px}
+.years div:last-child{border-right:0}
+.years .num{font-size:40px}
+@media (max-width:860px){.inv-grid{grid-template-columns:1fr}.years{grid-template-columns:1fr 1fr}.years div{border-right:0;border-bottom:1px solid var(--rule);padding-left:0!important}}
+
+.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid var(--ink)}
+.paths a{padding:24px 20px 28px 0;border-right:1px solid var(--rule);text-decoration:none;display:grid;gap:10px;min-width:0}
+.paths a + a{padding-left:20px}
+.paths a:last-child{border-right:0}
+.paths a:hover h3{text-decoration:underline;text-decoration-color:var(--surge);text-decoration-thickness:4px;text-underline-offset:6px}
+@media (max-width:860px){.paths{grid-template-columns:1fr 1fr}.paths a{border-right:0;border-bottom:1px solid var(--rule);padding-left:0!important}}
+@media (max-width:480px){.paths{grid-template-columns:1fr}}
+
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px)}
+.voice{display:grid;gap:16px;align-content:start}
+.voice img{aspect-ratio:1/1;object-fit:cover;width:100%}
+.voice blockquote{margin:0;font-size:19px;line-height:1.45}
+@media (max-width:860px){.voices{grid-template-columns:1fr}}
+
+footer.site{background:var(--surge);padding-block:56px 32px;font-size:15px}
+.fgrid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+.fgrid > *{min-width:0}
+.fgrid ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.fgrid a{text-decoration:none}
+.big-tag{font-family:var(--display);font-size:clamp(56px,9vw,128px);line-height:.9;margin-top:24px}
+@media (max-width:800px){.fgrid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="mock-bar"><span>Mockup · Direction B of 3 · Proof. Dashed underlines mark figures that need confirmation.</span><a href="index.html">Back to overview</a></div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Ampersand home"><img src="assets/brand/logo-horizontal-black.svg" alt="Ampersand"></a>
+    <ul>
+      <li><a href="#system">The system</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#investors">Investors</a></li>
+      <li><a href="#work">Work with us</a></li>
+      <li><a href="#riders">Riders</a></li>
+      <li><a href="#footer">Careers</a></li>
+    </ul>
+    <a class="btn btn-k" href="#investors">Investor overview</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <img src="assets/img/riders-kigali-hills.jpg" alt="Two Ampersand riders above the hills of Kigali">
+    <div class="over">
+      <div class="wrap">
+        <div class="label" style="color:var(--surge)">Ampersand · Kigali and Nairobi since 2019</div>
+        <h1 style="margin-top:14px;max-width:16ch">Proven on 400 million kilometres of African road.</h1>
+        <p>We build and run the energy network behind 10,233 electric motorcycles: our own batteries, our own swap stations, our own software.</p>
+        <div class="btn-row"><a class="btn btn-y" href="#investors">Read the proof</a><a class="btn" href="#products">See the products</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ledger">
+    <div class="wrap">
+      <div class="cell"><div class="num">170,606</div><div class="k">Swaps in the last 7 days</div></div>
+      <div class="cell"><div class="num">70</div><div class="k">Swap stations</div></div>
+      <div class="cell"><div class="num">10,233</div><div class="k">Vehicles on the network</div></div>
+      <div class="cell"><div class="num" style="white-space:nowrap">350k<small style="font-size:.45em"> km</small></div><div class="k">Lifetime range per battery</div></div>
+      <div class="cell"><div class="num">45%</div><div class="k">More daily income for riders</div></div>
+    </div>
+  </div>
+
+  <section id="system">
+    <div class="wrap">
+      <div class="intro">
+        <div>
+          <div class="label muted">The system</div>
+          <h2 style="margin-top:14px">Some say we over-engineered it. <span class="mark">We built the system Africa deserves.</span></h2>
+        </div>
+        <div class="body">
+          <p>A moto-taxi rider in Kigali or Nairobi can spend more than $11 a day on fuel and lease costs and take home as little as $1.60. Petrol is the largest cost in their working life.</p>
+          <p>We replace petrol with a service. The rider swaps an empty battery for a full one and keeps working. We own each part of that service, so we control its cost, its uptime and its safety.</p>
+          <p class="src">Rider cost figures from ampersand.energy.</p>
+        </div>
+      </div>
+
+      <div class="parts">
+        <div class="part">
+          <div class="idx">1</div>
+          <div class="txt"><div class="label">Store</div><h3>The battery is designed in-house.</h3><p class="muted">LFP chemistry, passive cooling and built-in connectivity. Assembled by our team in Rwanda.</p></div>
+          <img src="assets/img/assembly.jpg" alt="Technicians assemble e-motos and batteries in the Kigali factory">
+        </div>
+        <div class="part">
+          <div class="idx">2</div>
+          <div class="txt"><div class="label">Swap</div><h3>Stations put energy where riders work.</h3><p class="muted">A swap is faster than refuelling. Our busiest station handles more than 1,000 swaps a day.</p></div>
+          <img src="assets/img/station-swap.jpg" alt="Station attendant hands over a charged battery">
+        </div>
+        <div class="part">
+          <div class="idx">3</div>
+          <div class="txt"><div class="label">Monitor</div><h3>AmperOps sees every battery.</h3><p class="muted">50 data points every 5 seconds. Predictive AI finds faults before a rider is stranded.</p></div>
+          <img src="assets/img/ops-centre.jpg" alt="The Ampersand operations centre">
+        </div>
+        <div class="part">
+          <div class="idx">4</div>
+          <div class="txt"><div class="label">Ride</div><h3>Vehicles built for commercial work.</h3><p class="muted">Our Alpha e-motos and partner vehicles carry 230 kg up the hills of Kigali.</p></div>
+          <img src="assets/img/rider-motion.jpg" alt="Rider and passenger on an Alpha e-moto">
+        </div>
+      </div>
+      <p class="src" style="margin-top:16px">The four steps follow the energy flow: stored, swapped, monitored, used.</p>
+    </div>
+  </section>
+
+  <section class="catalog" id="products">
+    <div class="wrap">
+      <div class="cat-head">
+        <div><div class="label muted">Products</div><h2 style="margin-top:14px">The catalogue.</h2></div>
+        <p class="muted">Energy first. Every vehicle below runs on the same batteries and the same stations.</p>
+      </div>
+
+      <article class="product">
+        <div class="shot"><img src="assets/img/station-battery-racks.jpg" alt="Charging racks full of batteries inside a station"></div>
+        <div class="info">
+          <span class="chip y">Energy</span>
+          <h3>Ampersand swap network</h3>
+          <p class="muted">A full battery at 70 stations across Rwanda and Kenya. Riders find the nearest station and check their battery in the rider app.</p>
+          <div class="kv">
+            <div><div class="num">70</div><div class="k">Stations</div></div>
+            <div><div class="num">24,372</div><div class="k">Swaps per day</div></div>
+            <div><div class="num">70–110<small>km</small></div><div class="k">Per swap</div></div>
+          </div>
+          <div class="btn-row"><a class="btn btn-k" href="#work">Host a station</a><a class="btn" href="#footer">Find a station</a></div>
+        </div>
+      </article>
+
+      <article class="product flip">
+        <div class="shot"><img class="contain" src="assets/img/battery-amp.jpg" alt="Yellow AMP battery pack"></div>
+        <div class="info">
+          <span class="chip y">Energy</span>
+          <h3>AMP batteries</h3>
+          <p class="muted">Three packs, one standard. The AMP family keeps every generation compatible with the stations already on the network.</p>
+          <div class="tbl-wrap">
+            <table class="spec">
+              <thead><tr><th></th><th>AMP 01</th><th>AMP 02</th><th>AMP XL</th></tr></thead>
+              <tbody>
+                <tr><th>Status</th><td>In service</td><td class="hl">In service since Oct 2025</td><td>In development</td></tr>
+                <tr><th>Platform</th><td>HM1.9 <span class="tbc" title="Naming map to confirm">*</span></td><td>MK2 <span class="tbc" title="Naming map to confirm">*</span></td><td>Next generation</td></tr>
+                <tr><th>Chemistry</th><td>LFP</td><td>LFP</td><td>LFP</td></tr>
+                <tr><th>Capacity</th><td><span class="tbc" title="Add from HM1 platform spec">TBC</span></td><td>48 Ah</td><td>More than AMP 02</td></tr>
+                <tr><th>Range per swap</th><td>70–110 km</td><td>About 75 km</td><td><span class="tbc" title="Target range is not public">TBC</span></td></tr>
+                <tr><th>Connectivity</th><td>BLE, GSM, GPS</td><td>BLE, GSM, GPS <span class="tbc" title="Confirm">*</span></td><td>—</td></tr>
+                <tr><th>Certification</th><td>UN38.3</td><td><span class="tbc" title="Confirm">UN38.3</span></td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="src">* AMP names follow the brand book (AMP_01, AMP_02, AMP_XL). The link to HM1.9 and MK2 is an assumption for review.</p>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="shot"><img class="contain" src="assets/img/alpha-cutout.webp" alt="Red Ampersand Alpha e-moto"></div>
+        <div class="info">
+          <span class="chip">Vehicles</span>
+          <h3>E-motos for commercial riders</h3>
+          <p class="muted">95% of our riders prefer an Ampersand-powered e-moto to petrol.</p>
+          <div class="tbl-wrap">
+            <table class="spec">
+              <thead><tr><th></th><th>Alpha MK1</th><th>Alpha MK2</th><th>Wylex D4000</th></tr></thead>
+              <tbody>
+                <tr><th>Maker</th><td>Ampersand</td><td>Ampersand</td><td>Wylex, Powered by Ampersand</td></tr>
+                <tr><th>Top speed</th><td>85 km/h</td><td><span class="tbc" title="Add from MK2 release document">TBC</span></td><td>90 km/h</td></tr>
+                <tr><th>Power</th><td>4.5 kW nominal</td><td><span class="tbc" title="Add from MK2 release document">TBC</span></td><td>8 kW peak</td></tr>
+                <tr><th>Torque</th><td>&gt;220 Nm</td><td><span class="tbc" title="Add from MK2 release document">TBC</span></td><td>&gt;260 Nm</td></tr>
+                <tr><th>Payload</th><td>230 kg</td><td><span class="tbc" title="Add from MK2 release document">TBC</span></td><td>230 kg</td></tr>
+                <tr><th>Range per swap</th><td>70–80 km</td><td>About 75 km</td><td>70–80 km</td></tr>
+                <tr><th>Climb</th><td>+15°</td><td><span class="tbc" title="Add from MK2 release document">TBC</span></td><td>+15°</td></tr>
+                <tr><th>Regen braking</th><td>30 A</td><td><span class="tbc" title="Add from MK2 release document">TBC</span></td><td>30 A adaptive</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="btn-row"><a class="btn btn-k" href="#work">Order for a fleet</a><a class="btn" href="#footer">Book a test ride</a></div>
+        </div>
+      </article>
+
+      <article class="product flip" style="border-bottom:2px solid var(--ink)">
+        <div class="software" style="grid-column:1/-1">
+          <div class="info">
+            <span class="chip g">Software</span>
+            <h3>AmperOps, the rider app and the swap app</h3>
+            <p class="muted">AmperOps is our fleet and battery platform. It gives operators geofenced alarms, predictive maintenance and return on investment by station, rider and battery. The rider app shows battery level and the nearest station. The swap app runs every station, also when offline.</p>
+            <img src="assets/img/amperops-batteries.jpg" alt="AmperOps battery overview screen" style="border:1px solid var(--rule)">
+          </div>
+          <div class="phones">
+            <img src="assets/img/app-onboarding.jpg" alt="Rider app welcome screen">
+            <img src="assets/img/app-battery.jpg" alt="Rider app battery screen">
+            <img src="assets/img/app-swap.png" alt="Swap app screen">
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="oem">
+    <div class="wrap grid">
+      <div>
+        <img src="assets/brand/powered-by-white.svg" alt="Powered by Ampersand" style="width:300px">
+        <h2 style="margin-top:28px">Build on a network that already works.</h2>
+        <p class="muted" style="margin-top:16px">Vehicle makers integrate the AMP battery and sell to riders who already use our stations every day.</p>
+      </div>
+      <div style="display:grid;gap:24px">
+        <ol>
+          <li>Share your vehicle platform with our engineering team.</li>
+          <li>Integrate the AMP battery interface and validate regen and controller behaviour.</li>
+          <li>Launch with co-branding and access to 70 stations.</li>
+        </ol>
+        <img src="assets/img/wylex-headlight.jpg" alt="Wylex Roroship headlight" style="aspect-ratio:16/9;object-fit:cover;width:100%">
+        <div class="btn-row"><a class="btn btn-y" href="#footer">Apply as an OEM</a></div>
+        <p class="src" style="color:#C9C9C2">OEM@ampersand.solar</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="investors">
+    <div class="wrap">
+      <div class="inv-grid">
+        <div>
+          <div class="label muted">Investors</div>
+          <h2 style="margin-top:14px">Two markets. One operating model.</h2>
+          <p class="muted" style="margin-top:18px">We run the same system in both markets. Rwanda proves the density model; Kenya proves it travels.</p>
+          <div class="btn-row" style="margin-top:28px"><a class="btn btn-k" href="#footer">Request the investor pack</a></div>
+        </div>
+        <div>
+          <table class="country">
+            <thead><tr><th>Week of 22–28 Sep 2026</th><th>Stations</th><th>Vehicles</th><th>Swaps</th></tr></thead>
+            <tbody>
+              <tr><td>Rwanda</td><td>41</td><td>7,462</td><td>139,808</td></tr>
+              <tr><td>Kenya</td><td>29</td><td>2,771</td><td>30,798</td></tr>
+            </tbody>
+            <tfoot><tr><td>Total</td><td>70</td><td>10,233</td><td>170,606</td></tr></tfoot>
+          </table>
+          <p class="src" style="margin-top:10px">Source: AmperOps. Needs finance and comms sign-off before publication.</p>
+        </div>
+      </div>
+      <div class="years">
+        <div><div class="num">2016</div><p class="muted">First prototype in Kigali</p></div>
+        <div><div class="num">2019</div><p class="muted">Commercial launch: 3 stations, 20 e-motos</p></div>
+        <div><div class="num">2022</div><p class="muted">Series production and Kenya launch</p></div>
+        <div><div class="num">2026</div><p class="muted">10,233 vehicles and 70 stations</p></div>
+      </div>
+      <p class="src" style="margin-top:28px">Backed by Acumen, British International Investment, DFC, Shell Foundation, TotalEnergies, UK aid, USAID, Rwanda Green Fund and others.</p>
+    </div>
+  </section>
+
+  <section id="work" style="background:var(--paper)">
+    <div class="wrap">
+      <div class="label muted">Work with us</div>
+      <h2 style="margin-top:14px;margin-bottom:40px">Choose your path.</h2>
+      <div class="paths">
+        <a href="#investors"><span class="label muted">Investors</span><h3>Invest in the network</h3><p class="muted">Data room, impact report and leadership contact.</p></a>
+        <a href="#products"><span class="label muted">Fleets</span><h3>Electrify a fleet</h3><p class="muted">Vehicles, energy and AmperOps in one contract.</p></a>
+        <a href="#top"><span class="label muted">OEMs</span><h3>Power your vehicle</h3><p class="muted">Integrate the AMP battery and join the network.</p></a>
+        <a href="#riders"><span class="label muted">Riders</span><h3>Start with Ampersand</h3><p class="muted">Earn more every day with lower running costs.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="riders">
+    <div class="wrap">
+      <div class="label muted">Riders</div>
+      <h2 style="margin-top:14px;margin-bottom:40px">Riders refuse to go back to petrol.</h2>
+      <div class="voices">
+        <div class="voice"><img src="assets/img/rider-alpha.jpg" alt="Rider on an Alpha e-moto"><blockquote>“Maintenance costs are lower as we don’t need chain and oil which cost a lot. Now I benefit more from my income and I am able to start saving.”</blockquote><div class="src">Gitwaza, rider</div></div>
+        <div class="voice"><img src="assets/img/rider-community.jpg" alt="Rider greeting people in a neighbourhood"><blockquote>“Apart from their innovation they care about our personal life. They helped us during the lock-down and are flexible in terms of contracts.”</blockquote><div class="src">Rukundo, rider</div></div>
+        <div class="voice"><img src="assets/img/rider-thumbs-up.jpg" alt="Rider giving a thumbs up at a station"><blockquote>“I can save extra money I would have used on fuel. I don’t waste time at the garage anymore.”</blockquote><div class="src">Etienne, rider</div></div>
+      </div>
+      <p class="src" style="margin-top:20px">Quotes from the current Impact page. The photos are not of these riders; match names and photos before launch.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site" id="footer">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><img src="assets/brand/logo-horizontal-black.svg" alt="Ampersand" style="width:250px"></div>
+      <div><div class="label">Rwanda</div><ul><li>KK 6 Av, Road to MAGERWA, opposite NAEB, Kigali</li><li>Hotline 1011</li></ul></div>
+      <div><div class="label">Kenya</div><ul><li>Old Mombasa Road, Gate 2, Warehouse 11 & 12, Nairobi</li></ul></div>
+      <div><div class="label">Contact</div><ul><li>info@ampersand.solar</li><li>media@ampersand.solar</li><li>OEM@ampersand.solar</li><li><a href="https://ampersand-energy.breezy.hr/">Careers</a></li></ul></div>
+    </div>
+    <div class="big-tag">Keep on Moving.</div>
+    <p style="margin-top:24px;font-size:14px">© 2026 Ampersand. Mockup for internal review.</p>
+  </div>
+</footer>
+</body>
+</html>
