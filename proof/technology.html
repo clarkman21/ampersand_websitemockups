@@ -40,7 +40,7 @@
         <div class="layer inhouse"><div class="lname">BMS</div><p class="muted">Ampersand BMS (A-BMS), in every MK2 and retrofitted to HM1: balancing, protection, dynamic current limits, state of health.</p><span class="chip">In-house</span></div>
         <div class="layer inhouse"><div class="lname">Packs</div><p class="muted">HM1: 24-cell module built in-house in Kigali. MK2: our design and BMS, assembled by a contract manufacturer.</p><span class="chip">In-house design</span></div>
         <div class="layer inhouse"><div class="lname">SCTU</div><p class="muted">Station control and telematics unit. Measures station energy, now at 12 stations.</p><span class="chip">In-house</span></div>
-        <div class="layer"><div class="lname">Cabinets</div><p class="muted">Automated 12-slot swap cabinet, built to our specification. Our CAN protocol, payments and swap flows.</p><span class="chip o">Partner-built · our spec</span></div>
+        <div class="layer inhouse"><div class="lname">Cabinets</div><p class="muted">Automated 12-slot swap cabinet, designed in-house for MK2: our CAN protocol, payments and swap flows.</p><span class="chip">In-house</span></div>
         <div class="layer"><div class="lname">Cells</div><p class="muted">LFP cells from qualified suppliers (EVE in HM1, BYD in MK2). The BMS supports more than one cell type.</p><span class="chip o">Supplier</span></div>
       </div>
     </div>
@@ -61,10 +61,11 @@
           <div class="chart" id="w-bike">
             <div class="chart-head"><h3>Battery weight per bike, kg</h3></div>
           </div>
-          <p class="src">Source: Ampersand hardware product portfolio, Aug 2026. A weighing test measured 46.45 kg (HM1) and 14.80 kg (MK2 pack). Confirm which figures to publish.</p>
+          <p class="src">Source: Ampersand hardware product portfolio, Aug 2026.</p>
         </div>
       </div>
-      <div class="wcomp" style="margin-top:40px">
+      <div style="margin-top:40px"><figure style="margin:0"><div class="model" id="m-compare" style="aspect-ratio:16/7" data-label="3D model of an HM1 pack next to two MK2 packs, to scale"><img src="assets/renders/compare.jpg" alt="3D model of an HM1 pack next to two MK2 packs, to scale"><span class="hint">Drag to rotate</span></div><figcaption class="src" style="margin-top:8px">To scale: HM1 pack 350 × 363 × 287 mm, 44 kg. MK2 packs 292 × 322 × 129 mm, 15.5 kg each.</figcaption></figure></div>
+      <div class="wcomp" style="margin-top:24px">
         <div><div class="label muted">HM1 · 1 pack per bike</div><div class="num" style="font-size:48px;margin-top:6px">44<small>kg</small></div><p class="muted" style="margin-top:8px">About 3.0 kWh usable. Our workhorse: about 10,215 packs in service.</p></div>
         <div><div class="label muted">MK2 · 2 packs per bike</div><div class="num" style="font-size:48px;margin-top:6px">2 × 15.5<small>kg</small></div><p class="muted" style="margin-top:8px">3.67 kWh per bike. About 30% less battery weight on the bike, and each pack can be swapped alone.</p></div>
       </div>
@@ -167,6 +168,11 @@
         <div class="label muted">Safety and durability</div>
         <div class="num" style="font-size:clamp(64px,8vw,120px)">75,000<small>km</small></div>
         <p class="muted">The MK2 vibration test is equal to about 5 years and 75,000 km of riding. HM1 and MK2 packs are UN38.3 certified. We test to ISO 18243.</p>
+        <div class="facts">
+          <div><div class="num">IP67</div><div class="k">MK2 pack</div></div>
+          <div><div class="num">IP66</div><div class="k">HM1 enclosure, IP67 internals</div></div>
+          <div><div class="num">1<small>m</small></div><div class="k">Drop test passed, MK2</div></div>
+        </div>
       </div>
       <div class="tbl-wrap">
         <table class="spec" style="min-width:420px">
@@ -178,9 +184,11 @@
             <tr><td>External short circuit</td><td>Passed</td></tr>
             <tr><td>Over-discharge</td><td>Passed</td></tr>
             <tr><td>Over-temperature</td><td>Passed</td></tr>
+            <tr><td>Water immersion</td><td>Passed</td></tr>
+            <tr><td>Drop, 1 m</td><td>Passed</td></tr>
           </tbody>
         </table>
-        <p class="src" style="margin-top:10px">Water and drop results are left out on purpose. See the items to confirm.</p>
+        <p class="src" style="margin-top:10px">Results for the latest MK2 pack update.</p>
       </div>
     </div>
   </section>
@@ -205,6 +213,9 @@
 <div id="site-footer"></div>
 <script src="assets/data.js"></script>
 <script src="assets/proof.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/models3d.js"></script>
+<script>ampModel(document.getElementById('m-compare'),'compare');</script>
 <script>
 ampBars(document.getElementById('w-pack'), [{label:'HM1 pack',value:44,group:'old'},{label:'MK2 pack',value:15.5,group:'one'}], {unit:'kg', aria:'Weight of one pack'});
 ampBars(document.getElementById('w-bike'), [{label:'HM1 bike',value:44,group:'old'},{label:'MK2 bike',value:31,group:'one'}], {unit:'kg', aria:'Battery weight per bike'});

@@ -53,7 +53,7 @@
   <section class="bg-paper">
     <div class="wrap">
       <article class="split center">
-        <figure style="margin:0"><img src="assets/weight-scale.svg" alt="HM1 pack of 44 kg next to two MK2 packs of 15.5 kg each, to scale by weight"><figcaption class="src" style="margin-top:8px">Add an MK2 product photo from Drive before launch.</figcaption></figure>
+        <figure style="margin:0"><div class="model" id="m-mk2" data-label="3D model of two MK2 battery packs"><img src="assets/renders/mk2.jpg" alt="3D model of two MK2 battery packs"><span class="hint">Drag to rotate</span></div><figcaption class="src" style="margin-top:8px">3D model built from the MK2 specification: 292 × 322 × 129 mm per pack, 15.5 kg. Two packs per bike.</figcaption></figure>
         <div class="stack">
           <span class="chip y">MK2 · new generation</span>
           <div class="num" style="font-size:clamp(72px,9vw,132px)">15.5<small>kg</small></div>
@@ -107,12 +107,14 @@
             <tr><th>Telematics</th><td>VCTU</td><td>VCTU, built in</td><td>VCTU</td></tr>
             <tr><th>Charging</th><td>35 A</td><td>20 A · 83 min</td><td>—</td></tr>
             <tr><th>Interface</th><td>CAN</td><td>Isolated CAN 2.0B</td><td>—</td></tr>
+            <tr><th>Ingress protection</th><td>IP66 enclosure, IP67 internals</td><td class="hl">IP67</td><td>—</td></tr>
+            <tr><th>Drop test</th><td>—</td><td>1 m, passed</td><td>—</td></tr>
             <tr><th>Certification</th><td>UN38.3</td><td>UN38.3</td><td>—</td></tr>
             <tr><th>In service</th><td>~10,215 packs</td><td>6,859 packs</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="src" style="margin-top:12px">Sources: hardware product portfolio (Aug 2026), MK2 battery specification, Q3 2026 roadmap, AMP XL memo. * Values to confirm. No IP rating is shown for MK2 until the water-ingress work is closed.</p>
+      <p class="src" style="margin-top:12px">Sources: hardware product portfolio (Aug 2026), MK2 battery specification, Q3 2026 roadmap, AMP XL memo. * Values to confirm.</p>
     </div>
   </section>
 
@@ -127,6 +129,7 @@
           <li>Humidity and temperature sensing</li>
           <li>Accelerometer for drops and crashes</li>
           <li>Electronic lock and contactor</li>
+          <li>IP67 MK2 pack, 1 m drop tested</li>
           <li>Remote immobilisation and OTA</li>
         </ul>
         <div class="btn-row"><a class="btn btn-k" href="technology.html">See the technology</a></div>
@@ -139,6 +142,9 @@
 <div id="site-footer"></div>
 <script src="assets/data.js"></script>
 <script src="assets/proof.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/models3d.js"></script>
+<script>ampModel(document.getElementById('m-mk2'),'mk2');</script>
 <script>ampBars(document.getElementById('km'), AMP_DATA.kmByModel, {unit:'km per cycle', aria:'Average km per discharge cycle by battery'});</script>
 </body>
 </html>
