@@ -56,9 +56,9 @@ window.AMP_DATA = {
   ],
   // Metabase cycles_v2, average km per discharge cycle, cycles started 22–28 Sep 2026.
   kmByModel: [
-    {label: 'AMP 02 · Rwanda', value: 58.1, group: 'rw'},
-    {label: 'AMP 01 · Kenya', value: 55.0, group: 'ke'},
-    {label: 'AMP 01 · Rwanda', value: 52.4, group: 'rw'},
-    {label: 'AMP 02 · Kenya', value: 52.4, group: 'ke'}
+    {label: 'MK2 · Rwanda', value: 58.1, group: 'rw'},
+    {label: 'HM1 · Kenya', value: 55.0, group: 'ke'},
+    {label: 'HM1 · Rwanda', value: 52.4, group: 'rw'},
+    {label: 'MK2 · Kenya', value: 52.4, group: 'ke'}
   ]
 };

@@ -127,7 +127,11 @@ header.site{background:var(--chalk);border-bottom:1px solid var(--rule);position
 .card img.contain{object-fit:contain;padding:12px}
 .card .num{font-size:52px}
 .card:hover h3{text-decoration:underline;text-decoration-color:var(--surge);text-decoration-thickness:4px;text-underline-offset:6px}
-@media (max-width:960px){.cards{grid-template-columns:1fr 1fr}.card{border-right:0;border-bottom:1px solid var(--rule);padding-left:0!important}}
+.cards.six{grid-template-columns:repeat(3,1fr)}
+.cards.six .card:nth-child(3n){border-right:0}
+.cards.six .card:nth-child(3n+1){padding-left:0}
+.cards.six .card:nth-child(-n+3){border-bottom:1px solid var(--rule)}
+@media (max-width:960px){.cards,.cards.six{grid-template-columns:1fr 1fr}.card{border-right:0;border-bottom:1px solid var(--rule);padding-left:0!important}}
 @media (max-width:480px){.cards{grid-template-columns:minmax(0,1fr)}}
 
 /* charts */
@@ -212,3 +216,20 @@ footer.site{background:var(--surge);padding-block:56px 32px;font-size:15px}
 .fgrid a{text-decoration:none}
 .big-tag{font-family:var(--display);font-size:clamp(56px,9vw,128px);line-height:.95;margin-top:32px}
 @media (max-width:800px){.fgrid{grid-template-columns:1fr 1fr}}
+
+/* technology stack diagram */
+.stackdia{display:grid;gap:0;border-top:2px solid var(--ink)}
+.layer{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) minmax(0,auto);gap:24px;align-items:center;padding:18px 0;border-bottom:1px solid var(--rule)}
+.layer .lname{font-family:var(--display);font-size:26px;line-height:1}
+.layer .who{justify-self:end}
+.layer.inhouse{background:linear-gradient(90deg,rgba(252,220,4,.28),rgba(252,220,4,0) 70%)}
+.layer.inhouse .lname{padding-left:12px;border-left:6px solid var(--surge)}
+.chip.o{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+@media (max-width:700px){.layer{grid-template-columns:minmax(0,1fr)}.layer .who{justify-self:start}}
+/* weight comparison */
+.wcomp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
+.wcomp > div{padding:20px 20px 20px 0;border-bottom:1px solid var(--rule);min-width:0}
+.wcomp > div + div{padding-left:20px;border-left:1px solid var(--rule)}
+@media (max-width:640px){.wcomp{grid-template-columns:minmax(0,1fr)}.wcomp > div + div{padding-left:0;border-left:0}}
+/* rate table */
+table.rates td.r{font-family:var(--display);font-size:22px;text-align:right;white-space:nowrap}

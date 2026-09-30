@@ -65,8 +65,8 @@
       <div class="sec-head"><div><div class="label muted">The system</div><h2 style="margin-top:12px">Four numbers explain the system.</h2></div><p class="muted">Energy flows in this order: stored, swapped, monitored, used.</p></div>
       <div class="parts">
         <div class="part">
-          <div><div class="num">350k<small>km</small></div><div class="src" style="margin-top:8px">Lifetime range of one AMP battery</div></div>
-          <div class="txt"><div class="label">1 · Store</div><h3>The battery is designed in-house.</h3><p class="muted">LFP chemistry, passive cooling and built-in GPS, GSM and BLE. Assembled in Kigali.</p><a class="more" href="batteries.html">Battery data →</a></div>
+          <div><div class="num">3,443</div><div class="src" style="margin-top:8px">Cycles to 80% health, measured on HM1</div></div>
+          <div class="txt"><div class="label">1 · Store</div><h3>The battery is designed in-house.</h3><p class="muted">LFP cells, our own BMS and VCTU, humidity and temperature sensing. HM1 is built in Kigali.</p><a class="more" href="batteries.html">Battery data →</a></div>
           <img src="../assets/img/assembly.jpg" alt="Technicians assemble e-motos and batteries in Kigali">
         </div>
         <div class="part">
@@ -91,11 +91,34 @@
   <section>
     <div class="wrap">
       <div class="sec-head"><div><div class="label muted">Products</div><h2 style="margin-top:12px">The catalogue, by the numbers.</h2></div><p class="muted">Energy first. Every vehicle runs on the same batteries and stations.</p></div>
-      <div class="cards">
+      <div class="cards six">
         <a class="card" href="network.html"><img src="../assets/img/station-battery-racks.jpg" alt="Charging racks in a station"><div class="num">70</div><h3>Swap network</h3><p class="muted">Stations in Rwanda and Kenya.</p></a>
-        <a class="card" href="batteries.html"><img class="contain" src="../assets/img/battery-amp.jpg" alt="Yellow AMP battery"><div class="num">70–110<small>km</small></div><h3>AMP batteries</h3><p class="muted">Range per swap, by load and terrain.</p></a>
+        <a class="card" href="network.html#cabinets"><img class="contain" src="assets/cabinet-12.svg" alt="Diagram of a 12-slot automated swap cabinet"><div class="num">12</div><h3>Automated cabinets</h3><p class="muted">Self-service slots. Pilot stage.</p></a>
+        <a class="card" href="batteries.html"><img class="contain" src="../assets/img/battery-amp.jpg" alt="Yellow Ampersand battery"><div class="num">15.5<small>kg</small></div><h3>HM1 and MK2 batteries</h3><p class="muted">MK2 pack weight, 65% less than HM1.</p></a>
+        <a class="card" href="technology.html"><img src="../assets/img/engineering-lab.jpg" alt="Ampersand electronics lab"><div class="num">In-house</div><h3>BMS and VCTU</h3><p class="muted">Our own electronics in every pack.</p></a>
         <a class="card" href="amperops.html"><img src="../assets/img/amperops-dashboard.jpg" alt="AmperOps dashboard"><div class="num">864k</div><h3>AmperOps</h3><p class="muted">Data points from each battery, every day.</p></a>
         <a class="card" href="vehicles.html"><img class="contain" src="../assets/img/alpha-cutout.webp" alt="Red Alpha e-moto"><div class="num">95<small>%</small></div><h3>E-motos</h3><p class="muted">Of riders prefer Ampersand to petrol.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper" id="weight">
+    <div class="wrap">
+      <div class="lead-num">
+        <div>
+          <div class="label muted">MK2 weight reduction</div>
+          <div class="num big" style="margin-top:10px">−65<small>%</small></div>
+          <p class="cap">weight per pack. An HM1 pack weighs 44 kg. An MK2 pack weighs 15.5 kg and is a one-handed lift.</p>
+        </div>
+        <div class="stack">
+          <div class="chart" id="w-pack"><div class="chart-head"><h3>Weight of one pack, kg</h3><div class="legend"><span><i style="background:#9E9E9E"></i>HM1</span><span><i style="background:#000"></i>MK2</span></div></div></div>
+          <div class="facts">
+            <div><div class="num">In-house</div><div class="k">BMS and VCTU in every pack</div></div>
+            <div><div class="num">Humidity</div><div class="k">Sensing inside the pack</div></div>
+            <div><div class="num">1<small>s</small></div><div class="k">Cell-voltage readings</div></div>
+          </div>
+          <a class="more" href="technology.html" style="font-weight:700">See the technology →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -147,6 +170,7 @@
 <div id="site-footer"></div>
 <script src="assets/data.js"></script>
 <script src="assets/proof.js"></script>
-<script>ampLine(document.getElementById('trend'), AMP_DATA.trend, {unit: AMP_DATA.trendUnit, aria: 'Swap volume over time'});</script>
+<script>ampLine(document.getElementById('trend'), AMP_DATA.trend, {unit: AMP_DATA.trendUnit, aria: 'Swap volume over time'});
+ampBars(document.getElementById('w-pack'), [{label:'HM1 pack',value:44,group:'old'},{label:'MK2 pack',value:15.5,group:'one'}], {unit:'kg', aria:'Weight of one pack'});</script>
 </body>
 </html>

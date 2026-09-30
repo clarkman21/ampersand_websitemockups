@@ -18,6 +18,7 @@
   var NAV = [
     ['network', 'network.html', 'Network'],
     ['batteries', 'batteries.html', 'Batteries'],
+    ['technology', 'technology.html', 'Technology'],
     ['amperops', 'amperops.html', 'AmperOps'],
     ['vehicles', 'vehicles.html', 'Vehicles'],
     ['investors', 'investors.html', 'Investors'],
@@ -187,7 +188,7 @@
     box.appendChild(svg);
     var max = opts.max || Math.max.apply(null, rows.map(function (r) { return r.value; }));
     var iw = W - m.l - m.r, tip = tipFor(box);
-    var color = { rw: '#008A6E', ke: '#E4531C', one: '#000000' };
+    var color = { rw: '#008A6E', ke: '#E4531C', one: '#000000', old: '#9E9E9E' };
     rows.forEach(function (r, i) {
       var yy = m.t + i * (bh + gap), w = Math.max(4, r.value / max * iw);
       var t = el('text', { x: m.l - 10, y: yy + bh / 2 + 4, 'text-anchor': 'end' }, svg); t.textContent = r.label;
