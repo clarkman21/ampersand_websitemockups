@@ -297,6 +297,16 @@ table.spec td.mark{background:var(--surge);font-weight:700;padding-left:14px}
 .stamp small{font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase}
 .stamp .d{font-size:clamp(30px,2.6vw,38px);line-height:1}
 @media (max-width:480px){.stamps{grid-template-columns:minmax(0,1fr)}}
+ol.chain{list-style:none;margin:0;padding:0;border-top:3px solid var(--surge);counter-reset:c}
+ol.chain li{counter-increment:c;display:grid;grid-template-columns:56px minmax(0,1.1fr) minmax(0,1.3fr) minmax(0,1.2fr);gap:12px 28px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--rule-d)}
+ol.chain li::before{content:counter(c,decimal-leading-zero);font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:.08em;color:var(--on-ink-2)}
+ol.chain .d{font-size:clamp(28px,2.6vw,38px);line-height:1}
+ol.chain .what{font-size:16px;color:var(--on-ink)}
+ol.chain .gives{position:relative;padding-left:28px;font-weight:700;color:var(--surge)}
+ol.chain .gives::before{content:"";position:absolute;left:2px;top:.25em;width:12px;height:1em;background:var(--surge);transform:skewX(-15deg)}
+.verdict{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);align-items:start;margin-top:clamp(48px,6vw,88px)}
+.verdict h2.d{font-size:clamp(46px,5.8vw,84px)}
+@media (max-width:900px){ol.chain li{grid-template-columns:40px minmax(0,1fr);gap:6px 14px}ol.chain li > span{grid-column:2}.verdict{grid-template-columns:minmax(0,1fr)}}
 .biglist{border-top:3px solid var(--surge)}
 .biglist > div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:22px 0;border-bottom:1px solid var(--rule-d)}
 .biglist > div:last-child{border-bottom:0}
