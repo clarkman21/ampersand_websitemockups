@@ -3,12 +3,13 @@
    loaded from assets/models/mk2.gltf.json (glTF with embedded data, so any static host serves it). Made with tools/step_to_web.py and gltfpack. If the file cannot
    load, a simple hand-built pack is used instead.
    Hand-built, to scale from the specifications:
-   HM1 pack 350 × 363 × 287 mm (Hardware product portfolio, Aug 2026)
+   HM1 pack 350 × 363 × 287 mm (Hardware product portfolio, Aug 2026), shaped from the HM1.9 render
    12-slot cabinet 1500 × 600 × 1825 mm, 3 × 4 slots, 10.1" screen (Swap station specifications)
    Needs three.js r128 (global THREE). Usage: ampModel(element, 'mk2' | 'compare' | 'cabinet'). */
 (function () {
   'use strict';
   // Our approved logo files (assets/brand), embedded so the canvas texture never taints.
+  var MARK = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIxMjA1IiB2aWV3Qm94PSIwIDAgMTAwMCAxMjA1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNNjcxLjU4IDMzLjkzODFMNTYyLjY0NiA0NDAuMjU0QzU1NS4yODMgNDY3LjY2IDUzMC40MzggNDg2Ljc1NCA1MDEuOTk2IDQ4Ni43NTRIMjYuOTEyOEMwLjY2Mjg3NyA0ODYuNzU0IC0xMC4wMTcgNDUyLjk0NiAxMS41MTEzIDQzNy44OTVMNjMwLjIxIDQuOTU5NjlDNjUwLjc4MyAtOS40MTcyMSA2NzguMDQ1IDkuNjc3MTEgNjcxLjU4IDMzLjg4MlYzMy45MzgxWiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTE0MS4xMjggMTE3MS4wNkwyODQuNjg4IDYzNS42OTFDMjkyLjMzMiA2MDcuMTA2IDMxOC4yNDUgNTg3LjI4MSAzNDcuODY3IDU4Ny4yODFIOTczLjA4NkM5OTkuMzM2IDU4Ny4yODEgMTAxMC4wMiA2MjEuMDg5IDk4OC40ODggNjM2LjE0TDE4Mi40OTkgMTIwMC4wNEMxNjEuOTI2IDEyMTQuNDIgMTM0LjY2NCAxMTk1LjMyIDE0MS4xMjggMTE3MS4xMlYxMTcxLjA2WiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==';
   var LOGO = { black: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwMCIgaGVpZ2h0PSI1ODAiIHZpZXdCb3g9IjAgMCAyNTAwIDU4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzUyOV8xMDIxKSI+CjxwYXRoIGQ9Ik0zMjMuMDY4IDE2LjI5NTlMMjcwLjY4IDIxMS44ODZDMjY3LjE0IDIyNS4wOCAyNTUuMTY4IDIzNC4yNTUgMjQxLjQ5MiAyMzQuMjU1SDEyLjkzMjdDMC4zMDUzNjYgMjM0LjI1NSAtNC44NTA0NCAyMTguMDAzIDUuNTA0ODcgMjEwLjc1MUwzMDMuMTQ0IDIuNDAzMTJDMzEzLjAxOCAtNC40OTk1NiAzMjYuMTcgNC42NzQ4OSAzMjMuMDI0IDE2LjMzOTZMMzIzLjA2OCAxNi4yOTU5WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTY3Ljg5OTYgNTYzLjcwNUwxMzYuOTM1IDMwNS45OUMxNDAuNjA1IDI5Mi4yMjkgMTUzLjEwMiAyODIuNjYxIDE2Ny4zMDIgMjgyLjY2MUg0NjguMDQzQzQ4MC42NyAyODIuNjYxIDQ4NS44MjYgMjk4LjkxMyA0NzUuNDcxIDMwNi4xNjVMODcuNzggNTc3LjU5OEM3Ny45MDUzIDU4NC41MDEgNjQuNzUzNyA1NzUuMzI2IDY3Ljg5OTYgNTYzLjY2MVY1NjMuNzA1WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTcyMi43NzIgNDMyLjE1OVYzODEuNTY5SDY3NC42NjZMNjU3LjM2MyA0MzIuMTU5SDU5My41NzFMNzA1LjYwMSAxNDcuODM5SDc3Ni4xMjJMNzg2LjMwMiA0MzIuMTU5SDcyMi43MjlINzIyLjc3MlpNNzIzLjk5NiAzMzUuNTY2TDcyNC44MjYgMjQwLjIzOUg3MjMuOTk2TDY5MC45NjQgMzM1LjU2Nkg3MjMuOTk2WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTk2Ni45MzMgNDMyLjE1OUw5OTQuMDIzIDI4MC4zODhIOTkxLjkyNkw5NDguMzIgMzgxLjU2OUg5MTMuNjI3TDkwNS43NjIgMjgwLjM4OEg5MDMuNjY1TDg3Ni41NzUgNDMyLjE1OUg4MjEuMzkxTDg3MS4zNzYgMTQ3LjgzOUg5MzMuNDJMOTQ1LjQ4IDI5Mi45MjZIOTQ3LjE0TDEwMTAuODQgMTQ3LjgzOUgxMDczLjMzTDEwMjIuOSA0MzIuMTU5SDk2Ni44NDZIOTY2LjkzM1oiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGQ9Ik0xMDc4LjY1IDQzMi4xNTlMMTEyOC42NCAxNDcuODM5SDEyMDIuMzVDMTI1MC44NSAxNDcuODM5IDEyNzguMDIgMTY3LjQ5OCAxMjc4LjAyIDIxOC40ODJDMTI3OC4wMiAyNzguNjg0IDEyNDQuNTYgMzI5LjI3NSAxMTgxLjQyIDMyOS4yNzVIMTE2MC41M0wxMTQyLjE4IDQzMi4xMTZIMTA3OC42NVY0MzIuMTU5Wk0xMTgyLjY5IDI3Ni42MzFDMTIwNi4xMSAyNzYuNjMxIDEyMTMuMjMgMjQ1LjI2MyAxMjEzLjIzIDIyNC43NzNDMTIxMy4yMyAyMDguMDQxIDEyMDYuMTEgMjAxLjM1NiAxMTkzLjE3IDIwMS4zNTZIMTE4Mi43M0wxMTcwLjE5IDI3Ni42MzFIMTE4Mi43M0gxMTgyLjY5WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTEyNzkuNzggNDMyLjE1OUwxMzI5LjMzIDE0Ny44MzlIMTQ2Ni4wOUwxNDU1Ljc3IDIwNC43MkgxMzgzLjc3TDEzNzQuMTEgMjYxLjE2NUgxNDM2Ljc3TDE0MjYuODkgMzE2LjM0M0gxMzY0LjU0TDEzNTQuMDYgMzc1LjcxNUgxNDI2LjM3TDE0MTYuMDYgNDMyLjE1OUgxMjc5Ljc4WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTE1NDYuNTIgMzI0LjI5NEwxNTI3LjM0IDQzMi4xNTlIMTQ2My43N0wxNTEzLjc1IDE0Ny44MzlIMTU4OS4xMkMxNjM0LjcgMTQ3LjgzOSAxNjYzLjU4IDE2NS40MDEgMTY2My41OCAyMTYuNDI5QzE2NjMuNTggMjU3LjQwOCAxNjQ3LjY3IDI5MC40MzYgMTYyMC41IDMwOC44MjlMMTYzNC43OCA0MzIuMTU5SDE1NzEuNDdMMTU2Mi44MiAzMjQuMjk0SDE1NDYuNTJaTTE1NjcuODQgMjAxLjM1NkwxNTU1LjcgMjcyLjg3NEgxNTY5LjUxQzE1OTEuNjYgMjcyLjg3NCAxNTk4LjM0IDI0NC44NyAxNTk4LjM0IDIyMy4xMTNDMTU5OC4zNCAyMDguNDc4IDE1OTIuMDUgMjAxLjM1NiAxNTc5LjEyIDIwMS4zNTZIMTU2Ny44NFoiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGQ9Ik0xNzM2LjA3IDM1MC4yMDJDMTczNC40MSAzNjcuNzY0IDE3MzguNTYgMzgxLjU3IDE3NTIuOCAzODEuNTdDMTc3MC44IDM4MS41NyAxNzc3Ljg4IDM2MC4yNSAxNzc3Ljg4IDM0NS4xNzhDMTc3Ny44OCAzMzAuMTA1IDE3NzQuMTIgMzIzLjAyOCAxNzU5LjA1IDMxNi43MzdMMTc0OC42MSAzMTIuNTQzQzE3MTMuNDggMjk4LjczNyAxNzAyLjYgMjgzLjI3MiAxNzAyLjYgMjQ1LjY1N0MxNzAyLjYgMTk1Ljg5NiAxNzI5LjM0IDE0My42NDYgMTc5Mi41MiAxNDMuNjQ2QzE4MzQuNzcgMTQzLjY0NiAxODY1LjcxIDE2Ni4yMzIgMTg2Mi43OCAyMTcuNjUzTDE4NjIuNiAyMjEuODlMMTgwNS4wMiAyMjcuMjY0VjIyMy41MDdDMTgwNS41IDIwNy4yMTEgMTgwMC45MSAxOTguNDMgMTc4OC4zNyAxOTguNDNDMTc3My4yOSAxOTguNDMgMTc2NS43OCAyMTUuOTkzIDE3NjUuNzggMjI5Ljc5OEMxNzY1Ljc4IDI0My42MDMgMTc2OC43MSAyNTAuMjg4IDE3ODMuMzQgMjU2LjE0MkwxNzkzLjc5IDI2MC4zMzZDMTgyNy4yNiAyNzMuNzA0IDE4NDIuMjkgMjg3LjUxIDE4NDIuMjkgMzMwLjE0OUMxODQyLjI5IDM4NS4zMjcgMTgwNy45OSA0MzYuMzU0IDE3NDcuMzggNDM2LjM1NEMxNzAwLjU0IDQzNi4zNTQgMTY3MS4yNyA0MDQuNTkzIDE2NzUuNDYgMzU2LjkzTDE2NzUuODYgMzUyLjY5MkwxNzM2LjQ2IDM0Ni40ODhMMTczNi4xMSAzNTAuMjQ1TDE3MzYuMDcgMzUwLjIwMloiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGQ9Ik0yMDc5LjE0IDQzMi4xNTlMMjEyOS4xMyAxNDcuODM5SDIxOTUuMzNMMjIwOS45MiAzMTAuNDg5SDIyMTIuMDJMMjI0MS4yIDE0Ny44MzlIMjI5Ni44MkwyMjQ2LjQgNDMyLjE1OUgyMTgwLjY0TDIxNjUuMTggMjY5LjUxSDIxNjMuMDhMMjEzMy44OSA0MzIuMTU5SDIwNzkuMTRaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMjMwMS44OSA0MzIuMTU5TDIzNTEuODggMTQ3LjgzOUgyNDI4LjA4QzI0NjkuOSAxNDcuODM5IDI1MDAgMTY3LjA2MiAyNTAwIDIxMi42MjhDMjUwMCAyNDYuNDg2IDI0ODEuMTcgMzU1LjE4MSAyNDY2LjUzIDM4NS4zMjZDMjQ1MS4wNiA0MTYuMjU3IDI0MjUuMTUgNDMyLjE1OSAyMzgyLjkgNDMyLjE1OUgyMzAxLjg5Wk0yMzg3LjEgMzc1LjcxNUMyMzk3Ljk4IDM3NS43MTUgMjQwNC42NiAzNzEuNTIxIDI0MDkuMjUgMzYxLjUxNkMyNDE1LjkzIDM0Ny4zMTggMjQzMy41IDI0NC44NyAyNDMzLjUgMjIyLjcyQzI0MzMuNSAyMTEuMDEyIDI0MjYuODEgMjA0LjcyIDI0MTUuNSAyMDQuNzJIMjQwNS40OUwyMzc1Ljc4IDM3NS43MTVIMjM4Ny4xWiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTE5ODAuNDggNDMyLjE1OVYzODEuNTY5SDE5MzIuMzhMMTkxNS4wNyA0MzIuMTU5SDE4NTEuMjhMMTk2My4zMSAxNDcuODM5SDIwMzMuODNMMjA0NC4wMSA0MzIuMTU5SDE5ODAuNDRIMTk4MC40OFpNMTk4MS43NSAzMzUuNTY2TDE5ODIuNTggMjQwLjIzOUgxOTgxLjc1TDE5NDguNzIgMzM1LjU2NkgxOTgxLjc1WiIgZmlsbD0iYmxhY2siLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF81MjlfMTAyMSI+CjxyZWN0IHdpZHRoPSIyNTAwIiBoZWlnaHQ9IjU4MCIgZmlsbD0id2hpdGUiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K', yellow: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwMCIgaGVpZ2h0PSI1ODAiIHZpZXdCb3g9IjAgMCAyNTAwIDU4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzUyOV8xMDIxKSI+CjxwYXRoIGQ9Ik0zMjMuMDY4IDE2LjI5NTlMMjcwLjY4IDIxMS44ODZDMjY3LjE0IDIyNS4wOCAyNTUuMTY4IDIzNC4yNTUgMjQxLjQ5MiAyMzQuMjU1SDEyLjkzMjdDMC4zMDUzNjYgMjM0LjI1NSAtNC44NTA0NCAyMTguMDAzIDUuNTA0ODcgMjEwLjc1MUwzMDMuMTQ0IDIuNDAzMTJDMzEzLjAxOCAtNC40OTk1NiAzMjYuMTcgNC42NzQ4OSAzMjMuMDI0IDE2LjMzOTZMMzIzLjA2OCAxNi4yOTU5WiIgZmlsbD0iI0ZDREMwNCIvPgo8cGF0aCBkPSJNNjcuODk5NiA1NjMuNzA1TDEzNi45MzUgMzA1Ljk5QzE0MC42MDUgMjkyLjIyOSAxNTMuMTAyIDI4Mi42NjEgMTY3LjMwMiAyODIuNjYxSDQ2OC4wNDNDNDgwLjY3IDI4Mi42NjEgNDg1LjgyNiAyOTguOTEzIDQ3NS40NzEgMzA2LjE2NUw4Ny43OCA1NzcuNTk4Qzc3LjkwNTMgNTg0LjUwMSA2NC43NTM3IDU3NS4zMjYgNjcuODk5NiA1NjMuNjYxVjU2My43MDVaIiBmaWxsPSIjRkNEQzA0Ii8+CjxwYXRoIGQ9Ik03MjIuNzcyIDQzMi4xNTlWMzgxLjU2OUg2NzQuNjY2TDY1Ny4zNjMgNDMyLjE1OUg1OTMuNTcxTDcwNS42MDEgMTQ3LjgzOUg3NzYuMTIyTDc4Ni4zMDIgNDMyLjE1OUg3MjIuNzI5SDcyMi43NzJaTTcyMy45OTYgMzM1LjU2Nkw3MjQuODI2IDI0MC4yMzlINzIzLjk5Nkw2OTAuOTY0IDMzNS41NjZINzIzLjk5NloiIGZpbGw9IiNGQ0RDMDQiLz4KPHBhdGggZD0iTTk2Ni45MzMgNDMyLjE1OUw5OTQuMDIzIDI4MC4zODhIOTkxLjkyNkw5NDguMzIgMzgxLjU2OUg5MTMuNjI3TDkwNS43NjIgMjgwLjM4OEg5MDMuNjY1TDg3Ni41NzUgNDMyLjE1OUg4MjEuMzkxTDg3MS4zNzYgMTQ3LjgzOUg5MzMuNDJMOTQ1LjQ4IDI5Mi45MjZIOTQ3LjE0TDEwMTAuODQgMTQ3LjgzOUgxMDczLjMzTDEwMjIuOSA0MzIuMTU5SDk2Ni44NDZIOTY2LjkzM1oiIGZpbGw9IiNGQ0RDMDQiLz4KPHBhdGggZD0iTTEwNzguNjUgNDMyLjE1OUwxMTI4LjY0IDE0Ny44MzlIMTIwMi4zNUMxMjUwLjg1IDE0Ny44MzkgMTI3OC4wMiAxNjcuNDk4IDEyNzguMDIgMjE4LjQ4MkMxMjc4LjAyIDI3OC42ODQgMTI0NC41NiAzMjkuMjc1IDExODEuNDIgMzI5LjI3NUgxMTYwLjUzTDExNDIuMTggNDMyLjExNkgxMDc4LjY1VjQzMi4xNTlaTTExODIuNjkgMjc2LjYzMUMxMjA2LjExIDI3Ni42MzEgMTIxMy4yMyAyNDUuMjYzIDEyMTMuMjMgMjI0Ljc3M0MxMjEzLjIzIDIwOC4wNDEgMTIwNi4xMSAyMDEuMzU2IDExOTMuMTcgMjAxLjM1NkgxMTgyLjczTDExNzAuMTkgMjc2LjYzMUgxMTgyLjczSDExODIuNjlaIiBmaWxsPSIjRkNEQzA0Ii8+CjxwYXRoIGQ9Ik0xMjc5Ljc4IDQzMi4xNTlMMTMyOS4zMyAxNDcuODM5SDE0NjYuMDlMMTQ1NS43NyAyMDQuNzJIMTM4My43N0wxMzc0LjExIDI2MS4xNjVIMTQzNi43N0wxNDI2Ljg5IDMxNi4zNDNIMTM2NC41NEwxMzU0LjA2IDM3NS43MTVIMTQyNi4zN0wxNDE2LjA2IDQzMi4xNTlIMTI3OS43OFoiIGZpbGw9IiNGQ0RDMDQiLz4KPHBhdGggZD0iTTE1NDYuNTIgMzI0LjI5NEwxNTI3LjM0IDQzMi4xNTlIMTQ2My43N0wxNTEzLjc1IDE0Ny44MzlIMTU4OS4xMkMxNjM0LjcgMTQ3LjgzOSAxNjYzLjU4IDE2NS40MDEgMTY2My41OCAyMTYuNDI5QzE2NjMuNTggMjU3LjQwOCAxNjQ3LjY3IDI5MC40MzYgMTYyMC41IDMwOC44MjlMMTYzNC43OCA0MzIuMTU5SDE1NzEuNDdMMTU2Mi44MiAzMjQuMjk0SDE1NDYuNTJaTTE1NjcuODQgMjAxLjM1NkwxNTU1LjcgMjcyLjg3NEgxNTY5LjUxQzE1OTEuNjYgMjcyLjg3NCAxNTk4LjM0IDI0NC44NyAxNTk4LjM0IDIyMy4xMTNDMTU5OC4zNCAyMDguNDc4IDE1OTIuMDUgMjAxLjM1NiAxNTc5LjEyIDIwMS4zNTZIMTU2Ny44NFoiIGZpbGw9IiNGQ0RDMDQiLz4KPHBhdGggZD0iTTE3MzYuMDcgMzUwLjIwMkMxNzM0LjQxIDM2Ny43NjQgMTczOC41NiAzODEuNTcgMTc1Mi44IDM4MS41N0MxNzcwLjggMzgxLjU3IDE3NzcuODggMzYwLjI1IDE3NzcuODggMzQ1LjE3OEMxNzc3Ljg4IDMzMC4xMDUgMTc3NC4xMiAzMjMuMDI4IDE3NTkuMDUgMzE2LjczN0wxNzQ4LjYxIDMxMi41NDNDMTcxMy40OCAyOTguNzM3IDE3MDIuNiAyODMuMjcyIDE3MDIuNiAyNDUuNjU3QzE3MDIuNiAxOTUuODk2IDE3MjkuMzQgMTQzLjY0NiAxNzkyLjUyIDE0My42NDZDMTgzNC43NyAxNDMuNjQ2IDE4NjUuNzEgMTY2LjIzMiAxODYyLjc4IDIxNy42NTNMMTg2Mi42IDIyMS44OUwxODA1LjAyIDIyNy4yNjRWMjIzLjUwN0MxODA1LjUgMjA3LjIxMSAxODAwLjkxIDE5OC40MyAxNzg4LjM3IDE5OC40M0MxNzczLjI5IDE5OC40MyAxNzY1Ljc4IDIxNS45OTMgMTc2NS43OCAyMjkuNzk4QzE3NjUuNzggMjQzLjYwMyAxNzY4LjcxIDI1MC4yODggMTc4My4zNCAyNTYuMTQyTDE3OTMuNzkgMjYwLjMzNkMxODI3LjI2IDI3My43MDQgMTg0Mi4yOSAyODcuNTEgMTg0Mi4yOSAzMzAuMTQ5QzE4NDIuMjkgMzg1LjMyNyAxODA3Ljk5IDQzNi4zNTQgMTc0Ny4zOCA0MzYuMzU0QzE3MDAuNTQgNDM2LjM1NCAxNjcxLjI3IDQwNC41OTMgMTY3NS40NiAzNTYuOTNMMTY3NS44NiAzNTIuNjkyTDE3MzYuNDYgMzQ2LjQ4OEwxNzM2LjExIDM1MC4yNDVMMTczNi4wNyAzNTAuMjAyWiIgZmlsbD0iI0ZDREMwNCIvPgo8cGF0aCBkPSJNMjA3OS4xNCA0MzIuMTU5TDIxMjkuMTMgMTQ3LjgzOUgyMTk1LjMzTDIyMDkuOTIgMzEwLjQ4OUgyMjEyLjAyTDIyNDEuMiAxNDcuODM5SDIyOTYuODJMMjI0Ni40IDQzMi4xNTlIMjE4MC42NEwyMTY1LjE4IDI2OS41MUgyMTYzLjA4TDIxMzMuODkgNDMyLjE1OUgyMDc5LjE0WiIgZmlsbD0iI0ZDREMwNCIvPgo8cGF0aCBkPSJNMjMwMS44OSA0MzIuMTU5TDIzNTEuODggMTQ3LjgzOUgyNDI4LjA4QzI0NjkuOSAxNDcuODM5IDI1MDAgMTY3LjA2MiAyNTAwIDIxMi42MjhDMjUwMCAyNDYuNDg2IDI0ODEuMTcgMzU1LjE4MSAyNDY2LjUzIDM4NS4zMjZDMjQ1MS4wNiA0MTYuMjU3IDI0MjUuMTUgNDMyLjE1OSAyMzgyLjkgNDMyLjE1OUgyMzAxLjg5Wk0yMzg3LjEgMzc1LjcxNUMyMzk3Ljk4IDM3NS43MTUgMjQwNC42NiAzNzEuNTIxIDI0MDkuMjUgMzYxLjUxNkMyNDE1LjkzIDM0Ny4zMTggMjQzMy41IDI0NC44NyAyNDMzLjUgMjIyLjcyQzI0MzMuNSAyMTEuMDEyIDI0MjYuODEgMjA0LjcyIDI0MTUuNSAyMDQuNzJIMjQwNS40OUwyMzc1Ljc4IDM3NS43MTVIMjM4Ny4xWiIgZmlsbD0iI0ZDREMwNCIvPgo8cGF0aCBkPSJNMTk4MC40OCA0MzIuMTU5VjM4MS41NjlIMTkzMi4zOEwxOTE1LjA3IDQzMi4xNTlIMTg1MS4yOEwxOTYzLjMxIDE0Ny44MzlIMjAzMy44M0wyMDQ0LjAxIDQzMi4xNTlIMTk4MC40NEgxOTgwLjQ4Wk0xOTgxLjc1IDMzNS41NjZMMTk4Mi41OCAyNDAuMjM5SDE5ODEuNzVMMTk0OC43MiAzMzUuNTY2SDE5ODEuNzVaIiBmaWxsPSIjRkNEQzA0Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDBfNTI5XzEwMjEiPgo8cmVjdCB3aWR0aD0iMjUwMCIgaGVpZ2h0PSI1ODAiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==' };
   var C = { surge: 0xFCDC04, black: 0x141414, ink: 0x0A0A0A, grey: 0x5C5C5E, alloy: 0x9E9E9E, green: 0x44BC9D, glass: 0x10161A };
 
@@ -50,13 +51,13 @@
   // ---- Fallback MK2 pack (used only if the model file cannot load): 322 wide, 291 tall, 128 deep (mm → m) ----
   function mk2Pack(logoTex) {
     var g = new THREE.Group(), W = 0.322, H = 0.291, D = 0.128;
-    mesh(roundedBox(W, H, D, 0.018), mat(0x111111, 0.55, 0.1), g, 0, H / 2, 0); // black enclosure, as in the CAD
+    mesh(roundedBox(W, H, D, 0.018), mat(C.surge, 0.45, 0.05), g, 0, H / 2, 0); // yellow enclosure, as on the portfolio slide
     // black end caps with ribs
     var cap = mat(C.black, 0.55, 0.1);
     mesh(roundedBox(W + 0.004, 0.034, D + 0.004, 0.012), cap, g, 0, H - 0.017, 0);
     mesh(roundedBox(W + 0.004, 0.03, D + 0.004, 0.012), cap, g, 0, 0.015, 0);
-    // aluminium checker-plate side panels on both faces
-    var alu = mat(0xC8CBCF, 0.4, 0.6);
+    // yellow checker-plate side panels on both faces
+    var alu = mat(0xF2D104, 0.42, 0.3);
     mesh(new THREE.BoxGeometry(W * 0.96, H * 0.88, 0.003), alu, g, 0, H * 0.47, D / 2 + 0.0015);
     mesh(new THREE.BoxGeometry(W * 0.96, H * 0.88, 0.003), alu, g, 0, H * 0.47, -D / 2 - 0.0015);
     // carry handle on top
@@ -68,15 +69,39 @@
     return g;
   }
   // ---- HM1 pack: 350 wide, 363 tall, 287 deep ----
-  function hm1Pack(logoTex) {
+  function hm1Pack() {
+    // Shape from the HM1.9 render (0004-03 Battery Welded): welded yellow box, lid seam near the top,
+    // black round cap, chrome handle and latch on the side, connector plate, small front flap, feet. No logo.
     var g = new THREE.Group(), W = 0.35, H = 0.363, D = 0.287;
-    mesh(roundedBox(W, H * 0.9, D, 0.014), mat(C.surge, 0.5, 0.05), g, 0, H * 0.45, 0);
-    mesh(roundedBox(W * 0.96, H * 0.1, D * 0.96, 0.02), mat(C.black, 0.6), g, 0, H * 0.95, 0);
-    mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.02, 32), mat(0x2a2a2a, 0.5), g, -0.08, H + 0.005, 0.04);
-    var hb = mat(0xD8D8D8, 0.3, 0.9);
-    mesh(new THREE.BoxGeometry(0.012, 0.012, 0.11), hb, g, W / 2 + 0.012, H * 0.7, 0);
-    var plate = new THREE.Mesh(new THREE.PlaneGeometry(0.22, 0.055), new THREE.MeshStandardMaterial({ map: logoTex, roughness: 0.5, transparent: true }));
-    plate.position.set(0, H * 0.62, D / 2 + 0.003); g.add(plate);
+    var yellow = mat(C.surge, 0.5, 0.05), dark = mat(0x111111, 0.6, 0.05), chrome = mat(0xD8D8D8, 0.25, 0.95);
+    mesh(roundedBox(W, H * 0.93, D, 0.006), yellow, g, 0, H * 0.465, 0);
+    mesh(roundedBox(W + 0.004, H * 0.065, D + 0.004, 0.006), mat(0xF2D104, 0.5, 0.05), g, 0, H * 0.965, 0); // lid
+    var cap = mesh(new THREE.CylinderGeometry(0.04, 0.042, 0.032, 40), dark, g, 0.07, H + 0.016, 0.02);
+    for (var r = 0; r < 12; r++) { // ribs on the cap
+      var rb = mesh(new THREE.BoxGeometry(0.006, 0.026, 0.006), dark, g, 0.07 + Math.cos(r / 12 * 6.283) * 0.042, H + 0.016, 0.02 + Math.sin(r / 12 * 6.283) * 0.042);
+      rb.rotation.y = -r / 12 * 6.283;
+    }
+    // side (+x): chrome U-handle near the top, toggle latch near the bottom, connector plate and port
+    var hx = W / 2 + 0.013;
+    mesh(new THREE.BoxGeometry(0.01, 0.012, 0.12), chrome, g, hx, H * 0.8, 0.02);
+    mesh(new THREE.BoxGeometry(0.026, 0.012, 0.01), chrome, g, W / 2 + 0.007, H * 0.8, -0.04);
+    mesh(new THREE.BoxGeometry(0.026, 0.012, 0.01), chrome, g, W / 2 + 0.007, H * 0.8, 0.08);
+    mesh(new THREE.BoxGeometry(0.004, 0.05, 0.05), mat(0xBFC2C5, 0.35, 0.8), g, W / 2 + 0.002, H * 0.8, D / 2 - 0.04);
+    mesh(new THREE.BoxGeometry(0.014, 0.1, 0.022), chrome, g, W / 2 + 0.007, H * 0.24, D / 2 - 0.05);
+    mesh(new THREE.BoxGeometry(0.01, 0.03, 0.03), chrome, g, W / 2 + 0.005, H * 0.15, D / 2 - 0.05);
+    var port = mesh(new THREE.CylinderGeometry(0.009, 0.009, 0.01, 20), dark, g, W / 2 + 0.004, H * 0.62, D / 2 - 0.045);
+    port.rotation.z = Math.PI / 2;
+    // front (+z): small raised flap
+    mesh(roundedBox(0.075, 0.062, 0.008, 0.004), yellow, g, -W / 2 + 0.07, H * 0.3, D / 2 + 0.004);
+    // screw heads along the lid and edges
+    [[-0.15, 0.93], [0.15, 0.93], [-0.15, 0.6], [0.15, 0.6], [-0.15, 0.2], [0.15, 0.2]].forEach(function (p) {
+      var sc = mesh(new THREE.CylinderGeometry(0.004, 0.004, 0.003, 12), dark, g, p[0], H * p[1], D / 2 + 0.0015); sc.rotation.x = Math.PI / 2;
+    });
+    // small feet at the corners
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(function (c) {
+      var ft = mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.014, 16), mat(0xEDEDED, 0.5), g, c[0] * (W / 2 - 0.02), 0.007, c[1] * (D / 2 - 0.02));
+    });
+    g.children.forEach(function (m) { m.position.y += 0.014; }); // stand on the feet
     return g;
   }
   // ---- 12-slot cabinet: 1500 wide, 1825 tall (with castors), 600 deep ----
@@ -157,20 +182,28 @@
   function addScript(src) {
     return new Promise(function (ok, fail) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s); });
   }
-  // The CAD stores one colour per part. Give each one a real-world finish.
+  // The CAD stores one colour per part. Give each one its real finish, as on the Hardware Product Portfolio slide.
   function cadMaterial(m) {
     var c = m.color || new THREE.Color(1, 1, 1), k = [c.r, c.g, c.b].map(function (v) { return Math.round(v * 255); }).join(',');
     var f = {
-      '0,0,0': [0x111111, 0.55, 0.1],      // enclosure, black powder coat
+      '0,0,0': [0xF7D304, 0.5, 0.05],      // enclosure, Surge Yellow (portfolio slide; the CAD has a default black)
       '2,2,2': [0x1a1a1a, 0.45, 0.0],      // handle and vent cover, black plastic
-      '233,233,235': [0xC8CBCF, 0.38, 0.85], // side panels, aluminium checker plate
+      '233,233,235': [0xE6C400, 0.5, 0.2],  // side panels, yellow-coated aluminium checker plate (portfolio slide)
       '133,133,133': [0x8C8F92, 0.35, 0.9],  // swap-system rocker and plate, steel
       '90,90,90': [0xA6A9AC, 0.3, 0.9],    // stainless screws
-      '255,255,255': [0x222222, 0.5, 0.05], // power connector and cap: CAD has no colour; dark plastic assumed
+      '255,255,255': [0x151515, 0.5, 0.05], // power connector and cap, black (portfolio slide; no colour in the CAD)
       '229,152,51': [0xB8862F, 0.35, 0.8], // brass inserts
       '212,212,212': [0xD4D4D4, 0.7, 0.0]  // vent membrane
     }[k] || [c.getHex(), 0.5, 0.1];
     return mat(f[0], f[1], f[2]);
+  }
+  function markDecal(onload) {
+    var cv = document.createElement('canvas'); cv.width = 500; cv.height = 603;
+    var tex = new THREE.CanvasTexture(cv); tex.encoding = THREE.sRGBEncoding; tex.anisotropy = 4;
+    var img = new Image();
+    img.onload = function () { var x = cv.getContext('2d'); x.globalAlpha = 0.85; x.drawImage(img, 0, 0, 500, 603); tex.needsUpdate = true; if (onload) onload(); };
+    img.src = MARK;
+    return new THREE.MeshStandardMaterial({ map: tex, transparent: true, roughness: 0.5, polygonOffset: true, polygonOffsetFactor: -2 });
   }
   function loadMK2() {
     if (mk2Promise) return mk2Promise;
@@ -216,9 +249,14 @@
     var target, dist;
     // reflections for the CAD metals only, so the hand-built parts keep their colours
     var env = real && THREE.RoomEnvironment ? new THREE.PMREMGenerator(renderer).fromScene(new THREE.RoomEnvironment(), 0.04).texture : null;
+    var mark = real ? markDecal(rerender) : null;
     var pack = !real ? function () { return mk2Pack(black); } : function () {
       var o = real.clone();
-      if (env) o.traverse(function (m) { if (m.userData.cad) { m.material = m.material.clone(); m.material.envMap = env; m.material.envMapIntensity = 0.9; } });
+      // Ampersand mark on both side panels (panel faces at z = ±64.2 mm; mark 52 × 63 mm, right of centre)
+      var f = new THREE.Mesh(new THREE.PlaneGeometry(0.052, 0.063), mark); f.position.set(0.035, 0.14, 0.0652); o.add(f);
+      var bk = f.clone(); bk.rotation.y = Math.PI; bk.position.set(-0.035, 0.14, -0.0652); o.add(bk);
+      // full reflections on metal parts, weak reflections on painted and plastic parts
+      if (env) o.traverse(function (m) { if (m.userData.cad) { m.material = m.material.clone(); m.material.envMap = env; m.material.envMapIntensity = m.material.metalness > 0.5 ? 0.9 : 0.3; } });
       return o;
     };
     if (type === 'cabinet') {
@@ -228,7 +266,7 @@
       // the two MK2 packs side by side (2 × 128 mm wide, 322 mm long) take about the floor space of one HM1 (350 × 287 mm)
       var a = pack(); a.rotation.y = Math.PI / 2; a.position.set(-0.3, 0, 0); root.add(a);
       var b = pack(); b.rotation.y = Math.PI / 2; b.position.set(-0.155, 0, 0); root.add(b);
-      var hm = hm1Pack(black); hm.position.x = 0.2; root.add(hm);
+      var hm = hm1Pack(); hm.rotation.y = -Math.PI / 2; hm.position.x = 0.2; root.add(hm); // handle side and front flap face the camera
       target = new THREE.Vector3(-0.04, 0.16, 0); dist = 1.6;
       key.shadow.camera.left = -1; key.shadow.camera.right = 1; key.shadow.camera.top = 1; key.shadow.camera.bottom = -1;
     } else {

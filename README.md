@@ -36,4 +36,5 @@ Open `index.html` in a browser. The pages are static HTML. They need no build st
   3. `npx gltfpack -i mk2-ext.glb -o mk2.gltf -cc`
   4. `python3 tools/gltf_embed.py mk2.gltf proof/assets/models/mk2.gltf.json` (one JSON file, because some hosts do not serve .glb files)
 - Do not commit STEP files. They contain the full internal design.
-- The HM1 and the 12-slot cabinet are still hand-built in `proof/assets/models3d.js`.
+- The MK2 colours come from the Hardware Product Portfolio slide (yellow body and checker plate, black handle and connector), not from the CAD, which has default colours.
+- `proof/assets/renders/hm1.png` is the HM1.9 engineering render from Drive. The 3D HM1 and the 12-slot cabinet are still hand-built in `proof/assets/models3d.js`.

@@ -69,6 +69,7 @@ h3.d{font-size:clamp(30px,2.8vw,40px);line-height:.95}
 .pblade{position:absolute;top:0;bottom:0;right:0;left:var(--bl,50%);overflow:hidden;transform:skewX(-15deg);transform-origin:0 100%;background:var(--coal)}
 .pblade img{position:absolute;left:0;bottom:0;width:150%;max-width:none;height:100%;object-fit:cover;object-position:var(--fp,30% 50%);transform:skewX(15deg);transform-origin:0 100%}
 .yblade{position:absolute;top:0;bottom:0;right:0;left:var(--bl,42%);background:var(--surge);transform:skewX(-15deg);transform-origin:0 100%}
+.yblade.c{background:var(--chalk)} /* chalk blade for yellow products */
 .slash{flex:none;width:8px;height:clamp(96px,11.8vw,170px);background:currentColor;transform:skewX(-15deg)}
 @media (max-width:860px){
   .pblade{position:relative;left:auto;height:clamp(240px,62vw,360px);margin-left:clamp(40px,12vw,72px)}
@@ -183,6 +184,7 @@ header.site{background:var(--ink);border-bottom:1px solid #262626;z-index:30}
   .prod .visual{isolation:isolate;padding:28px 0 40px}
   .prod .visual figcaption{padding-left:56px}
   .prod .visual::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:clamp(8px,4vw,32px);right:-200px;background:var(--surge);transform:skewX(-15deg);transform-origin:0 100%}
+  .prod.c .visual::before{background:var(--chalk)}
 }
 
 /* ---- Weight to scale ---- */
