@@ -310,6 +310,9 @@ ol.chain .gives::before{content:"";position:absolute;left:2px;top:.25em;width:12
 .afp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .afp-card{margin:0;background:var(--coal);border:2px dashed #555;padding:26px 28px 28px;display:grid;gap:10px;align-content:start}
 .afp-card .ph{justify-self:start;font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--alloy);padding:4px 12px}
+.afp-card.quote{border-style:solid;border-color:var(--surge)}
+.afp-card .ph.review{background:var(--surge)}
+.afp-card.quote blockquote{font-family:var(--display);font-style:italic;font-weight:700;font-size:clamp(30px,2.8vw,40px);line-height:1.05;margin-top:14px}
 .afp-card .d{font-size:clamp(48px,4.45vw,64px);color:var(--surge);margin-top:8px}
 .afp-card .metric{font-size:15px;color:var(--on-ink-2)}
 .afp-card blockquote{margin:10px 0 0;font-size:18px;line-height:1.45;color:var(--white)}
