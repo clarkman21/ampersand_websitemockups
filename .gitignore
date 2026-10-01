@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+*.stp
+*.step
+*.STEP
+*.raw.glb

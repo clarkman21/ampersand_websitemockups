@@ -1,5 +1,8 @@
-/* 3D product models for the Proof site. Built to scale from the specifications:
-   MK2 pack 292 × 322 × 129 mm (MK2 Battery Specifications, MK2A001A01)
+/* 3D product models for the Proof site.
+   MK2 pack: the real CAD (MK2A001A01 MK2 Battery pack v37, exterior parts only), 322 × 291 × 128 mm,
+   loaded from assets/models/mk2.glb. Made with tools/step_to_web.py and gltfpack. If the file cannot
+   load, a simple hand-built pack is used instead.
+   Hand-built, to scale from the specifications:
    HM1 pack 350 × 363 × 287 mm (Hardware product portfolio, Aug 2026)
    12-slot cabinet 1500 × 600 × 1825 mm, 3 × 4 slots, 10.1" screen (Swap station specifications)
    Needs three.js r128 (global THREE). Usage: ampModel(element, 'mk2' | 'compare' | 'cabinet'). */
@@ -44,31 +47,24 @@
     return tex;
   }
 
-  // ---- MK2 pack: 292 wide, 322 tall, 129 deep (mm → m) ----
+  // ---- Fallback MK2 pack (used only if mk2.glb cannot load): 322 wide, 291 tall, 128 deep (mm → m) ----
   function mk2Pack(logoTex) {
-    var g = new THREE.Group(), W = 0.292, H = 0.322, D = 0.129;
-    mesh(roundedBox(W, H, D, 0.018), mat(C.surge, 0.42, 0.05), g, 0, H / 2, 0);
+    var g = new THREE.Group(), W = 0.322, H = 0.291, D = 0.128;
+    mesh(roundedBox(W, H, D, 0.018), mat(0x111111, 0.55, 0.1), g, 0, H / 2, 0); // black enclosure, as in the CAD
     // black end caps with ribs
     var cap = mat(C.black, 0.55, 0.1);
     mesh(roundedBox(W + 0.004, 0.034, D + 0.004, 0.012), cap, g, 0, H - 0.017, 0);
     mesh(roundedBox(W + 0.004, 0.03, D + 0.004, 0.012), cap, g, 0, 0.015, 0);
-    var groove = mat(0xD9BC00, 0.5, 0.05);
-    for (var i = -2; i <= 2; i++) mesh(new THREE.BoxGeometry(0.005, H * 0.34, 0.003), groove, g, i * 0.045, H * 0.42, D / 2 + 0.0012);
+    // aluminium checker-plate side panels on both faces
+    var alu = mat(0xC8CBCF, 0.4, 0.6);
+    mesh(new THREE.BoxGeometry(W * 0.96, H * 0.88, 0.003), alu, g, 0, H * 0.47, D / 2 + 0.0015);
+    mesh(new THREE.BoxGeometry(W * 0.96, H * 0.88, 0.003), alu, g, 0, H * 0.47, -D / 2 - 0.0015);
     // carry handle on top
     var hs = new THREE.Shape(); hs.moveTo(-0.07, 0); hs.lineTo(-0.07, 0.034); hs.quadraticCurveTo(-0.07, 0.05, -0.052, 0.05); hs.lineTo(0.052, 0.05); hs.quadraticCurveTo(0.07, 0.05, 0.07, 0.034); hs.lineTo(0.07, 0); hs.lineTo(0.056, 0); hs.lineTo(0.056, 0.03); hs.quadraticCurveTo(0.056, 0.036, 0.05, 0.036); hs.lineTo(-0.05, 0.036); hs.quadraticCurveTo(-0.056, 0.036, -0.056, 0.03); hs.lineTo(-0.056, 0); hs.lineTo(-0.07, 0);
     var hg = new THREE.ExtrudeGeometry(hs, { depth: 0.03, bevelEnabled: true, bevelThickness: 0.004, bevelSize: 0.003, bevelSegments: 2 });
     hg.translate(0, 0, -0.015); mesh(hg, cap, g, 0, H, 0);
-    // Chogori 8+2 connector on the bottom face
-    var conn = mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.02, 24), mat(C.ink, 0.35, 0.4), g, 0.07, -0.004, 0);
-    mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.022, 24), mat(0xB8860B, 0.3, 0.8), g, 0.07, -0.006, 0);
-    // front logo plate (our logo file) and status LEDs
-    var plate = new THREE.Mesh(new THREE.PlaneGeometry(0.2, 0.05), new THREE.MeshStandardMaterial({ map: logoTex, roughness: 0.5, transparent: true }));
-    plate.position.set(0, H * 0.78, D / 2 + 0.0035); g.add(plate);
-    var back = plate.clone(); back.rotation.y = Math.PI; back.position.z = -D / 2 - 0.0035; g.add(back);
-    for (var j = 0; j < 4; j++) {
-      var led = new THREE.Mesh(new THREE.CircleGeometry(0.004, 16), new THREE.MeshStandardMaterial({ color: lin(j < 3 ? C.green : 0x2a2a2a), emissive: lin(j < 3 ? C.green : 0x000000), emissiveIntensity: 0.9 }));
-      led.position.set(-0.03 + j * 0.02, H * 0.2, D / 2 + 0.0036); g.add(led);
-    }
+    // main power connector on the top face, left of the handle (as in the CAD)
+    mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.03, 24), mat(0x222222, 0.5, 0.05), g, -0.115, H + 0.012, -0.035);
     return g;
   }
   // ---- HM1 pack: 350 wide, 363 tall, 287 deep ----
@@ -100,7 +96,7 @@
     for (var i = 0; i < 9; i++) for (var j = 0; j < 9; j++) if ((i * 7 + j * 3 + i * j) % 3 === 0) x.fillRect(312 + i * 17, 112 + j * 17, 15, 15);
     var t = new THREE.CanvasTexture(cv); t.encoding = THREE.sRGBEncoding; return t;
   }
-  function cabinet(logoTexY, packLogo) {
+  function cabinet(logoTexY, makePack, real) {
     var g = new THREE.Group(), W = 1.5, H = 1.825, D = 0.6, castor = 0.1;
     var body = mat(C.black, 0.62, 0.15), frame = mat(0x222222, 0.5, 0.3), yellow = mat(C.surge, 0.45, 0.05);
     var top = H - 0.33, bottom = castor + 0.08;
@@ -121,13 +117,13 @@
     var cols = 4, rows = 3, gw = (W - 0.12) / cols, gh = (top - bottom) / rows;
     for (var vc = 0; vc <= cols; vc++) mesh(new THREE.BoxGeometry(0.03, top - bottom, D - 0.03), body, g, -W / 2 + 0.06 + gw * vc, (top + bottom) / 2, 0.015);
     for (var hr = 1; hr < rows; hr++) mesh(new THREE.BoxGeometry(W - 0.06, 0.03, D - 0.03), body, g, 0, top - gh * hr, 0.015);
-    var packW = 0.292 * 0.9, packH = 0.322 * 0.9;
+    var ps = real ? 0.95 : 0.9, packH = (real ? 0.296 : 0.322) * ps;
     for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
       var n = r * cols + c + 1, cx = -W / 2 + 0.06 + gw * (c + 0.5), cy = top - gh * (r + 0.5);
       var open = n === 7;
       // recess and a pack inside
       if (n !== 7) {
-        var inside = mk2Pack(packLogo); inside.scale.set(0.9, 0.9, 0.9); inside.rotation.y = 0;
+        var inside = makePack(); inside.scale.set(ps, ps, ps); inside.rotation.y = 0;
         inside.position.set(cx, cy - packH / 2, D / 2 - 0.12); g.add(inside);
       }
       // door: yellow frame + dark window, hinged on the left
@@ -148,15 +144,57 @@
       var wh = mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.03, 20), mat(0x111111, 0.8), g, p[0], 0.035, p[1]); wh.rotation.x = Math.PI / 2;
     });
     // a battery half out of the open slot, to show the swap
-    var out = mk2Pack(packLogo); out.scale.set(0.9, 0.9, 0.9);
+    var out = makePack(); out.scale.set(ps, ps, ps);
     var c7 = -W / 2 + 0.06 + gw * 2.5, r7 = top - gh * 1.5; out.position.set(c7, r7 - packH / 2, D / 2 + 0.07); out.rotation.y = -0.15; g.add(out);
     return g;
+  }
+
+  // ---- Real MK2 from CAD ----
+  var LIBS = ['https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js',
+    'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/meshopt_decoder.js',
+    'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js'];
+  var MK2_URL = 'assets/models/mk2.glb', mk2Promise = null;
+  function addScript(src) {
+    return new Promise(function (ok, fail) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s); });
+  }
+  // The CAD stores one colour per part. Give each one a real-world finish.
+  function cadMaterial(m) {
+    var c = m.color || new THREE.Color(1, 1, 1), k = [c.r, c.g, c.b].map(function (v) { return Math.round(v * 255); }).join(',');
+    var f = {
+      '0,0,0': [0x111111, 0.55, 0.1],      // enclosure, black powder coat
+      '2,2,2': [0x1a1a1a, 0.45, 0.0],      // handle and vent cover, black plastic
+      '233,233,235': [0xC8CBCF, 0.38, 0.85], // side panels, aluminium checker plate
+      '133,133,133': [0x8C8F92, 0.35, 0.9],  // swap-system rocker and plate, steel
+      '90,90,90': [0xA6A9AC, 0.3, 0.9],    // stainless screws
+      '255,255,255': [0x222222, 0.5, 0.05], // power connector and cap: CAD has no colour; dark plastic assumed
+      '229,152,51': [0xB8862F, 0.35, 0.8], // brass inserts
+      '212,212,212': [0xD4D4D4, 0.7, 0.0]  // vent membrane
+    }[k] || [c.getHex(), 0.5, 0.1];
+    return mat(f[0], f[1], f[2]);
+  }
+  function loadMK2() {
+    if (mk2Promise) return mk2Promise;
+    mk2Promise = LIBS.reduce(function (p, u) { return p.then(function () { return addScript(u); }); }, Promise.resolve())
+      .then(function () {
+        return new Promise(function (ok, fail) {
+          var L = new THREE.GLTFLoader(); L.setMeshoptDecoder(window.MeshoptDecoder);
+          L.load(MK2_URL, function (g) {
+            g.scene.traverse(function (o) { if (o.isMesh) { o.material = cadMaterial(o.material); o.userData.cad = true; o.castShadow = true; o.receiveShadow = true; } });
+            ok(g.scene);
+          }, undefined, fail);
+        });
+      });
+    return mk2Promise;
   }
 
   window.ampModel = function (box, type) {
     if (!window.THREE) return;
     var test = document.createElement('canvas');
     if (!(test.getContext('webgl') || test.getContext('experimental-webgl'))) return;
+    loadMK2().then(function (real) { build(box, type, real); }, function () { build(box, type, null); });
+  };
+
+  function build(box, type, real) {
     var poster = box.querySelector('img'); var w = box.clientWidth, h = box.clientHeight || Math.round(w * 0.75);
     var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1)); renderer.setSize(w, h);
@@ -176,19 +214,27 @@
     var yellowOnBlack = logoTexture(LOGO.yellow, '#141414', rerender);
     var root = new THREE.Group(); scene.add(root);
     var target, dist;
+    // reflections for the CAD metals only, so the hand-built parts keep their colours
+    var env = real && THREE.RoomEnvironment ? new THREE.PMREMGenerator(renderer).fromScene(new THREE.RoomEnvironment(), 0.04).texture : null;
+    var pack = !real ? function () { return mk2Pack(black); } : function () {
+      var o = real.clone();
+      if (env) o.traverse(function (m) { if (m.userData.cad) { m.material = m.material.clone(); m.material.envMap = env; m.material.envMapIntensity = 0.9; } });
+      return o;
+    };
     if (type === 'cabinet') {
-      root.add(cabinet(yellowOnBlack, black)); target = new THREE.Vector3(0, 0.88, 0); dist = 4.3;
+      root.add(cabinet(yellowOnBlack, pack, !!real)); target = new THREE.Vector3(0, 0.88, 0); dist = 4.3;
       key.shadow.camera.left = -2; key.shadow.camera.right = 2; key.shadow.camera.top = 3; key.shadow.camera.bottom = -1;
     } else if (type === 'compare') {
-      var hm = hm1Pack(black); hm.position.x = -0.32; root.add(hm);
-      var a = mk2Pack(black); a.position.set(0.17, 0, 0); root.add(a);
-      var b = mk2Pack(black); b.position.set(0.17, 0, -0.16); root.add(b);
-      target = new THREE.Vector3(-0.05, 0.17, -0.05); dist = 1.75;
+      // the two MK2 packs side by side (2 × 128 mm wide, 322 mm long) take about the floor space of one HM1 (350 × 287 mm)
+      var a = pack(); a.rotation.y = Math.PI / 2; a.position.set(-0.3, 0, 0); root.add(a);
+      var b = pack(); b.rotation.y = Math.PI / 2; b.position.set(-0.155, 0, 0); root.add(b);
+      var hm = hm1Pack(black); hm.position.x = 0.2; root.add(hm);
+      target = new THREE.Vector3(-0.04, 0.16, 0); dist = 1.6;
       key.shadow.camera.left = -1; key.shadow.camera.right = 1; key.shadow.camera.top = 1; key.shadow.camera.bottom = -1;
     } else {
-      var p1 = mk2Pack(black); p1.position.set(-0.08, 0, 0.07); root.add(p1);
-      var p2 = mk2Pack(black); p2.position.set(0.16, 0, -0.08); p2.rotation.y = -0.35; root.add(p2);
-      target = new THREE.Vector3(0.04, 0.16, 0); dist = 1.35;
+      var p1 = pack(); p1.position.set(-0.07, 0, 0.09); root.add(p1);
+      var p2 = pack(); p2.position.set(0.17, 0, -0.12); p2.rotation.y = -0.35; root.add(p2);
+      target = new THREE.Vector3(0.05, 0.14, 0); dist = 1.3;
       key.shadow.camera.left = -1; key.shadow.camera.right = 1; key.shadow.camera.top = 1; key.shadow.camera.bottom = -1;
     }
     key.shadow.camera.near = 0.5; key.shadow.camera.far = 12; key.shadow.camera.updateProjectionMatrix();
@@ -215,5 +261,5 @@
       (function spin(t) { if (!touched && t - last > 32) { yaw += 0.004; place(); last = t; } requestAnimationFrame(spin); })(last);
     }
     window.addEventListener('resize', function () { var nw = box.clientWidth, nh = box.clientHeight || Math.round(nw * 0.75); renderer.setSize(nw, nh); cam.aspect = nw / nh; cam.updateProjectionMatrix(); place(); });
-  };
+  }
 })();

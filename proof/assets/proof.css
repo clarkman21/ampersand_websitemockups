@@ -188,6 +188,8 @@ header.site{background:var(--ink);border-bottom:1px solid #262626;z-index:30}
 /* ---- Weight to scale ---- */
 .weight{display:grid;grid-template-columns:minmax(0,440px) minmax(0,480px) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:center}
 .weight .xl{font-size:clamp(104px,12.5vw,180px)}
+.weight.wide{grid-template-columns:minmax(0,480px) minmax(0,1fr)}
+@media (max-width:860px){.weight.wide{grid-template-columns:minmax(0,1fr)}}
 .wbars{display:grid;gap:34px}
 .wbar{display:grid;gap:10px}
 .wbar .lbl{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:17px}
