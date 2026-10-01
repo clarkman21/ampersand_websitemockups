@@ -1,6 +1,6 @@
 /* 3D product models for the Proof site.
    MK2 pack: the real CAD (MK2A001A01 MK2 Battery pack v37, exterior parts only), 322 × 291 × 128 mm,
-   loaded from assets/models/mk2.glb. Made with tools/step_to_web.py and gltfpack. If the file cannot
+   loaded from assets/models/mk2.gltf.json (glTF with embedded data, so any static host serves it). Made with tools/step_to_web.py and gltfpack. If the file cannot
    load, a simple hand-built pack is used instead.
    Hand-built, to scale from the specifications:
    HM1 pack 350 × 363 × 287 mm (Hardware product portfolio, Aug 2026)
@@ -47,7 +47,7 @@
     return tex;
   }
 
-  // ---- Fallback MK2 pack (used only if mk2.glb cannot load): 322 wide, 291 tall, 128 deep (mm → m) ----
+  // ---- Fallback MK2 pack (used only if the model file cannot load): 322 wide, 291 tall, 128 deep (mm → m) ----
   function mk2Pack(logoTex) {
     var g = new THREE.Group(), W = 0.322, H = 0.291, D = 0.128;
     mesh(roundedBox(W, H, D, 0.018), mat(0x111111, 0.55, 0.1), g, 0, H / 2, 0); // black enclosure, as in the CAD
@@ -153,7 +153,7 @@
   var LIBS = ['https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js',
     'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/libs/meshopt_decoder.js',
     'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js'];
-  var MK2_URL = 'assets/models/mk2.glb', mk2Promise = null;
+  var MK2_URL = 'assets/models/mk2.gltf.json', mk2Promise = null;
   function addScript(src) {
     return new Promise(function (ok, fail) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = fail; document.head.appendChild(s); });
   }

@@ -29,10 +29,11 @@ Open `index.html` in a browser. The pages are static HTML. They need no build st
 
 ## 3D models
 
-- `proof/assets/models/mk2.glb` is the MK2 pack from the CAD (MK2 Battery pack v37, Inventor STEP export). It holds only the parts that are visible from outside. The cells, BMS boards, looms and inside screws are removed.
+- `proof/assets/models/mk2.gltf.json` is the MK2 pack from the CAD (MK2 Battery pack v37, Inventor STEP export). It holds only the parts that are visible from outside. The cells, BMS boards, looms and inside screws are removed.
 - To rebuild it from a new STEP file:
   1. `pip install cascadio trimesh fast-simplification rtree embreex scipy`
   2. `python3 tools/step_to_web.py pack.stp mk2-ext.glb --tol 0.5 0.5 --part-cap 3000 --full-detail ENCLOSURE "SIDE PANEL" "HANDLE:" 101010`
-  3. `npx gltfpack -i mk2-ext.glb -o proof/assets/models/mk2.glb -cc`
+  3. `npx gltfpack -i mk2-ext.glb -o mk2.gltf -cc`
+  4. `python3 tools/gltf_embed.py mk2.gltf proof/assets/models/mk2.gltf.json` (one JSON file, because some hosts do not serve .glb files)
 - Do not commit STEP files. They contain the full internal design.
 - The HM1 and the 12-slot cabinet are still hand-built in `proof/assets/models3d.js`.

@@ -15,7 +15,8 @@ Steps:
 4. Print a part report, so a person can check what was kept.
 
 Needs: pip install cascadio trimesh fast-simplification rtree embreex (Embree makes the ray test fast)
-Then compress for the web: npx gltfpack -i OUT.glb -o OUT.min.glb -cc
+Then compress for the web: npx gltfpack -i OUT.glb -o OUT.gltf -cc
+and embed it in one JSON file: python3 tools/gltf_embed.py OUT.gltf OUT.gltf.json
 """
 import argparse
 import json
