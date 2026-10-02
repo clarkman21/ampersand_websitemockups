@@ -11,6 +11,7 @@ This repository contains mockups for a refresh of the public Ampersand website (
 | `direction-b.html` | Direction B, "Proof", first version. Light editorial design. Products have spec tables. |
 | `proof/` | **Selected direction.** Direction B developed into a six-page site: home, network (with automated cabinets), batteries (HM1 and MK2), technology (BMS, VCTU, cabinets, AmperOps), vehicles and investors. Every page opens with its key numbers, aligned with the 25 Sep 2026 company introduction. Design: station signage (15° leaning blades, large Barlow Condensed italic numbers, solid brand-colour fields). |
 | `direction-c.html` | Direction C, "Surge". Yellow poster design. It has an audience switch and a fleet savings estimate. |
+| `content/copy.md` | **All the text on the Proof pages.** Edit the words here, not in the HTML. |
 | `assets/brand/` | Logo files from Drive (Brand Assets, New 2026). |
 | `assets/img/` | Web-size copies of Ampersand photos. |
 | `assets/shots/` | Preview screenshots for the overview page. |
@@ -18,6 +19,30 @@ This repository contains mockups for a refresh of the public Ampersand website (
 ## How to view
 
 Open `index.html` in a browser. The pages are static HTML. They need no build step. The fonts load from Google Fonts.
+
+## Edit the website copy
+
+All the text on the Proof pages is in `content/copy.md`. Each text has a `### key` line, and the text is under it.
+
+1. Open `content/copy.md` (on GitHub, select the pencil icon).
+2. Change the text under a key. Do not change the key line.
+3. Commit the change.
+
+The GitHub Action "Apply website copy" then writes the text into the pages and commits them. The deployed site updates after that commit. To do it on your computer, run `node tools/copy.mjs apply` (Node 18 or later, no install).
+
+Formatting:
+
+- `**text**` shows the text in Surge Yellow.
+- `_text_` makes a small unit after a big number, for example `6 _min_`.
+- `[text](link)` makes a link.
+- Inline HTML, for example `<br>`, also works.
+- In `shared.live-note`, `{asOf}` shows the data period from `proof/assets/data.js`.
+
+Rules:
+
+- `node tools/copy.mjs check` shows keys that are missing or that no page uses. It changes nothing.
+- The header and footer text is in the "Shared" section. It goes into `proof/assets/copy.js`. Do not edit that file by hand.
+- New text, new sections, images and layout still need a change to the HTML. After you add text to a page, run `python3 tools/copy_extract.py` to give it a key. Run `node tools/copy.mjs apply` first, because the extractor writes `copy.md` again from the pages.
 
 ## Data
 

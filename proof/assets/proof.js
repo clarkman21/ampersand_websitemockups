@@ -14,13 +14,16 @@
   var fmt = new Intl.NumberFormat('en-US');
 
   // ---- Header and footer ----
+  // The text comes from content/copy.md (Shared section) through assets/copy.js. The second value is the fallback.
+  var COPY = window.AMP_COPY || {};
+  function T(k, d) { return COPY[k] != null ? COPY[k] : d; }
   var NAV = [
-    ['network', 'network.html', 'Network'],
-    ['batteries', 'batteries.html', 'Batteries'],
-    ['technology', 'technology.html', 'Technology'],
-    ['vehicles', 'vehicles.html', 'Vehicles'],
-    ['investors', 'investors.html', 'Investors'],
-    ['contact', 'contact.html', 'Work with us']
+    ['network', 'network.html', T('shared.nav-network', 'Network')],
+    ['batteries', 'batteries.html', T('shared.nav-batteries', 'Batteries')],
+    ['technology', 'technology.html', T('shared.nav-technology', 'Technology')],
+    ['vehicles', 'vehicles.html', T('shared.nav-vehicles', 'Vehicles')],
+    ['investors', 'investors.html', T('shared.nav-investors', 'Investors')],
+    ['contact', 'contact.html', T('shared.nav-contact', 'Work with us')]
   ];
   function navItems(withContact) {
     // the desktop bar shows "Work with us" as the yellow button, so it leaves the link out
@@ -32,23 +35,23 @@
   var head = document.getElementById('site-header');
   if (head) {
     head.innerHTML =
-      '<div class="mock-bar"><span>Mockup · Proof site, station-signage design. The "Network now" numbers are simulated.</span><a href="../index.html">Back to overview</a></div>' +
+      '<div class="mock-bar"><span>' + T('shared.mockbar', 'Mockup · Proof site, station-signage design. The "Network now" numbers are simulated.') + '</span><a href="../index.html">' + T('shared.mockbar-back', 'Back to overview') + '</a></div>' +
       '<header class="site"><div class="wrap nav"><a class="logo" href="index.html" aria-label="Ampersand home"><img src="../assets/brand/logo-horizontal-yellow.svg" alt="Ampersand"></a>' +
-      '<ul>' + navItems(false) + '</ul><a class="btn sm" href="contact.html">Work with us</a></div>' +
-      '<nav class="subnav" aria-label="Sections"><ul><li><a href="index.html"' + (here === 'home' ? ' aria-current="page"' : '') + '>Home</a></li>' + navItems(true) + '</ul></nav></header>' +
+      '<ul>' + navItems(false) + '</ul><a class="btn sm" href="contact.html">' + T('shared.header-button', 'Work with us') + '</a></div>' +
+      '<nav class="subnav" aria-label="Sections"><ul><li><a href="index.html"' + (here === 'home' ? ' aria-current="page"' : '') + '>' + T('shared.nav-home', 'Home') + '</a></li>' + navItems(true) + '</ul></nav></header>' +
       '<div class="live" aria-label="Network now, simulated"><div class="wrap">' +
-      '<div class="lbl"><b><span class="dot" aria-hidden="true"></span>Network now</b><span>Simulated feed · based on ' + D.asOf + '</span></div>' +
-      '<div class="cell"><div class="n tick" data-live="swapsToday">0</div><div class="k">Swaps today</div></div>' +
-      '<div class="cell"><div class="n tick" data-live="swapsHour">0</div><div class="k">Swaps this hour</div></div>' +
-      '<div class="cell"><div class="n">96%</div><div class="k">Batteries out fully charged</div></div>' +
-      '<div class="cell"><div class="n" data-live="stations">' + D.stations + '</div><div class="k">Stations in service</div></div>' +
+      '<div class="lbl"><b><span class="dot" aria-hidden="true"></span>' + T('shared.live-title', 'Network now') + '</b><span>' + T('shared.live-note', 'Simulated feed · based on {asOf}').replace('{asOf}', D.asOf) + '</span></div>' +
+      '<div class="cell"><div class="n tick" data-live="swapsToday">0</div><div class="k">' + T('shared.live-today', 'Swaps today') + '</div></div>' +
+      '<div class="cell"><div class="n tick" data-live="swapsHour">0</div><div class="k">' + T('shared.live-hour', 'Swaps this hour') + '</div></div>' +
+      '<div class="cell"><div class="n">' + T('shared.live-charged-number', '96%') + '</div><div class="k">' + T('shared.live-charged', 'Batteries out fully charged') + '</div></div>' +
+      '<div class="cell"><div class="n" data-live="stations">' + D.stations + '</div><div class="k">' + T('shared.live-stations', 'Stations in service') + '</div></div>' +
       '</div></div>';
   }
   var PATHS = [
-    ['Investors', 'Already profitable', 'investors.html'],
-    ['Fleets', 'Electrify a fleet', 'vehicles.html#fleets'],
-    ['OEMs', 'Power your bike', 'vehicles.html#oem'],
-    ['Sites', 'Host a station', 'network.html#host']
+    [T('shared.path-investors-kicker', 'Investors'), T('shared.path-investors', 'Already profitable'), 'investors.html'],
+    [T('shared.path-fleets-kicker', 'Fleets'), T('shared.path-fleets', 'Electrify a fleet'), 'vehicles.html#fleets'],
+    [T('shared.path-oems-kicker', 'OEMs'), T('shared.path-oems', 'Power your bike'), 'vehicles.html#oem'],
+    [T('shared.path-sites-kicker', 'Sites'), T('shared.path-sites', 'Host a station'), 'network.html#host']
   ];
   var foot = document.getElementById('site-footer');
   if (foot) {
@@ -57,16 +60,16 @@
       '<h2 class="sr">Work with us</h2><div class="paths">' + PATHS.map(function (p) {
         return '<a href="' + p[2] + '"><span class="kicker">' + p[0] + '</span><span class="d">' + p[1] + '&nbsp;→</span></a>';
       }).join('') + '</div>' +
-      '<p class="kom d">Keep on Moving.</p>' +
-      '<div class="langs d"><span lang="rw">Komeza Ugende</span><span class="sep" aria-hidden="true">/</span><span lang="sw">Zidi Kusonga</span></div>' +
+      '<p class="kom d">' + T('shared.footer-tagline', 'Keep on Moving.') + '</p>' +
+      '<div class="langs d"><span lang="rw">' + T('shared.footer-kinyarwanda', 'Komeza Ugende') + '</span><span class="sep" aria-hidden="true">/</span><span lang="sw">' + T('shared.footer-swahili', 'Zidi Kusonga') + '</span></div>' +
       '<div class="fbase"><img class="logo" src="../assets/brand/logo-horizontal-yellow.svg" alt="Ampersand">' +
       '<div class="addr">' +
-      '<div><b>Kigali</b>KK 6 Av, Road to MAGERWA<br>Hotline 1011</div>' +
-      '<div><b>Nairobi</b>Old Mombasa Road, Gate 2<br>Warehouse 11 &amp; 12</div>' +
-      '<div><b>Contact</b>info@ampersand.solar<br>OEM@ampersand.solar</div>' +
-      '<div><b>People</b>media@ampersand.solar<br><a href="https://ampersand-energy.breezy.hr/">Careers</a></div>' +
+      '<div><b>' + T('shared.footer-kigali-title', 'Kigali') + '</b>' + T('shared.footer-kigali', 'KK 6 Av, Road to MAGERWA<br>Hotline 1011') + '</div>' +
+      '<div><b>' + T('shared.footer-nairobi-title', 'Nairobi') + '</b>' + T('shared.footer-nairobi', 'Old Mombasa Road, Gate 2<br>Warehouse 11 &amp; 12') + '</div>' +
+      '<div><b>' + T('shared.footer-contact-title', 'Contact') + '</b>' + T('shared.footer-contact', 'info@ampersand.solar<br>OEM@ampersand.solar') + '</div>' +
+      '<div><b>' + T('shared.footer-people-title', 'People') + '</b>' + T('shared.footer-people', 'media@ampersand.solar<br><a href="https://ampersand-energy.breezy.hr/">Careers</a>') + '</div>' +
       '</div></div>' +
-      '<p class="legal">© 2026 Ampersand. Mockup for internal review. 3D models are approximate.</p></div></footer>';
+      '<p class="legal">' + T('shared.footer-legal', '© 2026 Ampersand. Mockup for internal review. 3D models are approximate.') + '</p></div></footer>';
   }
 
   // ---- Simulated live feed ----

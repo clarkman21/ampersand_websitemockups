@@ -3,3 +3,5 @@ README.md
 *.stp
 *.step
 *.raw.glb
+content/
+.github/

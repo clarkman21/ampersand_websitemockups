@@ -15,9 +15,9 @@
 <main>
   <section class="hero short">
     <div class="wrap"><div class="copy">
-      <div class="kicker">Work with us</div>
-      <h1 class="d">Build on the <span class="hl">network.</span></h1>
-      <p class="lede">Fleets, vehicle makers, site hosts and franchisees grow with us. Tell us what you need and the right team will reply.</p>
+      <div class="kicker" data-copy="contact.hero.kicker-1">Work with us</div>
+      <h1 class="d" data-copy="contact.hero.h1-1">Build on the <span class="hl">network.</span></h1>
+      <p class="lede" data-copy="contact.hero.lede-1">Fleets, vehicle makers, site hosts and franchisees grow with us. Tell us what you need and the right team will reply.</p>
     </div></div>
     <div class="pblade" style="--bl:52%;--fp:35% 50%"><img src="../assets/img/station-swap.jpg" alt="A station attendant hands a charged battery to a rider"></div>
   </section>
@@ -25,28 +25,28 @@
   <section class="sec s-yellow" id="request">
     <div class="wrap split top">
       <div class="stack">
-        <div class="kicker">Get in touch</div>
-        <h2 class="d">Tell us about your plan.</h2>
+        <div class="kicker" data-copy="contact.request.kicker-1">Get in touch</div>
+        <h2 class="d" data-copy="contact.request.h2-1">Tell us about your plan.</h2>
         <ol class="steps">
-          <li>Send the form. It takes one minute.</li>
-          <li>The right team contacts you.</li>
-          <li>We plan the vehicles, energy and stations with you.</li>
+          <li data-copy="contact.request.item-1">Send the form. It takes one minute.</li>
+          <li data-copy="contact.request.item-2">The right team contacts you.</li>
+          <li data-copy="contact.request.item-3">We plan the vehicles, energy and stations with you.</li>
         </ol>
-        <p class="src">Media: media@ampersand.solar · Vehicle makers: OEM@ampersand.solar</p>
+        <p class="src" data-copy="contact.request.note-1">Media: media@ampersand.solar · Vehicle makers: OEM@ampersand.solar</p>
       </div>
       <form class="req" id="request-form">
-        <label for="r-name">Name<input id="r-name" name="name" type="text" autocomplete="name" required></label>
-        <label for="r-org">Organisation<input id="r-org" name="org" type="text" autocomplete="organization" required></label>
-        <label for="r-mail">Work email<input id="r-mail" name="email" type="email" autocomplete="email" required></label>
-        <label for="r-type">I am<select id="r-type" name="type">
-          <option value="fleet">A fleet operator</option>
-          <option value="oem">A vehicle maker (OEM)</option>
-          <option value="site">A site host or franchisee</option>
-          <option value="media">Media</option>
-          <option value="other">Other</option>
+        <label for="r-name"><span data-copy="contact.request.text-1">Name</span><input id="r-name" name="name" type="text" autocomplete="name" required></label>
+        <label for="r-org"><span data-copy="contact.request.text-2">Organisation</span><input id="r-org" name="org" type="text" autocomplete="organization" required></label>
+        <label for="r-mail"><span data-copy="contact.request.text-3">Work email</span><input id="r-mail" name="email" type="email" autocomplete="email" required></label>
+        <label for="r-type"><span data-copy="contact.request.text-4">I am</span><select id="r-type" name="type">
+          <option value="fleet" data-copy="contact.request.option-1">A fleet operator</option>
+          <option value="oem" data-copy="contact.request.option-2">A vehicle maker (OEM)</option>
+          <option value="site" data-copy="contact.request.option-3">A site host or franchisee</option>
+          <option value="media" data-copy="contact.request.option-4">Media</option>
+          <option value="other" data-copy="contact.request.option-5">Other</option>
         </select></label>
-        <button class="btn k" type="submit">Send</button>
-        <div class="ok-msg" id="request-ok" hidden>Message received. This is a mockup: the form does not send data.</div>
+        <button class="btn k" type="submit" data-copy="contact.request.button-1">Send</button>
+        <div class="ok-msg" id="request-ok" hidden data-copy="contact.request-ok.text-1">Message received. This is a mockup: the form does not send data.</div>
       </form>
     </div>
   </section>
@@ -54,6 +54,7 @@
 
 <div id="site-footer"></div>
 <script src="assets/data.js"></script>
+<script src="assets/copy.js"></script>
 <script src="assets/proof.js"></script>
 </body>
 </html>

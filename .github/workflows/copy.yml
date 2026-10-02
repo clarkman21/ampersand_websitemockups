@@ -1,0 +1,33 @@
+# When content/copy.md changes, write the copy into the Proof pages and commit the result.
+name: Apply website copy
+
+on:
+  push:
+    paths:
+      - content/copy.md
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-copy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Write copy.md into the pages
+        run: node tools/copy.mjs apply
+      - name: Commit the updated pages
+        run: |
+          if git diff --quiet; then echo "The pages already match copy.md."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898729+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Apply copy from content/copy.md"
+          git push
