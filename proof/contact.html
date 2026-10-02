@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ampersand · Work with us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,700&family=Instrument+Sans:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/proof.css">
+</head>
+<body data-page="contact">
+<div id="site-header"></div>
+
+<main>
+  <section class="hero short">
+    <div class="wrap"><div class="copy">
+      <div class="kicker">Work with us</div>
+      <h1 class="d">Build on the <span class="hl">network.</span></h1>
+      <p class="lede">Fleets, vehicle makers, site hosts and franchisees grow with us. Tell us what you need and the right team will reply.</p>
+    </div></div>
+    <div class="pblade" style="--bl:52%;--fp:35% 50%"><img src="../assets/img/station-swap.jpg" alt="A station attendant hands a charged battery to a rider"></div>
+  </section>
+
+  <section class="sec s-yellow" id="request">
+    <div class="wrap split top">
+      <div class="stack">
+        <div class="kicker">Get in touch</div>
+        <h2 class="d">Tell us about your plan.</h2>
+        <ol class="steps">
+          <li>Send the form. It takes one minute.</li>
+          <li>The right team contacts you.</li>
+          <li>We plan the vehicles, energy and stations with you.</li>
+        </ol>
+        <p class="src">Media: media@ampersand.solar · Vehicle makers: OEM@ampersand.solar</p>
+      </div>
+      <form class="req" id="request-form">
+        <label for="r-name">Name<input id="r-name" name="name" type="text" autocomplete="name" required></label>
+        <label for="r-org">Organisation<input id="r-org" name="org" type="text" autocomplete="organization" required></label>
+        <label for="r-mail">Work email<input id="r-mail" name="email" type="email" autocomplete="email" required></label>
+        <label for="r-type">I am<select id="r-type" name="type">
+          <option value="fleet">A fleet operator</option>
+          <option value="oem">A vehicle maker (OEM)</option>
+          <option value="site">A site host or franchisee</option>
+          <option value="media">Media</option>
+          <option value="other">Other</option>
+        </select></label>
+        <button class="btn k" type="submit">Send</button>
+        <div class="ok-msg" id="request-ok" hidden>Message received. This is a mockup: the form does not send data.</div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/proof.js"></script>
+</body>
+</html>

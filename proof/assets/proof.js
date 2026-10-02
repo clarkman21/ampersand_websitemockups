@@ -20,10 +20,11 @@
     ['technology', 'technology.html', 'Technology'],
     ['vehicles', 'vehicles.html', 'Vehicles'],
     ['investors', 'investors.html', 'Investors'],
-    ['work', '#work', 'Work with us']
+    ['contact', 'contact.html', 'Work with us']
   ];
-  function navItems() {
-    return NAV.map(function (n) {
+  function navItems(withContact) {
+    // the desktop bar shows "Work with us" as the yellow button, so it leaves the link out
+    return NAV.filter(function (n) { return withContact || n[0] !== 'contact'; }).map(function (n) {
       var cur = n[0] === here ? ' aria-current="page"' : '';
       return '<li><a href="' + n[1] + '"' + cur + '>' + n[2] + '</a></li>';
     }).join('');
@@ -33,8 +34,8 @@
     head.innerHTML =
       '<div class="mock-bar"><span>Mockup · Proof site, station-signage design. The "Network now" numbers are simulated.</span><a href="../index.html">Back to overview</a></div>' +
       '<header class="site"><div class="wrap nav"><a class="logo" href="index.html" aria-label="Ampersand home"><img src="../assets/brand/logo-horizontal-yellow.svg" alt="Ampersand"></a>' +
-      '<ul>' + navItems() + '</ul><a class="btn sm" href="investors.html#request">Investor pack</a></div>' +
-      '<nav class="subnav" aria-label="Sections"><ul><li><a href="index.html"' + (here === 'home' ? ' aria-current="page"' : '') + '>Home</a></li>' + navItems() + '</ul></nav></header>' +
+      '<ul>' + navItems(false) + '</ul><a class="btn sm" href="contact.html">Work with us</a></div>' +
+      '<nav class="subnav" aria-label="Sections"><ul><li><a href="index.html"' + (here === 'home' ? ' aria-current="page"' : '') + '>Home</a></li>' + navItems(true) + '</ul></nav></header>' +
       '<div class="live" aria-label="Network now, simulated"><div class="wrap">' +
       '<div class="lbl"><b><span class="dot" aria-hidden="true"></span>Network now</b><span>Simulated feed · based on ' + D.asOf + '</span></div>' +
       '<div class="cell"><div class="n tick" data-live="swapsToday">0</div><div class="k">Swaps today</div></div>' +
@@ -44,7 +45,7 @@
       '</div></div>';
   }
   var PATHS = [
-    ['Investors', 'Request the pack', 'investors.html#request'],
+    ['Investors', 'Already profitable', 'investors.html'],
     ['Fleets', 'Electrify a fleet', 'vehicles.html#fleets'],
     ['OEMs', 'Power your bike', 'vehicles.html#oem'],
     ['Sites', 'Host a station', 'network.html#host']
@@ -105,6 +106,9 @@
 
   // Request form (investor page)
   var f = document.getElementById('request-form');
+  // preselect the request type from the link, for example contact.html?type=oem
+  var sel = document.getElementById('r-type'), want = (location.search.match(/[?&]type=([a-z]+)/) || [])[1];
+  if (sel && want) Array.prototype.forEach.call(sel.options, function (o) { if (o.value === want) sel.value = want; });
   if (f && f.tagName === 'FORM') {
     f.addEventListener('submit', function (e) {
       e.preventDefault();
