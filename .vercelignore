@@ -1,0 +1,5 @@
+tools/
+README.md
+*.stp
+*.step
+*.raw.glb
