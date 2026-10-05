@@ -5,9 +5,28 @@ Edit the text under each `### key` line. Do not change the keys: they link the t
 - `**text**` shows the text in Surge Yellow (in headlines and buttons).
 - `_text_` makes a small unit after a big number, for example `6 _min_` or `15.5 _kg_`.
 - `[text](link)` makes a link.
+- `{name}` shows a number from the Numbers section, for example `{daily-swaps}`. Change a number
+  there once and every page updates.
 - Plain inline HTML also works for special cases.
 - To publish: commit this file. The site build writes the copy into the pages
   (`node tools/copy.mjs apply`). Changes to layout, images or new sections still need the code.
+
+
+## Numbers · used on many pages
+
+<!-- Use them in the text as {name}. The live feed also reads daily-swaps and stations. -->
+
+### num.charged
+96%
+
+### num.bikes
+11,000
+
+### num.daily-swaps
+24,000
+
+### num.stations
+70
 
 
 ## Shared · header and footer (every page)
@@ -55,7 +74,7 @@ Swaps today
 Swaps this hour
 
 ### shared.live-charged-number
-96%
+{charged}
 
 ### shared.live-charged
 Batteries out fully charged
@@ -139,7 +158,7 @@ East Africa's battery swap network
 Powering the **movement** of people and cities.
 
 ### home.hero.lede-1
-We build the batteries, the swap network and the software behind more than 10,000 electric motorcycles in Rwanda and Kenya.
+We build the batteries, the swap network and the software behind more than {bikes} electric motorcycles in East Africa.
 
 ### home.hero.button-1
 See the numbers
@@ -148,7 +167,7 @@ See the numbers
 Explore the network
 
 ### home.hero.big-1
-24,000
+{daily-swaps}
 
 ### home.hero.text-1
 battery swaps, every day
@@ -157,7 +176,7 @@ battery swaps, every day
 <!-- Home · band -->
 
 ### home.band.number-1
-10,000+
+{bikes}+
 
 ### home.band.label-1
 bikes on the road
@@ -169,10 +188,10 @@ bikes on the road
 arrival to departure
 
 ### home.band.number-3
-96%
+{charged}
 
 ### home.band.label-3
-of batteries out fully charged
+of batteries out fully charged · 99% above 90%
 
 ### home.band.number-4
 +40%
@@ -202,16 +221,16 @@ Arrive, queue, hand over
 Swap · 2 min
 
 ### home.swap.big-1
-70
+{stations}
 
 ### home.swap.text-1
 stations in Rwanda and Kenya
 
 ### home.swap.big-2
-96%
+{charged}
 
 ### home.swap.text-2
-of batteries leave fully charged
+of batteries leave fully charged, and 99% leave above 90%
 
 ### home.swap.big-3
 80%
@@ -235,7 +254,7 @@ MK2 battery
 Two packs per bike. One hand to swap.
 
 ### home.mk2.lede-1
-An HM1 pack weighs 44 kg. The MK2 pack weighs 15.5 kg, and either pack swaps alone. Our BMS and telematics are built in.
+Each MK2 pack weighs 15.5 kg, so one hand is enough to swap it, and either pack swaps alone. Our BMS and telematics are built in.
 
 ### home.mk2.big-2
 5 years
@@ -262,7 +281,7 @@ sealed pack
 drop test passed
 
 ### home.mk2.button-1
-HM1 and MK2
+The MK2 battery
 
 ### home.mk2.tag-1
 BMS in-house
@@ -283,33 +302,6 @@ Bluetooth LE
 4G · GPS
 
 
-<!-- Home · weight -->
-
-### home.weight.kicker-1
-Weight per pack
-
-### home.weight.big-1
-−65%
-
-### home.weight.lede-1
-The heaviest thing a swap attendant lifts went from 44 kg to 15.5 kg.
-
-### home.weight.text-1
-HM1 pack
-
-### home.weight.big-2
-44 kg
-
-### home.weight.text-2
-MK2 pack
-
-### home.weight.big-3
-15.5 kg
-
-### home.weight.note-1
-Bars drawn to scale.
-
-
 <!-- Home · products -->
 
 ### home.products.kicker-1
@@ -322,7 +314,7 @@ One battery standard. Six ways in.
 Energy first. Every vehicle runs on the same batteries and the same stations.
 
 ### home.products.big-1
-70
+{stations}
 
 ### home.products.b-1
 Swap network
@@ -340,7 +332,7 @@ Rolling out in 2026
 5 yrs
 
 ### home.products.b-3
-HM1 and MK2 batteries
+MK2 batteries
 
 ### home.products.note-2
 Battery first life. Industry norm: 1–2 years.
@@ -393,6 +385,9 @@ $173
 ### home.riders.text-3
 a month with Ampersand
 
+### home.riders.text-4
+“I can save extra money I would have used on fuel. I don’t waste time at the garage anymore.”
+
 ### home.riders.cite-1
 Etienne, rider
 
@@ -403,7 +398,7 @@ Etienne, rider
 Premium bikes, open network.
 
 ### home.open.lede-1
-Our Alpha is the best-selling e-motorcycle in its markets. Now other makers' bikes run on our batteries and stations too. Their riders join 24,000 swaps a day from day one.
+Our Alpha is the best-selling e-motorcycle in its markets. Now other makers' bikes run on our batteries and stations too. Their riders join {daily-swaps} swaps a day from day one.
 
 ### home.open.button-1
 Build on our network
@@ -442,22 +437,22 @@ to swap a battery
 <!-- Network · band -->
 
 ### network.band.number-1
-24,000
+{daily-swaps}
 
 ### network.band.label-1
 battery swaps a day
 
 ### network.band.number-2
-70
+{stations}
 
 ### network.band.label-2
 stations in Rwanda and Kenya
 
 ### network.band.number-3
-96%
+{charged}
 
 ### network.band.label-3
-of batteries out fully charged
+of batteries out fully charged · 99% above 90%
 
 ### network.band.number-4
 80%
@@ -505,7 +500,7 @@ New · Automated swap cabinet
 12<span class="u hl"> slots</span>
 
 ### network.cabinets.h2-1
-A station that fits on a pavement.
+A station that fits on any site.
 
 ### network.cabinets.lede-1
 Our self-service cabinet holds 12 charged MK2 packs. The rider pays in the app, a slot opens, and no attendant is needed. Designed in-house, rolling out in 2026.
@@ -552,11 +547,17 @@ Host a station or run a franchise.
 ### network.host.text-1
 We grow with partners: site hosts, energy partners and station franchisees.
 
+### network.host.text-6
+Photo to come
+
+### network.host.b-1
+Swap cabinet
+
 ### network.host.h3-1
-Small footprint
+Swap cabinet
 
 ### network.host.text-2
-For markets and side roads.
+Self-service, for markets, side roads and fleet depots.
 
 ### network.host.h3-2
 Standard station
@@ -564,11 +565,17 @@ Standard station
 ### network.host.text-3
 Staffed, on main moto-taxi routes.
 
+### network.host.text-7
+Photo to come
+
+### network.host.b-2
+Mega station
+
 ### network.host.h3-3
-Hero station
+Mega station
 
 ### network.host.text-4
-Our flagship format.
+Our flagship format, for the busiest routes.
 
 ### network.host.big-1
 +1
@@ -592,7 +599,7 @@ Ampersand · Batteries
 <!-- Batteries · hero -->
 
 ### batteries.hero.kicker-1
-Energy · HM1 and MK2 batteries
+Energy · MK2 battery
 
 ### batteries.hero.h1-1
 A battery built to last **five years.**
@@ -610,7 +617,7 @@ Spec sheet
 −65%
 
 ### batteries.hero.text-1
-pack weight, MK2 against HM1
+pack weight, MK2 against our first pack
 
 
 <!-- Batteries · band -->
@@ -638,42 +645,6 @@ MK2 pack
 
 ### batteries.band.label-4
 MK2 drop test passed
-
-
-<!-- Batteries · hm1 -->
-
-### batteries.hm1.flag-1
-HM1
-
-### batteries.hm1.big-1
-44 _kg_
-
-### batteries.hm1.h2-1
-The pack that built the network.
-
-### batteries.hm1.lede-1
-One pack per bike. A 24-cell LFP module built in-house in Kigali, now running on the Ampersand BMS.
-
-### batteries.hm1.big-2
-~3.0 _kWh_
-
-### batteries.hm1.text-1
-usable energy
-
-### batteries.hm1.big-3
-LFP
-
-### batteries.hm1.text-2
-cell chemistry
-
-### batteries.hm1.big-4
-IP66
-
-### batteries.hm1.text-3
-enclosure, IP67 internals
-
-### batteries.hm1.note-1
-HM1.9 pack, engineering render.
 
 
 <!-- Batteries · mk2 -->
@@ -715,7 +686,7 @@ Humidity
 sensing inside the pack
 
 ### batteries.mk2.button-1
-Weight comparison
+From HM1 to MK2
 
 
 <!-- Batteries · m-mk2 -->
@@ -730,45 +701,6 @@ Drag to rotate
 MK2 pack from the CAD (v37): 322 × 291 × 128 mm. Outside parts only.
 
 
-<!-- Batteries · weight -->
-
-### batteries.weight.kicker-1
-Weight reduction
-
-### batteries.weight.big-1
-−65%
-
-### batteries.weight.lede-1
-An HM1 pack weighs 44 kg and needs two hands. An MK2 pack weighs 15.5 kg and is a one-handed lift.
-
-### batteries.weight.text-1
-HM1 pack
-
-### batteries.weight.big-2
-44 kg
-
-### batteries.weight.text-2
-MK2 pack
-
-### batteries.weight.big-3
-15.5 kg
-
-### batteries.weight.note-1
-Bars drawn to scale.
-
-
-<!-- Batteries · m-compare -->
-
-### batteries.m-compare.text-1
-Drag to rotate
-
-
-<!-- Batteries · weight -->
-
-### batteries.weight.note-2
-To scale: the two MK2 packs that replace one HM1 pack. MK2 from the CAD; HM1 approximate.
-
-
 <!-- Batteries · tests -->
 
 ### batteries.tests.kicker-1
@@ -778,7 +710,7 @@ Safety and durability
 75,000 _km_
 
 ### batteries.tests.lede-1
-The MK2 vibration test equals about five years of riding. HM1 and MK2 are UN38.3 certified and tested to ISO 18243.
+The MK2 vibration test equals about five years of riding. The MK2 is UN38.3 certified and tested to ISO 18243.
 
 ### batteries.tests.text-1
 Passed
@@ -817,19 +749,55 @@ Certified
 UN38.3
 
 
+<!-- Batteries · evolution -->
+
+### batteries.weight.kicker-1
+How we got here · HM1 to MK2
+
+### batteries.weight.big-1
+−65%
+
+### batteries.weight.lede-1
+Our first pack, the HM1, built the network: one 44 kg pack per bike. Seven years of fleet data went into its successor. The MK2 uses two 15.5 kg packs, and each one is a one-handed lift.
+
+### batteries.weight.text-1
+HM1 · first generation
+
+### batteries.weight.big-2
+44 kg
+
+### batteries.weight.text-2
+MK2 · current
+
+### batteries.weight.big-3
+15.5 kg
+
+### batteries.weight.note-1
+Bars drawn to scale.
+
+
+<!-- Batteries · m-compare -->
+
+### batteries.m-compare.text-1
+Drag to rotate
+
+
+<!-- Batteries · evolution -->
+
+### batteries.weight.note-2
+To scale: the two MK2 packs that replace one HM1 pack. MK2 from the CAD; HM1 approximate.
+
+
 <!-- Batteries · spec -->
 
 ### batteries.spec.kicker-1
 Spec sheet
 
 ### batteries.spec.h2-1
-HM1 and MK2 at a glance.
+The MK2 at a glance.
 
 ### batteries.spec.text-1
 Every generation works with the stations already on the network. A larger pack, AMP XL, is in development.
-
-### batteries.spec.cell-1
-HM1
 
 ### batteries.spec.cell-2
 MK2
@@ -837,17 +805,11 @@ MK2
 ### batteries.spec.cell-3
 Packs per bike
 
-### batteries.spec.cell-4
-1
-
 ### batteries.spec.cell-5
-2, in parallel
+2, in parallel. Either pack swaps alone.
 
 ### batteries.spec.cell-6
 Weight per pack
-
-### batteries.spec.cell-7
-44 kg
 
 ### batteries.spec.cell-8
 15.5 kg
@@ -855,17 +817,11 @@ Weight per pack
 ### batteries.spec.cell-9
 Energy
 
-### batteries.spec.cell-10
-~3.0 kWh
-
 ### batteries.spec.cell-11
 3.67 kWh per bike
 
 ### batteries.spec.cell-12
 Chemistry
-
-### batteries.spec.cell-13
-LFP
 
 ### batteries.spec.cell-14
 LFP
@@ -878,9 +834,6 @@ Designed first life
 
 ### batteries.spec.cell-17
 Protection
-
-### batteries.spec.cell-18
-IP66 enclosure, IP67 internals
 
 ### batteries.spec.cell-19
 IP67 · 1 m drop tested
@@ -916,10 +869,100 @@ Technology
 Built <span class="hl nw">in-house.</span>
 
 ### technology.hero.big-1
-7 years of fleet data in every pack.
+One system, from the cell to the city.
 
 ### technology.hero.lede-1
-We design our own battery management system (BMS), our own vehicle control and telematics unit (VCTU), our own cabinets and our own software.
+We design our own battery management system (BMS), our own vehicle control and telematics unit (VCTU), our own cabinets and AmperOps, the software that runs it all.
+
+
+<!-- Technology · amperops -->
+
+### technology.amperops.flag-1
+Software · AmperOps
+
+### technology.amperops.h2-1
+One system runs the network.
+
+### technology.amperops.text-1
+AmperOps connects every rider, station, partner, technician and manager to the same live data. Each new rider and partner adds data that makes the network cheaper to build and run.
+
+### technology.amperops.b-1
+Every MK2 pack
+
+### technology.amperops.text-2
+BMS and VCTU data
+
+### technology.amperops.b-2
+Every bike
+
+### technology.amperops.text-3
+GPS, 4G and crash alerts
+
+### technology.amperops.b-3
+Every station
+
+### technology.amperops.text-4
+Chargers, stock and cabinets
+
+### technology.amperops.b-4
+{daily-swaps} swaps a day
+
+### technology.amperops.text-5
+Each swap is a record
+
+### technology.amperops.big-1
+AmperOps
+
+### technology.amperops.text-6
+7 years of fleet data. One live picture of the network.
+
+### technology.amperops.big-2
+Riders
+
+### technology.amperops.b-5
+Driver app
+
+### technology.amperops.text-7
+Live battery data over Bluetooth LE, swap history and payments.
+
+### technology.amperops.big-3
+Stations
+
+### technology.amperops.b-6
+Attendants and cabinets
+
+### technology.amperops.text-8
+Stock, queues and charging at every station and in every slot.
+
+### technology.amperops.big-4
+Partners
+
+### technology.amperops.b-7
+Fleets, OEMs and financiers
+
+### technology.amperops.text-9
+Fleet reports, crash alerts, pack location and remote immobilisation.
+
+### technology.amperops.big-5
+Maintenance
+
+### technology.amperops.b-8
+Field and workshop teams
+
+### technology.amperops.text-10
+Battery health and predictive maintenance, before a pack fails.
+
+### technology.amperops.big-6
+Management
+
+### technology.amperops.b-9
+Network planning
+
+### technology.amperops.text-11
+Where to build stations, how to charge each battery and how to set prices.
+
+### technology.amperops.text-12
+<span aria-hidden="true">↻</span> More riders and partners give more data. More data makes each station and each battery work harder.
 
 
 <!-- Technology · stack -->
@@ -958,7 +1001,7 @@ The Ampersand BMS controls charge speed and battery health, cell by cell.
 Packs
 
 ### technology.stack.text-6
-HM1 and MK2 pack design. HM1 is built in Kigali. MK2 weighs 15.5 kg.
+MK2 pack design: two 15.5 kg packs per bike, designed by our engineers.
 
 ### technology.stack.big-5
 Cabinets
@@ -1051,7 +1094,7 @@ first life for our packs. The industry norm is one to two years.
 An industry-leading BMS keeps every pack healthy.
 
 ### technology.bms.lede-2
-Our electronics team designed the Ampersand BMS. It runs in every MK2 and in the HM1 fleet. We control every limit and every firmware release.
+Our electronics team designed the Ampersand BMS. It runs in every pack on our network. We control every limit and every firmware release.
 
 ### technology.bms.item-1
 Charge and discharge limits set from live pack data
@@ -1064,30 +1107,6 @@ State of charge and state of health
 
 ### technology.bms.item-4
 Over-the-air updates
-
-
-<!-- Technology · amperops -->
-
-### technology.amperops.flag-1
-Software · AmperOps
-
-### technology.amperops.h2-1
-The data runs the network.
-
-### technology.amperops.lede-1
-AmperOps connects every bike, battery and station. We use it to place new stations, tune charging for each battery and set prices across the system. Each new rider and partner adds data that makes the network cheaper to build and run.
-
-### technology.amperops.item-1
-Battery health and predictive maintenance
-
-### technology.amperops.item-2
-Station stock and queue monitoring
-
-### technology.amperops.item-3
-Remote immobilisation
-
-### technology.amperops.item-4
-Fleet and partner reports
 
 
 <!-- Technology · bankable-link -->
@@ -1132,7 +1151,7 @@ For fleets
 For vehicle makers
 
 ### vehicles.hero.big-1
-10,000+
+{bikes}+
 
 ### vehicles.hero.text-1
 bikes on the road
@@ -1245,6 +1264,18 @@ Climb
 ### vehicles.lineup.note-1
 The Alpha MK2 runs on the new MK2 battery: two 15.5 kg packs.
 
+### vehicles.lineup.caption-2
+Alpha
+
+### vehicles.lineup.text-1
+Photo to come
+
+### vehicles.lineup.b-1
+Wylex D4000
+
+### vehicles.lineup.caption-3
+Wylex D4000
+
 ### vehicles.lineup.badge-1
 For review · partner approval needed before go-live
 
@@ -1270,7 +1301,7 @@ take-home pay for riders compared with petrol. Lower energy and maintenance cost
 Electrify a fleet in one contract.
 
 ### vehicles.fleets.lede-2
-We supply the vehicles, the energy and access to AmperOps. Your riders swap at 70 stations and you see every vehicle and battery.
+We supply the vehicles, the energy and access to AmperOps. Your riders swap at {stations} stations and you see every vehicle and battery.
 
 ### vehicles.fleets.item-1
 Moto-taxi, delivery and logistics fleets
@@ -1294,7 +1325,7 @@ Get a fleet quote
 Your vehicle. Our energy network.
 
 ### vehicles.oem.lede-1
-A partner's bike joins <b class="hl">24,000 swaps a day</b> from day one.
+A partner's bike joins <b class="hl">{daily-swaps} swaps a day</b> from day one.
 
 ### vehicles.oem.item-1
 Share your vehicle platform with our engineering team.
@@ -1303,7 +1334,7 @@ Share your vehicle platform with our engineering team.
 Integrate the MK2 battery. We validate the vehicle with you.
 
 ### vehicles.oem.item-3
-Launch with co-branding and access to all 70 stations.
+Launch with co-branding and access to all {stations} stations.
 
 ### vehicles.oem.button-1
 Apply as an OEM
@@ -1324,7 +1355,7 @@ Investors
 Already at scale. **Already profitable.**
 
 ### investors.hero.lede-1
-Africa's commercial motorcycles burn $25 billion of fuel a year, and electric bikes are taking over. We built the swap network that riders already trust. It runs 24,000 swaps a day.
+Africa's commercial motorcycles burn $25 billion of fuel a year, and electric bikes are taking over. We built the swap network that riders already trust. It runs {daily-swaps} swaps a day.
 
 ### investors.hero.button-1
 Why we win
@@ -1348,13 +1379,13 @@ commercial 2W fuel spend in Africa
 electric 2W/3W growth a year, 2024–2030
 
 ### investors.band.number-2
-10,000+
+{bikes}+
 
 ### investors.band.label-2
 Ampersand bikes on the road
 
 ### investors.band.number-3
-24,000
+{daily-swaps}
 
 ### investors.band.label-3
 battery swaps a day
@@ -1381,7 +1412,7 @@ Four reasons we win.
 The best swap network in Africa
 
 ### investors.why.text-1
-Six minutes from arrival to departure, and 96% of batteries leave fully charged.
+Six minutes from arrival to departure, and {charged} of batteries leave fully charged.
 
 ### investors.why.big-2
 5 _yrs_
@@ -1567,7 +1598,7 @@ MK2 platform, 65% lighter packs
 2026
 
 ### investors.impact.text-4
-10,000+ bikes, cabinets rolling out
+{bikes}+ bikes, cabinets rolling out
 
 ### investors.impact.note-1
 Backed by Acumen, British International Investment, DFC, Shell Foundation, TotalEnergies, UK aid, USAID, Rwanda Green Fund and others.

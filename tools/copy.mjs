@@ -37,13 +37,16 @@ function parse(md) {
 
 // ---- the Markdown conventions -> HTML ----
 const TAG = /<\/?[a-z][a-z0-9]*(\s[^<>]*)?\/?>/i;
+const esc = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+let NUM = {};
 function toHtml(text) {
   let s = text;
   if (TAG.test(s)) s = s.replace(/&(?![a-z]+;|#\d+;|#x[0-9a-f]+;)/gi, '&amp;'); // inline HTML: escape only a bare &
-  else s = s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  else s = esc(s);
   s = s.replace(/\*\*(.+?)\*\*/g, '<span class="hl">$1</span>');
   s = s.replace(/(^|\s)_([^_]+?)_(?=$|[\s.,;:!?)])/g, '<span class="u"> $2</span>');
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
+  s = s.replace(/\{([a-z0-9-]+)\}/g, (m, n) => n in NUM ? `<span data-num="${n}">${esc(NUM[n])}</span>` : m);
   return s.replace(/ /g, '&nbsp;');
 }
 
@@ -72,6 +75,9 @@ function replaceAll(src, copy, used, missing, file) {
 
 const { copy, order } = parse(readFileSync(join(ROOT, 'content', 'copy.md'), 'utf8'));
 const used = new Set(), missing = [], changed = [];
+for (const k of order) if (k.startsWith('num.')) { NUM[k.slice(4)] = copy[k]; used.add(k); }
+const unknownNums = [...new Set(Object.values(copy).flatMap(v => [...v.matchAll(/\{([a-z0-9-]+)\}/g)].map(m => m[1])))]
+  .filter(n => !(n in NUM) && n !== 'asOf');
 const pages = readdirSync(PROOF).filter(f => f.endsWith('.html'));
 
 for (const file of pages) {
@@ -94,7 +100,8 @@ for (const file of pages) {
 const shared = {};
 for (const k of order) if (k.startsWith('shared.')) { shared[k] = toHtml(copy[k]); used.add(k); }
 const js = '/* Made by tools/copy.mjs from content/copy.md. Do not edit: edit copy.md. */\n' +
-  'window.AMP_COPY = ' + JSON.stringify(shared, null, 2) + ';\n';
+  'window.AMP_COPY = ' + JSON.stringify(shared, null, 2) + ';\n' +
+  'window.AMP_NUM = ' + JSON.stringify(NUM, null, 2) + ';\n';
 const jsPath = join(PROOF, 'assets', 'copy.js');
 let oldJs = '';
 try { oldJs = readFileSync(jsPath, 'utf8'); } catch {}
@@ -104,7 +111,8 @@ if (js !== oldJs) {
 }
 
 const unused = order.filter(k => !used.has(k));
+if (unknownNums.length) console.log(`Numbers used as {name} but not in the Numbers section:\n  ${unknownNums.join('\n  ')}`);
 if (missing.length) console.log(`Keys on the pages but not in copy.md (the page text stays as it is):\n  ${missing.join('\n  ')}`);
 if (unused.length) console.log(`Keys in copy.md that no page uses (check the spelling):\n  ${unused.join('\n  ')}`);
 console.log(`${mode === 'apply' ? 'Updated' : 'Would update'}: ${changed.length ? changed.join(', ') : 'nothing'}`);
-if (mode === 'check' && (missing.length || unused.length)) process.exitCode = 1;
+if (mode === 'check' && (missing.length || unused.length || unknownNums.length)) process.exitCode = 1;

@@ -15,7 +15,10 @@
 
   // ---- Header and footer ----
   // The text comes from content/copy.md (Shared section) through assets/copy.js. The second value is the fallback.
-  var COPY = window.AMP_COPY || {};
+  var COPY = window.AMP_COPY || {}, NUM = window.AMP_NUM || {};
+  function toInt(v) { return parseInt(String(v).replace(/[^0-9]/g, ''), 10); }
+  if (NUM['daily-swaps']) D.dailySwaps = toInt(NUM['daily-swaps']);
+  if (NUM.stations) D.stations = toInt(NUM.stations);
   function T(k, d) { return COPY[k] != null ? COPY[k] : d; }
   var NAV = [
     ['network', 'network.html', T('shared.nav-network', 'Network')],
@@ -43,7 +46,7 @@
       '<div class="lbl"><b><span class="dot" aria-hidden="true"></span>' + T('shared.live-title', 'Network now') + '</b><span>' + T('shared.live-note', 'Simulated feed · based on {asOf}').replace('{asOf}', D.asOf) + '</span></div>' +
       '<div class="cell"><div class="n tick" data-live="swapsToday">0</div><div class="k">' + T('shared.live-today', 'Swaps today') + '</div></div>' +
       '<div class="cell"><div class="n tick" data-live="swapsHour">0</div><div class="k">' + T('shared.live-hour', 'Swaps this hour') + '</div></div>' +
-      '<div class="cell"><div class="n">' + T('shared.live-charged-number', '96%') + '</div><div class="k">' + T('shared.live-charged', 'Batteries out fully charged') + '</div></div>' +
+      '<div class="cell"><div class="n">' + T('shared.live-charged-number', '<span data-num="charged">96%</span>') + '</div><div class="k">' + T('shared.live-charged', 'Batteries out fully charged') + '</div></div>' +
       '<div class="cell"><div class="n" data-live="stations">' + D.stations + '</div><div class="k">' + T('shared.live-stations', 'Stations in service') + '</div></div>' +
       '</div></div>';
   }

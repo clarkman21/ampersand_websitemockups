@@ -390,3 +390,42 @@ footer.site{background:var(--ink);color:var(--white);padding-block:clamp(64px,6.
 .model canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block;cursor:grab;touch-action:pan-y}
 .model canvas:active{cursor:grabbing}
 .model .hint{position:absolute;z-index:1;left:14px;bottom:10px;font-size:13px;font-weight:700;background:var(--ink);color:var(--white);padding:4px 14px;pointer-events:none;clip-path:polygon(5px 0,100% 0,calc(100% - 5px) 100%,0 100%)}
+
+/* ---- AmperOps system diagram (Technology) ---- */
+.sys{display:grid;margin-top:clamp(32px,4vw,56px)}
+.sys ul,.sys ol{list-style:none;margin:0;padding:0}
+.sys .sys-in{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:32px}
+.sys-in li{position:relative;display:grid;gap:4px;padding:14px 18px;border:2px solid var(--rule-d)}
+.sys-in b{font-size:17px;color:var(--white)}
+.sys-in li > span{font-size:14px;color:var(--on-ink-2)}
+.sys-in li::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:32px;background:var(--surge)}
+.sys-hub{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 28px;padding:18px clamp(24px,3vw,40px);background:var(--surge);color:var(--ink);clip-path:polygon(24px 0,100% 0,calc(100% - 24px) 100%,0 100%)}
+.sys-hub .d{font-size:clamp(56px,7vw,104px);line-height:.9}
+.sys-hub span:last-child{font-weight:700;font-size:18px;max-width:34ch}
+.sys .sys-out{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:36px}
+.sys-out li{position:relative;display:grid;gap:8px;align-content:start;padding:20px;background:var(--coal);border-top:4px solid var(--surge)}
+.sys-out li::before{content:"";position:absolute;left:50%;bottom:100%;width:2px;height:36px;background:var(--surge)}
+.sys-out .d{font-size:34px;color:var(--surge);line-height:1}
+.sys-out b{font-size:15px;color:var(--white)}
+.sys-out p{font-size:15px;color:var(--on-ink);margin:0}
+.sys-loop{margin:24px 0 0;font-weight:700;color:var(--on-ink-2)}
+.sys-loop span{color:var(--surge);font-size:22px;margin-right:6px}
+@media (max-width:1080px){
+  .sys .sys-out{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:16px}
+  .sys-out li::before{display:none}
+}
+@media (max-width:860px){
+  .sys .sys-in{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:16px}
+  .sys-in li::after{display:none}
+}
+@media (max-width:520px){.sys .sys-out{grid-template-columns:minmax(0,1fr)}}
+
+/* ---- Photo placeholders (photos to come from Drive) ---- */
+.photo-ph{aspect-ratio:4/3;width:100%;display:grid;place-content:center;gap:4px;text-align:center;padding:16px;
+  background:repeating-linear-gradient(-15deg,var(--stone) 0 14px,var(--chalk) 14px 28px);border:2px dashed var(--ebony);color:var(--ink)}
+.photo-ph span{font-family:var(--display);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ebony)}
+.photo-ph b{font-family:var(--display);font-style:italic;font-size:28px;line-height:1}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:end}
+.duo figure{margin:0;display:grid;gap:10px;justify-items:start;min-width:0}
+.duo img{width:100%;height:auto}
+.duo figcaption,.prod .visual .duo figcaption{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--surge);padding:3px 10px;text-align:left}

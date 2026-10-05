@@ -97,7 +97,7 @@ def is_group(n):
     Each part gets its own key, so editors do not see the markup."""
     if n.text.strip() or not n.children:
         return False
-    return not all(c.tag == "span" and c.classes() == ["hl"] for c in n.children)
+    return not all(c.tag == "span" and (c.classes() == ["hl"] or "data-num" in c.attrs) for c in n.children)
 
 
 def skipped(n):
@@ -142,9 +142,17 @@ def role_of(n):
             "label": "label", "span": "text", "div": "text", "small": "text", "cite": "cite"}.get(n.tag, n.tag)
 
 
+NUMBERS = {}  # name -> value, from <span data-num="name">value</span>
+
+
 def to_md(inner):
     """Inner HTML of a copy element -> the Markdown form used in copy.md."""
     s = inner.strip()
+
+    def num(m):
+        NUMBERS.setdefault(m.group(1), html.unescape(m.group(2)))
+        return "{" + m.group(1) + "}"
+    s = re.sub(r'<span data-num="([a-z0-9-]+)">(.*?)</span>', num, s)
     s = re.sub(r"\s*\n\s*", " ", s)
     s = re.sub(r'<span class="hl">(.*?)</span>', r"**\1**", s)
     s = re.sub(r'<span class="u">\s*(.*?)</span>', r" _\1_", s)
@@ -213,6 +221,8 @@ Edit the text under each `### key` line. Do not change the keys: they link the t
 - `**text**` shows the text in Surge Yellow (in headlines and buttons).
 - `_text_` makes a small unit after a big number, for example `6 _min_` or `15.5 _kg_`.
 - `[text](link)` makes a link.
+- `{name}` shows a number from the Numbers section, for example `{daily-swaps}`. Change a number
+  there once and every page updates.
 - Plain inline HTML also works for special cases.
 - To publish: commit this file. The site build writes the copy into the pages
   (`node tools/copy.mjs apply`). Changes to layout, images or new sections still need the code.
@@ -223,12 +233,17 @@ Edit the text under each `### key` line. Do not change the keys: they link the t
 def main():
     out = [HEADER]
     shared = shared_entries()
+    pages = [(page, *extract(page)) for page in PAGES]
+    out.append("## Numbers · used on many pages\n")
+    out.append("<!-- Use them in the text as {name}. The live feed also reads daily-swaps and stations. -->\n")
+    for name, value in NUMBERS.items():
+        out.append(f"### num.{name}\n{value}\n")
+    out.append("")
     if shared:
         out.append("## Shared · header and footer (every page)\n")
         for key, _, text in shared:
             out.append(f"### {key}\n{text}\n")
-    for page in PAGES:
-        title, entries = extract(page)
+    for page, title, entries in pages:
         slug = "home" if page == "index" else page
         out.append(f"\n## {PAGE_NAMES[page]} page · proof/{page}.html\n")
         out.append(f"### {slug}.title\n{html.unescape(title)}\n")

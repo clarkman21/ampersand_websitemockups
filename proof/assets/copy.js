@@ -14,7 +14,7 @@ window.AMP_COPY = {
   "shared.live-note": "Simulated feed · based on {asOf}",
   "shared.live-today": "Swaps today",
   "shared.live-hour": "Swaps this hour",
-  "shared.live-charged-number": "96%",
+  "shared.live-charged-number": "<span data-num=\"charged\">96%</span>",
   "shared.live-charged": "Batteries out fully charged",
   "shared.live-stations": "Stations in service",
   "shared.path-investors-kicker": "Investors",
@@ -37,4 +37,10 @@ window.AMP_COPY = {
   "shared.footer-people-title": "People",
   "shared.footer-people": "media@ampersand.solar<br><a href=\"https://ampersand-energy.breezy.hr/\">Careers</a>",
   "shared.footer-legal": "© 2026 Ampersand. Mockup for internal review. 3D models are approximate."
+};
+window.AMP_NUM = {
+  "charged": "96%",
+  "bikes": "11,000",
+  "daily-swaps": "24,000",
+  "stations": "70"
 };
