@@ -536,12 +536,6 @@ and NFC card reader on every cabinet
 Drag to rotate
 
 
-<!-- Network · cabinets -->
-
-### network.cabinets.caption-1
-Pilot cabinet at factory acceptance, August 2026: a charged MK2 pack in slot 2.
-
-
 <!-- Network · host -->
 
 ### network.host.kicker-1
