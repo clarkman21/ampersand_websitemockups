@@ -52,8 +52,8 @@ Work with us
 ### shared.mockbar
 Mockup · Proof site, station-signage design. The "Network now" numbers are simulated.
 
-### shared.mockbar-back
-Back to overview
+### shared.mockbar-review
+Internal review — comment on the page
 
 ### shared.header-button
 Work with us

@@ -38,7 +38,7 @@
   var head = document.getElementById('site-header');
   if (head) {
     head.innerHTML =
-      '<div class="mock-bar"><span>' + T('shared.mockbar', 'Mockup · Proof site, station-signage design. The "Network now" numbers are simulated.') + '</span><a href="../index.html">' + T('shared.mockbar-back', 'Back to overview') + '</a></div>' +
+      '<div class="mock-bar"><span>' + T('shared.mockbar', 'Mockup · Proof site, station-signage design. The "Network now" numbers are simulated.') + '</span><span>' + T('shared.mockbar-review', 'Internal review — comment on the page') + '</span></div>' +
       '<header class="site"><div class="wrap nav"><a class="logo" href="index.html" aria-label="Ampersand home"><img src="../assets/brand/logo-horizontal-yellow.svg" alt="Ampersand"></a>' +
       '<ul>' + navItems(false) + '</ul><a class="btn sm" href="contact.html">' + T('shared.header-button', 'Work with us') + '</a></div>' +
       '<nav class="subnav" aria-label="Sections"><ul><li><a href="index.html"' + (here === 'home' ? ' aria-current="page"' : '') + '>' + T('shared.nav-home', 'Home') + '</a></li>' + navItems(true) + '</ul></nav></header>' +
@@ -122,4 +122,106 @@
       if (msg) msg.hidden = false;
     });
   }
+})();
+
+/* Review commenting: a floating control that invites leadership to pin feedback
+   anywhere on the page. Uses the artifact `comments` capability where the viewer
+   has it; otherwise points to the shell's own comment tool. */
+(function () {
+  'use strict';
+  if (window.__ampReviewComments) return;
+  window.__ampReviewComments = true;
+
+  var style = document.createElement('style');
+  style.textContent = [
+    '.amp-cbtn{position:fixed;right:16px;bottom:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));',
+      'z-index:2147483000;display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border:2px solid #000;',
+      'border-radius:999px;background:#FCDC04;color:#000;font:700 15px/1 "Instrument Sans",system-ui,sans-serif;',
+      'cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.28);transition:transform .12s ease}',
+    '.amp-cbtn:hover{transform:translateY(-1px)}',
+    '.amp-cbtn svg{width:18px;height:18px;display:block}',
+    '.amp-cbtn.on{background:#000;color:#FCDC04;border-color:#FCDC04}',
+    '.amp-cbanner{position:fixed;left:50%;transform:translateX(-50%);bottom:74px;',
+      'bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:2147483000;width:min(92vw,540px);',
+      'background:#000;color:#F6F5EC;border:1px solid #FCDC04;border-radius:12px;padding:13px 16px;',
+      'font:400 14px/1.55 "Instrument Sans",system-ui,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.4)}',
+    '.amp-cbanner b{color:#FCDC04}',
+    '.amp-cbanner .x{float:right;margin:-2px -4px 0 12px;color:#F6F5EC;cursor:pointer;font:700 18px/1 sans-serif;',
+      'text-decoration:none;opacity:.75}',
+    '.amp-cbanner .x:hover{opacity:1}',
+    'body.amp-commenting{cursor:crosshair}',
+    'body.amp-commenting main *:hover{outline:2px solid rgba(252,220,4,.95);outline-offset:2px}',
+    '@media (prefers-reduced-motion:reduce){.amp-cbtn{transition:none}.amp-cbtn:hover{transform:none}}'
+  ].join('');
+  document.head.appendChild(style);
+
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'amp-cbtn';
+  btn.setAttribute('aria-label', 'Leave a comment on this page');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="M21 11.5a8 8 0 0 1-11.9 7L4 20l1.5-5.1A8 8 0 1 1 21 11.5z"/></svg><span>Comment</span>';
+  document.body.appendChild(btn);
+
+  var banner = null;
+  function showBanner(html) {
+    hideBanner();
+    banner = document.createElement('div');
+    banner.className = 'amp-cbanner';
+    banner.innerHTML = '<a class="x" href="#" aria-label="Dismiss">×</a>' + html;
+    banner.querySelector('.x').addEventListener('click', function (e) { e.preventDefault(); stop(); });
+    document.body.appendChild(banner);
+  }
+  function hideBanner() { if (banner) { banner.parentNode && banner.parentNode.removeChild(banner); banner = null; } }
+
+  var capP = null;
+  function cap() {
+    if (!capP) {
+      capP = (window.claude && typeof window.claude.use === 'function')
+        ? Promise.resolve(window.claude.use('comments')).catch(function () { return null; })
+        : Promise.resolve(null);
+    }
+    return capP;
+  }
+
+  var mode = false;
+  function stop() {
+    mode = false;
+    btn.classList.remove('on');
+    document.body.classList.remove('amp-commenting');
+    hideBanner();
+    document.removeEventListener('click', onPick, true);
+    document.removeEventListener('keydown', onKey, true);
+  }
+  function onKey(e) { if (e.key === 'Escape') stop(); }
+  function onPick(e) {
+    var t = e.target;
+    if (btn.contains(t) || (banner && banner.contains(t))) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var el = (t.closest && t.closest('section,.tile,.cell,.wbar,blockquote,figure,h1,h2,h3,img,a.btn,li,p,.d'))
+      || (t.nodeType === 1 ? t : t.parentElement);
+    if (!el) return;
+    cap().then(function (c) { if (c) c.openComposer({ element: el }).catch(function () {}); });
+  }
+
+  btn.addEventListener('click', function () {
+    cap().then(function (c) {
+      if (c) {
+        if (mode) { stop(); return; }
+        mode = true;
+        btn.classList.add('on');
+        document.body.classList.add('amp-commenting');
+        showBanner('<b>Click any part of the page</b> to pin a comment — say what to change, ' +
+          'like “move this” or “add this.” Press Esc when done. Notes are shared with the team.');
+        document.addEventListener('click', onPick, true);
+        document.addEventListener('keydown', onKey, true);
+      } else {
+        showBanner('To comment, turn on <b>comment mode</b> from the toolbar at the top of this window ' +
+          '(the speech-bubble icon), then click any part of the page. Write what to change — ' +
+          '“move this”, “add this.” Notes are shared with the team.');
+      }
+    });
+  });
 })();
