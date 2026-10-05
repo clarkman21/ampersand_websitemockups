@@ -152,7 +152,7 @@ Ampersand · Proof
 <!-- Home · hero -->
 
 ### home.hero.kicker-1
-East Africa's battery swap network
+Africa's first and longest-running e-moto swap network
 
 ### home.hero.h1-1
 Powering the **movement** of people and cities.
@@ -503,13 +503,13 @@ New · Automated swap cabinet
 A station that fits on any site.
 
 ### network.cabinets.lede-1
-Our self-service cabinet holds 12 charged MK2 packs. The rider pays in the app, a slot opens, and no attendant is needed. Designed in-house, rolling out in 2026.
+Our self-service cabinet holds 12 MK2 packs. The rider scans the QR code with the app, a slot opens, and no attendant is needed. Built to our specification by a manufacturing partner. The first cabinets passed factory tests in August 2026 and roll out this year.
 
 ### network.cabinets.big-2
-App
+QR
 
 ### network.cabinets.text-1
-payment opens the slot
+scan with the app to open a slot
 
 ### network.cabinets.big-3
 <3 s
@@ -518,22 +518,28 @@ payment opens the slot
 fire suppression in each slot
 
 ### network.cabinets.big-4
-Remote
+Pack ID
 
 ### network.cabinets.text-3
-monitoring and updates from AmperOps
+reads and charges every MK2 pack
 
 ### network.cabinets.big-5
-In-house
+Camera
 
 ### network.cabinets.text-4
-designed by Ampersand
+and NFC card reader on every cabinet
 
 
 <!-- Network · m-cabinet -->
 
 ### network.m-cabinet.text-1
 Drag to rotate
+
+
+<!-- Network · cabinets -->
+
+### network.cabinets.caption-1
+Pilot cabinet at factory acceptance, August 2026: a charged MK2 pack in slot 2.
 
 
 <!-- Network · host -->
@@ -546,12 +552,6 @@ Host a station or run a franchise.
 
 ### network.host.text-1
 We grow with partners: site hosts, energy partners and station franchisees.
-
-### network.host.text-6
-Photo to come
-
-### network.host.b-1
-Swap cabinet
 
 ### network.host.h3-1
 Swap cabinet
@@ -872,7 +872,7 @@ Built <span class="hl nw">in-house.</span>
 One system, from the cell to the city.
 
 ### technology.hero.lede-1
-We design our own battery management system (BMS), our own vehicle control and telematics unit (VCTU), our own cabinets and AmperOps, the software that runs it all.
+We design our own battery management system (BMS), our own vehicle control and telematics unit (VCTU), and AmperOps, the software that runs it all. Our swap cabinets are built to our specification.
 
 
 <!-- Technology · amperops -->
@@ -1007,7 +1007,7 @@ MK2 pack design: two 15.5 kg packs per bike, designed by our engineers.
 Cabinets
 
 ### technology.stack.text-7
-Automated 12-slot swap cabinet for MK2, with app payment. Rolling out in 2026.
+Automated 12-slot swap cabinet for MK2, built to our specification by a manufacturing partner. Rolling out in 2026.
 
 ### technology.stack.big-6
 Cells
@@ -1136,7 +1136,7 @@ Ampersand · Vehicles
 <!-- Vehicles · hero -->
 
 ### vehicles.hero.kicker-1
-Vehicles
+Vehicles · Africa's first open swap network
 
 ### vehicles.hero.h1-1
 Premium bikes, **open network.**
@@ -1409,7 +1409,7 @@ Four reasons we win.
 6 _min_
 
 ### investors.why.h3-1
-The best swap network in Africa
+Africa's first and longest-running swap network
 
 ### investors.why.text-1
 Six minutes from arrival to departure, and {charged} of batteries leave fully charged.
@@ -1580,7 +1580,7 @@ Track record
 2019
 
 ### investors.impact.text-1
-Commercial launch in Kigali
+Africa's first commercial e-moto swap network opens in Kigali
 
 ### investors.impact.big-3
 2022

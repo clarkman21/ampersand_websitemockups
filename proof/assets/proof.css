@@ -429,3 +429,7 @@ footer.site{background:var(--ink);color:var(--white);padding-block:clamp(64px,6.
 .duo figure{margin:0;display:grid;gap:10px;justify-items:start;min-width:0}
 .duo img{width:100%;height:auto}
 .duo figcaption,.prod .visual .duo figcaption{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--surge);padding:3px 10px;text-align:left}
+/* Cabinet: photo of a real slot under the 3D model */
+.slot-photo{margin:18px 0 0;display:grid;gap:8px}
+.slot-photo img{display:block;width:100%;height:auto;border:4px solid var(--ink)}
+.prod .visual .slot-photo figcaption{justify-self:end;padding:4px 10px;font-size:13px;font-weight:700;background:var(--ink);color:var(--surge)}

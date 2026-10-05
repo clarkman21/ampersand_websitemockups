@@ -4,7 +4,7 @@
    load, a simple hand-built pack is used instead.
    Hand-built, to scale from the specifications:
    HM1 pack 350 × 363 × 287 mm (Hardware product portfolio, Aug 2026), shaped from the HM1.9 render
-   12-slot cabinet 1500 × 600 × 1825 mm, 3 × 4 slots, 10.1" screen (Swap station specifications)
+   12-slot cabinet 1500 × 600 × 1825 mm, 3 columns × 4 rows of slots, 10.1" screen (Swap station specifications; layout from the cabinet render)
    Needs three.js r128 (global THREE). Usage: ampModel(element, 'mk2' | 'compare' | 'cabinet'). */
 (function () {
   'use strict';
@@ -104,73 +104,138 @@
     g.children.forEach(function (m) { m.position.y += 0.014; }); // stand on the feet
     return g;
   }
-  // ---- 12-slot cabinet: 1500 wide, 1825 tall (with castors), 600 deep ----
-  function screenTexture() {
-    var cv = document.createElement('canvas'); cv.width = 512; cv.height = 320;
-    var x = cv.getContext('2d');
-    x.fillStyle = '#0B0F12'; x.fillRect(0, 0, 512, 320);
-    x.fillStyle = '#FCDC04'; x.fillRect(0, 0, 512, 44);
-    x.fillStyle = '#000'; x.font = '700 24px "Instrument Sans", Arial, sans-serif'; x.fillText('Scan to swap', 18, 30);
-    x.fillStyle = '#F6F5EC'; x.font = '400 18px "Instrument Sans", Arial, sans-serif'; x.fillText('Slot 7 is open. Insert your battery.', 18, 76);
-    for (var r = 0; r < 3; r++) for (var c = 0; c < 4; c++) {
-      var n = r * 4 + c + 1; x.fillStyle = n === 7 ? '#44BC9D' : '#FCDC04';
-      x.fillRect(18 + c * 62, 100 + r * 62, 54, 54);
-      x.fillStyle = '#000'; x.font = '700 18px Arial, sans-serif'; x.fillText(String(n), 38 + c * 62, 134 + r * 62);
-    }
-    x.fillStyle = '#F6F5EC'; x.fillRect(300, 100, 180, 180); x.fillStyle = '#000';
-    for (var i = 0; i < 9; i++) for (var j = 0; j < 9; j++) if ((i * 7 + j * 3 + i * j) % 3 === 0) x.fillRect(312 + i * 17, 112 + j * 17, 15, 15);
-    var t = new THREE.CanvasTexture(cv); t.encoding = THREE.sRGBEncoding; return t;
+  // ---- 12-slot cabinet, from the cabinet render: 1500 wide, 600 deep, 1825 tall with feet ----
+  // Front: camera, "Ampersand Swap" mark, screen, QR code and NFC reader on the header; 3 × 4 numbered doors.
+  function canvasTex(w, h, draw) {
+    var cv = document.createElement('canvas'); cv.width = w; cv.height = h; draw(cv.getContext('2d'), w, h);
+    var t = new THREE.CanvasTexture(cv); t.encoding = THREE.sRGBEncoding; t.anisotropy = 4; return t;
   }
-  function cabinet(logoTexY, makePack, real) {
-    var g = new THREE.Group(), W = 1.5, H = 1.825, D = 0.6, castor = 0.1;
-    var body = mat(C.black, 0.62, 0.15), frame = mat(0x222222, 0.5, 0.3), yellow = mat(C.surge, 0.45, 0.05);
-    var top = H - 0.33, bottom = castor + 0.08;
-    // open frame: back, sides, header, plinth (the slots stay visible)
-    mesh(new THREE.BoxGeometry(W, H - castor, 0.03), mat(0x080808, 0.9), g, 0, castor + (H - castor) / 2, -D / 2 + 0.015);
-    mesh(new THREE.BoxGeometry(0.035, H - castor, D), body, g, -W / 2 + 0.0175, castor + (H - castor) / 2, 0);
-    mesh(new THREE.BoxGeometry(0.035, H - castor, D), body, g, W / 2 - 0.0175, castor + (H - castor) / 2, 0);
-    mesh(roundedBox(W, H - top, D, 0.03), body, g, 0, top + (H - top) / 2, 0);
-    mesh(new THREE.BoxGeometry(W, bottom - castor, D), body, g, 0, castor + (bottom - castor) / 2, 0);
-    // header panel with our logo file, and the 10.1" screen
-    var head = new THREE.Mesh(new THREE.PlaneGeometry(W * 0.62, W * 0.62 / 4), new THREE.MeshStandardMaterial({ map: logoTexY, roughness: 0.6 }));
-    head.position.set(-W * 0.14, H - 0.16, D / 2 + 0.004); g.add(head);
-    mesh(new THREE.BoxGeometry(0.26, 0.17, 0.02), frame, g, W * 0.33, H - 0.16, D / 2 + 0.005);
-    var scr = new THREE.Mesh(new THREE.PlaneGeometry(0.222, 0.139), new THREE.MeshStandardMaterial({ map: screenTexture(), emissive: 0xffffff, emissiveMap: screenTexture(), emissiveIntensity: 0.55, roughness: 0.2 }));
-    scr.position.set(W * 0.33, H - 0.16, D / 2 + 0.0162); g.add(scr);
-    mesh(new THREE.BoxGeometry(W - 0.04, 0.012, 0.01), yellow, g, 0, H - 0.29, D / 2 + 0.003);
-    // 3 rows × 4 columns of slot doors
-    var cols = 4, rows = 3, gw = (W - 0.12) / cols, gh = (top - bottom) / rows;
-    for (var vc = 0; vc <= cols; vc++) mesh(new THREE.BoxGeometry(0.03, top - bottom, D - 0.03), body, g, -W / 2 + 0.06 + gw * vc, (top + bottom) / 2, 0.015);
-    for (var hr = 1; hr < rows; hr++) mesh(new THREE.BoxGeometry(W - 0.06, 0.03, D - 0.03), body, g, 0, top - gh * hr, 0.015);
-    var ps = real ? 0.95 : 0.9, packH = (real ? 0.296 : 0.322) * ps;
-    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
-      var n = r * cols + c + 1, cx = -W / 2 + 0.06 + gw * (c + 0.5), cy = top - gh * (r + 0.5);
-      var open = n === 7;
-      // recess and a pack inside
-      if (n !== 7) {
-        var inside = makePack(); inside.scale.set(ps, ps, ps); inside.rotation.y = 0;
-        inside.position.set(cx, cy - packH / 2, D / 2 - 0.12); g.add(inside);
+  function screenTexture() { // the swap screen: slot grid on the left, QR code and stock on the right
+    return canvasTex(512, 340, function (x, w, h) {
+      x.fillStyle = '#F4F5F7'; x.fillRect(0, 0, w, h);
+      for (var r = 0; r < 4; r++) for (var c = 0; c < 3; c++) {
+        var full = !(r === 0 && c === 1);
+        x.fillStyle = full ? '#3DAE5B' : '#B9BCC2'; x.fillRect(10 + c * 112, 10 + r * 80, 104, 72);
+        x.fillStyle = '#FFFFFF'; x.font = '700 20px Arial, sans-serif'; x.fillText(full ? '100%' : 'Empty', 30 + c * 112, 52 + r * 80);
       }
-      // door: yellow frame + dark window, hinged on the left
-      var door = new THREE.Group(); door.position.set(cx - (gw - 0.04) / 2, cy, D / 2 + 0.012);
-      var dw = gw - 0.04, dh = gh - 0.04;
-      var fr = [[dw, 0.03, 0, dh / 2 - 0.015], [dw, 0.03, 0, -dh / 2 + 0.015], [0.03, dh, -dw / 2 + 0.015, 0], [0.03, dh, dw / 2 - 0.015, 0]];
-      fr.forEach(function (f) { mesh(new THREE.BoxGeometry(f[0], f[1], 0.018), yellow, door, dw / 2 + f[2], f[3], 0); });
-      var win = new THREE.Mesh(new THREE.PlaneGeometry(dw - 0.06, dh - 0.06), new THREE.MeshStandardMaterial({ color: lin(C.glass), roughness: 0.08, metalness: 0.1, transparent: true, opacity: 0.55 }));
-      win.position.set(dw / 2, 0, 0.004); door.add(win);
-      var led = new THREE.Mesh(new THREE.CircleGeometry(0.009, 16), new THREE.MeshStandardMaterial({ color: lin(open ? C.surge : C.green), emissive: lin(open ? C.surge : C.green), emissiveIntensity: 1 }));
-      led.position.set(dw - 0.03, dh / 2 - 0.03, 0.011); door.add(led);
-      if (open) door.rotation.y = -1.25;
-      g.add(door);
-    }
-    // castors with brakes
-    [[-W / 2 + 0.1, D / 2 - 0.1], [W / 2 - 0.1, D / 2 - 0.1], [-W / 2 + 0.1, -D / 2 + 0.1], [W / 2 - 0.1, -D / 2 + 0.1]].forEach(function (p) {
-      mesh(new THREE.BoxGeometry(0.08, 0.03, 0.08), frame, g, p[0], castor - 0.015, p[1]);
-      var wh = mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.03, 20), mat(0x111111, 0.8), g, p[0], 0.035, p[1]); wh.rotation.x = Math.PI / 2;
+      x.fillStyle = '#3B8FD9'; x.fillRect(350, 0, 162, h);
+      x.fillStyle = '#FFFFFF'; x.fillRect(372, 24, 118, 118); x.fillStyle = '#111';
+      for (var i = 0; i < 9; i++) for (var j = 0; j < 9; j++) if ((i * 7 + j * 3 + i * j) % 3 === 0) x.fillRect(378 + i * 12, 30 + j * 12, 11, 11);
+      x.fillStyle = '#FFFFFF'; x.font = '700 22px Arial, sans-serif'; x.fillText('Available', 386, 196); x.font = '700 54px Arial, sans-serif'; x.fillText('11', 404, 258);
     });
-    // a battery half out of the open slot, to show the swap
-    var out = makePack(); out.scale.set(ps, ps, ps);
-    var c7 = -W / 2 + 0.06 + gw * 2.5, r7 = top - gh * 1.5; out.position.set(c7, r7 - packH / 2, D / 2 + 0.07); out.rotation.y = -0.15; g.add(out);
+  }
+  function doorTexture(n) {
+    return canvasTex(256, 152, function (x, w, h) {
+      x.clearRect(0, 0, w, h); x.fillStyle = '#141414';
+      x.font = '400 104px Arial, Helvetica, sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(String(n), w / 2, h / 2 + 6);
+    });
+  }
+  function headerLogo(onload) { // brand mark and "AMPERSAND / SWAP", black on the yellow header (as on the pilot cabinet)
+    var cv = document.createElement('canvas'); cv.width = 1024; cv.height = 256;
+    var tex = new THREE.CanvasTexture(cv); tex.encoding = THREE.sRGBEncoding; tex.anisotropy = 4;
+    var img = new Image();
+    img.onload = function () {
+      var x = cv.getContext('2d');
+      x.drawImage(img, 10, 38, 150, 181);
+      x.fillStyle = '#141414'; x.font = '700 84px "Instrument Sans", Arial, Helvetica, sans-serif';
+      if ('letterSpacing' in x) x.letterSpacing = '10px';
+      x.fillText('AMPERSAND', 200, 118); x.fillText('SWAP', 200, 222);
+      tex.needsUpdate = true; if (onload) onload();
+    };
+    img.src = MARK;
+    return tex;
+  }
+  function ventTexture() {
+    return canvasTex(128, 160, function (x, w, h) { x.clearRect(0, 0, w, h); x.fillStyle = 'rgba(0,0,0,.55)'; for (var i = 0; i < 9; i++) x.fillRect(8, 8 + i * 17, w - 16, 7); });
+  }
+  function cabinet(onload, makePack, real) {
+    var g = new THREE.Group(), W = 1.5, D = 0.6, FEET = 0.105, HB = 1.72, H = FEET + HB, T = 0.02;
+    var body = mat(0xF2D200, 0.5, 0.05), gap = mat(0xC9AC00, 0.6, 0.05), doorM = mat(C.surge, 0.45, 0.05), dark = mat(0x1a1a1a, 0.6, 0.1), white = mat(0xF2F2F2, 0.5, 0.0);
+    function fy(px) { return H - (px / 350) * HB; } // render pixel rows (0 = top of the body) to metres
+    function fx(px) { return -W / 2 + (px / 293) * W; }
+    var zf = D / 2; // front face
+    // shell: back, sides, top and bottom; the front is made of panels so one slot can stand open
+    mesh(new THREE.BoxGeometry(W, HB, T), body, g, 0, FEET + HB / 2, -D / 2 + T / 2);
+    mesh(new THREE.BoxGeometry(T, HB, D), body, g, -W / 2 + T / 2, FEET + HB / 2, 0);
+    mesh(new THREE.BoxGeometry(T, HB, D), body, g, W / 2 - T / 2, FEET + HB / 2, 0);
+    mesh(roundedBox(W, T * 2, D, 0.008), body, g, 0, H - T, 0);
+    mesh(new THREE.BoxGeometry(W, T, D), body, g, 0, FEET + T / 2, 0);
+    var doorTop = 78, doorBot = 325, rowH = 52, rowGap = (doorBot - doorTop - 4 * rowH) / 3, colX = [7, 102, 197], colW = 89;
+    // front frame: header, foot band, and the strips between the doors
+    mesh(new THREE.BoxGeometry(W, (doorTop / 350) * HB, T), body, g, 0, fy(doorTop / 2), zf - T / 2);
+    mesh(new THREE.BoxGeometry(W, ((350 - doorBot) / 350) * HB, T), body, g, 0, fy((doorBot + 350) / 2), zf - T / 2);
+    var slots = [];
+    for (var r = 0; r < 4; r++) for (var c = 0; c < 3; c++) slots.push({ n: r * 3 + c + 1, x0: colX[c], x1: colX[c] + colW, y0: doorTop + r * (rowH + rowGap), y1: doorTop + r * (rowH + rowGap) + rowH });
+    // vertical strips and horizontal strips fill the gaps between the slot openings
+    [[0, colX[0]], [colX[0] + colW, colX[1]], [colX[1] + colW, colX[2]], [colX[2] + colW, 293]].forEach(function (s) {
+      mesh(new THREE.BoxGeometry(((s[1] - s[0]) / 293) * W, ((doorBot - doorTop) / 350) * HB, T), gap, g, (fx(s[0]) + fx(s[1])) / 2, fy((doorTop + doorBot) / 2), zf - T / 2 - 0.004);
+    });
+    for (var hr = 0; hr < 3; hr++) {
+      var a = doorTop + rowH + hr * (rowH + rowGap), b = a + rowGap;
+      mesh(new THREE.BoxGeometry(W - 0.04, ((b - a) / 350) * HB, T), gap, g, 0, fy((a + b) / 2), zf - T / 2 - 0.004);
+    }
+    slots.forEach(function (s) {
+      var dw = ((s.x1 - s.x0) / 293) * W, dh = ((s.y1 - s.y0) / 350) * HB, cx = (fx(s.x0) + fx(s.x1)) / 2, cy = fy((s.y0 + s.y1) / 2);
+      var open = s.n === 2;
+      var door = new THREE.Group(); door.position.set(cx - dw / 2, cy, zf);
+      mesh(new THREE.BoxGeometry(dw - 0.006, dh - 0.006, 0.016), doorM, door, dw / 2, 0, 0.004);
+      var num = new THREE.Mesh(new THREE.PlaneGeometry(dw * 0.9, dh * 0.9), new THREE.MeshStandardMaterial({ map: doorTexture(s.n), transparent: true, roughness: 0.6 }));
+      num.position.set(dw / 2, 0, 0.0125); door.add(num);
+      var led = new THREE.Mesh(new THREE.CircleGeometry(0.006, 12), new THREE.MeshStandardMaterial({ color: lin(open ? 0xE53935 : 0x3DAE5B), emissive: lin(open ? 0xE53935 : 0x3DAE5B), emissiveIntensity: 1 }));
+      led.position.set(dw - 0.03, -dh / 2 + 0.05, 0.0126); door.add(led);
+      if (open) {
+        door.rotation.y = -1.75;
+        // dark slot liner, and a charged MK2 pack lying in the slot with its handle to the front
+        var liner = new THREE.Mesh(new THREE.BoxGeometry(dw, dh, D - 0.08), new THREE.MeshStandardMaterial({ color: lin(0x2a2a2a), roughness: 0.9, side: THREE.BackSide }));
+        liner.position.set(cx, cy, zf - (D - 0.08) / 2); g.add(liner);
+        var p = makePack(), ps = 0.95; p.scale.set(ps, ps, ps); p.rotation.x = Math.PI / 2;
+        p.position.set(cx, cy, zf - 0.04 - 0.291 * ps); g.add(p);
+      }
+      g.add(door);
+    });
+    // header: camera, logo, screen, QR code, NFC reader
+    var cam = new THREE.Group(); cam.position.set(fx(258), fy(18), zf);
+    var housing = mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.06, 28), white, cam, 0, 0, 0.03); housing.rotation.x = Math.PI / 2;
+    mesh(new THREE.SphereGeometry(0.036, 24, 16), mat(0x050505, 0.15, 0.3), cam, 0, 0, 0.06); g.add(cam);
+    var logo = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 0.155), new THREE.MeshStandardMaterial({ map: headerLogo(onload), transparent: true, roughness: 0.6 }));
+    logo.position.set(fx(12) + 0.31, fy(32), zf + 0.001); g.add(logo);
+    mesh(new THREE.BoxGeometry(0.25, 0.175, 0.012), dark, g, fx(143), fy(36), zf + 0.006);
+    var st = screenTexture();
+    var scr = new THREE.Mesh(new THREE.PlaneGeometry(0.222, 0.148), new THREE.MeshStandardMaterial({ map: st, emissive: 0xffffff, emissiveMap: st, emissiveIntensity: 0.5, roughness: 0.2 }));
+    scr.position.set(fx(143), fy(36), zf + 0.0125); g.add(scr);
+    var qr = new THREE.Mesh(new THREE.PlaneGeometry(0.045, 0.045), new THREE.MeshStandardMaterial({ map: canvasTex(64, 64, function (x) {
+      x.fillStyle = '#fff'; x.fillRect(0, 0, 64, 64); x.fillStyle = '#111';
+      for (var i = 0; i < 8; i++) for (var j = 0; j < 8; j++) if ((i * 5 + j * 3 + i * j) % 3 === 0) x.fillRect(4 + i * 7, 4 + j * 7, 6, 6);
+    }), roughness: 0.6 }));
+    qr.position.set(fx(220), fy(46), zf + 0.001); g.add(qr);
+    mesh(new THREE.BoxGeometry(0.13, 0.075, 0.012), dark, g, fx(253), fy(44), zf + 0.006);
+    var nfc = new THREE.Mesh(new THREE.PlaneGeometry(0.1, 0.06), new THREE.MeshStandardMaterial({ map: canvasTex(128, 80, function (x) {
+      x.fillStyle = '#1a1a1a'; x.fillRect(0, 0, 128, 80); x.strokeStyle = '#F2F2F2'; x.lineWidth = 5;
+      [14, 26, 38].forEach(function (rr) { x.beginPath(); x.arc(64, 40, rr, -0.7, 0.7); x.stroke(); x.beginPath(); x.arc(64, 40, rr, Math.PI - 0.7, Math.PI + 0.7); x.stroke(); });
+    }), roughness: 0.4 }));
+    nfc.position.set(fx(253), fy(44), zf + 0.0125); g.add(nfc);
+    [30, 247].forEach(function (kx) { // key locks
+      var k = mesh(new THREE.CylinderGeometry(0.014, 0.014, 0.02, 16), dark, g, fx(kx), fy(58), zf + 0.01); k.rotation.x = Math.PI / 2;
+    });
+    mesh(new THREE.BoxGeometry(0.1, 0.03, 0.003), gap, g, fx(222), fy(22), zf + 0.0015); // speaker grille
+    // foot band: service socket
+    mesh(new THREE.BoxGeometry(0.06, 0.035, 0.008), dark, g, 0, fy(338), zf + 0.004);
+    // side vents near the top, two grilles on each side
+    var vt = ventTexture();
+    [-1, 1].forEach(function (side) {
+      [0.12, 0.27].forEach(function (zz) {
+        var v = new THREE.Mesh(new THREE.PlaneGeometry(0.09, 0.15), new THREE.MeshStandardMaterial({ map: vt, transparent: true, roughness: 0.7 }));
+        v.position.set(side * (W / 2 + 0.001), fy(22), zf - zz); v.rotation.y = side * Math.PI / 2; g.add(v);
+      });
+    });
+    // white feet at the corners, with castors at the front
+    [[-1, 1], [1, 1], [-1, -1], [1, -1]].forEach(function (p) {
+      mesh(new THREE.BoxGeometry(0.07, FEET, 0.09), white, g, p[0] * (W / 2 - 0.06), FEET / 2, p[1] * (D / 2 - 0.08));
+      if (p[1] > 0) {
+        var wh = mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.03, 20), mat(0x111111, 0.8), g, p[0] * (W / 2 - 0.14), 0.032, D / 2 - 0.06); wh.rotation.z = Math.PI / 2;
+        mesh(new THREE.BoxGeometry(0.05, 0.02, 0.03), mat(0xC62828, 0.6), g, p[0] * (W / 2 - 0.14), 0.075, D / 2 - 0.06);
+      }
+    });
     return g;
   }
 
@@ -260,7 +325,7 @@
       return o;
     };
     if (type === 'cabinet') {
-      root.add(cabinet(yellowOnBlack, pack, !!real)); target = new THREE.Vector3(0, 0.88, 0); dist = 4.3;
+      root.add(cabinet(rerender, pack, !!real)); target = new THREE.Vector3(0, 0.9, 0); dist = 4.6;
       key.shadow.camera.left = -2; key.shadow.camera.right = 2; key.shadow.camera.top = 3; key.shadow.camera.bottom = -1;
     } else if (type === 'compare') {
       // the two MK2 packs side by side (2 × 128 mm wide, 322 mm long) take about the floor space of one HM1 (350 × 287 mm)
