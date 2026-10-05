@@ -503,31 +503,31 @@ New · Automated swap cabinet
 A station that fits on any site.
 
 ### network.cabinets.lede-1
-Our self-service cabinet holds 12 MK2 packs. The rider scans the QR code with the app, a slot opens, and no attendant is needed. Built to our specification by a manufacturing partner. The first cabinets passed factory tests in August 2026 and roll out this year.
+Our self-service cabinet holds 12 charged MK2 packs. The rider pays in the app, a slot opens, and no attendant is needed. Designed in-house, rolling out in 2026.
 
 ### network.cabinets.big-2
-QR
+App
 
 ### network.cabinets.text-1
-scan with the app to open a slot
+payment opens the slot
 
 ### network.cabinets.big-3
-<3 s
+Fire
 
 ### network.cabinets.text-2
-fire suppression in each slot
+suppression in each slot
 
 ### network.cabinets.big-4
-Pack ID
+Remote
 
 ### network.cabinets.text-3
-reads and charges every MK2 pack
+monitoring and updates from AmperOps
 
 ### network.cabinets.big-5
-Camera
+In-house
 
 ### network.cabinets.text-4
-and NFC card reader on every cabinet
+designed by Ampersand
 
 
 <!-- Network · m-cabinet -->
@@ -866,7 +866,7 @@ Built <span class="hl nw">in-house.</span>
 One system, from the cell to the city.
 
 ### technology.hero.lede-1
-We design our own battery management system (BMS), our own vehicle control and telematics unit (VCTU), and AmperOps, the software that runs it all. Our swap cabinets are built to our specification.
+We design our own battery management system (BMS), our own vehicle control and telematics unit (VCTU), our own cabinets and AmperOps, the software that runs it all.
 
 
 <!-- Technology · amperops -->
@@ -1001,7 +1001,7 @@ MK2 pack design: two 15.5 kg packs per bike, designed by our engineers.
 Cabinets
 
 ### technology.stack.text-7
-Automated 12-slot swap cabinet for MK2, built to our specification by a manufacturing partner. Rolling out in 2026.
+Automated 12-slot swap cabinet for MK2, with app payment. Rolling out in 2026.
 
 ### technology.stack.big-6
 Cells
